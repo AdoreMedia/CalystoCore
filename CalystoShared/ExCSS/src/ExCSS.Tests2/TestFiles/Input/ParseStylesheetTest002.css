@@ -1,0 +1,130 @@
+﻿* {
+  font-size: 16px;
+  font-family: 'Exo 2', sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+html, body {
+  padding: 0;
+  margin: 0;
+  background-color: whitesmoke;
+}
+
+body {
+  padding: 20px 10px;
+}
+
+.divContainer {
+  margin: auto;
+  max-width: 600px;
+  background-color: white;
+  border: solid 1px #9196aa;
+}
+
+@media screen and (max-width:500px){
+	.divContainer{
+		background:red;
+	}
+}
+
+.divContainer a {
+  text-decoration: none;
+}
+
+.divContainer .title1 {
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.divContainer .divHeader {
+  padding: 30px 10px;
+  text-align: center;
+}
+
+.divContainer .divHeader .link1 {
+  margin: auto;
+  display: table;
+}
+
+.divContainer .divHeader span {
+  font-size: 30px;
+  font-weight: bold;
+  padding-left: 10px;
+  color: #0CAA41;
+}
+
+.divContainer .divHeader img {
+  display: block;
+  margin: 0;
+  height: 30px;
+  max-width: 100px;
+}
+
+.divContainer .divContent {
+  background: white;
+  min-height: 400px;
+  padding: 0 20px 20px 20px;
+}
+
+.divContainer .divContent .centered {
+  text-align: center;
+}
+
+.divContainer .divContent .title2 {
+  margin-top: 40px;
+  font-size: 20px;
+  text-align: center;
+  padding: 15px;
+  background: #e6ebec;
+}
+
+.divContainer .divContent .block1 {
+  margin-top: 20px;
+}
+
+.divContainer .divContent .block1 p {
+  margin: 0;
+  padding: 0;
+  padding-bottom: 10px;
+}
+
+.divContainer .divContent .senderInfo div {
+  padding: 5px 0;
+}
+
+.divContainer .divContent .senderInfo .link3 {
+  color: black;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.divContainer .divFooter {
+  text-align: center;
+  color: #cfd0d1;
+  background: #1b1b1b;
+  padding: 20px;
+}
+
+.divContainer .divFooter .link2 {
+  margin: auto;
+  display: table;
+  color: #cfd0d1;
+}
+
+.divContainer .divFooter .logoImg {
+  height: 22px;
+  max-width: 50px;
+}
+
+.divContainer .divFooter .slogan {
+  padding: 10px 0;
+}
+
+.divContainer .divFooter .description {
+  font-size: 11px;
+  max-width: 700px;
+  margin: auto;
+}
+

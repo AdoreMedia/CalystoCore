@@ -1,0 +1,45 @@
+﻿@import "../common/functions.scss";
+@import "../common/mixins.scss";
+@import "constants.scss";
+
+// get text color based on background color
+@function fnGetForegroundColor($backgroundColor) {
+    $hue: hue($backgroundColor);
+
+    @if($hue > 40 and $hue < 80) {
+        @return black;
+    }
+    @else if (lightness($backgroundColor) > 70) {
+        @return #000;
+    }
+    @else {
+        @return #FFF;
+    }
+}
+
+@function fnGetButtonBorderColor($themeColor) {
+    @if(fnGetForegroundColor($themeColor) == black) {
+        @return $defaultThemeColor; // for white or yellow buttons with black text
+    }
+    @else {
+        @return $themeColor;
+    }
+}
+
+@function fnSelectArrowDown($textColor) {
+    @if($textColor == black) {
+        @return "~/Images/Arrows/ArrowBlackDown.png";
+    }
+    @else {
+        @return "~/Images/Arrows/ArrowWhiteDown.png";
+    }
+}
+
+@function fnGetThemeTextColor($themeColor) {
+    @return fnGetForegroundColor($themeColor);
+}
+
+@function fnGetButtonTextColor($buttonColor) {
+    @return fnGetForegroundColor($buttonColor);
+}
+

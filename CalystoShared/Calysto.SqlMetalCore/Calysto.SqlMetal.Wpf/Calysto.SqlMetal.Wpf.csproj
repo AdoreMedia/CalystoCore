@@ -1,0 +1,65 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net5.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <ApplicationIcon>Images\icon-net-20.ico</ApplicationIcon>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Database5\dbCalystoUnittest.cefcore.cs" />
+    <Compile Remove="Database5\dbCalystoUnittest.generated.cs" />
+    <Compile Remove="Database1\dbCalystoUnittest.cefcore.cs" />
+    <Compile Remove="Database1\dbCalystoUnittest.generated.cs" />
+    <Compile Remove="Database2\dbArizonaAppEF.cefcore.cs" />
+    <Compile Remove="Database2\dbArizonaAppEF.generated.cs" />
+    <Compile Remove="Database3\AdventureWorks.cefcore.cs" />
+    <Compile Remove="Database3\AdventureWorks.generated.cs" />
+    <Compile Remove="Database4\CustomClasses.cs" />
+    <Compile Remove="Database4\dbPrivredniAppBase.cefcore.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Database5\dbCalystoUnittest.cefcore.cs" />
+    <None Include="Database5\dbCalystoUnittest.generated.cs" />
+    <None Include="Database1\dbCalystoUnittest.cefcore.cs" />
+    <None Include="Database1\dbCalystoUnittest.generated.cs" />
+    <None Include="Database2\dbArizonaAppEF.generated.cs" />
+    <None Include="Database3\AdventureWorks.cefcore.cs" />
+    <None Include="Database3\AdventureWorks.generated.cs" />
+    <None Include="Database4\CustomClasses.cs" />
+    <None Include="Database4\dbPrivredniAppBase.cefcore.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="5.0.2" />
+	  <PackageReference Include="Prism.Core" Version="8.0.0.1909" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Calysto.EntityFrameworkCore\Calysto.EntityFrameworkCore.csproj" />
+    <ProjectReference Include="..\..\Calysto.Framework\Calysto.Genesis\Calysto.Genesis.csproj" />
+    <ProjectReference Include="..\Calysto.SqlMetal\Calysto.SqlMetal.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="EnvDTE\EnvDTECalystoSqlMetalWpf.tt">
+      <LastGenOutput>EnvDTECalystoSqlMetalWpf.cs</LastGenOutput>
+      <Generator>TextTemplatingFileGenerator</Generator>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Service Include="{508349b6-6b84-4df5-91f0-309beebad82d}" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="EnvDTE\EnvDTECalystoSqlMetalWpf.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>EnvDTECalystoSqlMetalWpf.tt</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+</Project>

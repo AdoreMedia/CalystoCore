@@ -1,0 +1,1 @@
+function foo(cond){var text="START ";text+=cond?"TRUE":"FALSE";text+=" END";return text}

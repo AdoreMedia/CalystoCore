@@ -1,0 +1,126 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+	<PropertyGroup>
+		<TargetFramework>net5.0</TargetFramework>
+		<CopyRefAssembliesToPublishDirectory>false</CopyRefAssembliesToPublishDirectory>
+		<RootNamespace>Calysto.Web.WebSite</RootNamespace>
+		<AssemblyName>Calysto.Web.WebSite</AssemblyName>
+		<GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+		<PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)'!='Release'">
+		<TypeScriptCompileBlocked>true</TypeScriptCompileBlocked>
+		<TypeScriptEnabled>false</TypeScriptEnabled>
+	</PropertyGroup>
+
+	<ItemGroup Label="CopyToOutputDirectory">
+		<None Update="Web\**\images\**">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+		<None Update="Web\**\*.css; Web\**\*.js">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+	</ItemGroup>
+
+	<ItemGroup>
+		<Content Include="Web\**\*.scss">
+			<Generator>CalystoCssGenerator</Generator>
+		</Content>
+	</ItemGroup>
+
+	<ItemGroup>
+		<Compile Remove="bin\**" />
+		<Compile Remove="obj\**" />
+		<Compile Remove="Views\**" />
+		<Content Remove="bin\**" />
+		<Content Remove="obj\**" />
+		<Content Remove="Views\**" />
+		<EmbeddedResource Remove="bin\**" />
+		<EmbeddedResource Remove="obj\**" />
+		<EmbeddedResource Remove="Views\**" />
+		<None Remove="bin\**" />
+		<None Remove="obj\**" />
+		<None Remove="Views\**" />
+		<TypeScriptCompile Remove="bin\**" />
+		<TypeScriptCompile Remove="obj\**" />
+		<TypeScriptCompile Remove="Views\**" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<None Remove="Web\CalystoUI\Notifications\Notifications.scss" />
+		<None Remove="Web\CalystoUI\Social\Social.scss" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="5.0.11" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="5.0.9" />
+		<PackageReference Include="Microsoft.TypeScript.MSBuild" Version="4.5.2">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+		<PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="5.0.2" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<Compile Update="EnvDTE\EnvDteTestSite.cs">
+			<DesignTime>True</DesignTime>
+			<AutoGen>True</AutoGen>
+			<DependentUpon>EnvDTETestSite.tt</DependentUpon>
+		</Compile>
+		<Compile Update="Web\CalystoUI\Checkboxes\CheckboxesController.cs">
+			<Generator></Generator>
+		</Compile>
+	</ItemGroup>
+
+	<ItemGroup>
+		<None Update="EnvDTE\EnvDTETestSite.tt">
+			<LastGenOutput>EnvDteTestSite.cs</LastGenOutput>
+			<Generator>TextTemplatingFileGenerator</Generator>
+		</None>
+		<None Update="Web\CalystoUI\Ajax\Ajax.scss">
+			<Generator>CalystoCssGenerator</Generator>
+		</None>
+		<None Update="Web\CalystoUI\Checkboxes\Checkboxes.scss">
+			<CustomToolNamespace></CustomToolNamespace>
+			<Generator>CalystoCssGenerator</Generator>
+		</None>
+		<None Update="Web\CalystoUI\Dialogs\Dialogs.scss">
+			<Generator>CalystoCssGenerator</Generator>
+		</None>
+		<None Update="Web\CalystoUI\Preloaders\Preloaders.scss">
+			<Generator>CalystoCssGenerator</Generator>
+		</None>
+		<None Update="Web\Home\Home.scss">
+			<Generator>CalystoCssGenerator</Generator>
+		</None>
+	</ItemGroup>
+
+	<ItemGroup>
+		<Service Include="{508349b6-6b84-4df5-91f0-309beebad82d}" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\Calysto.Web.Mvc\Calysto.Web.Mvc.csproj" />
+		<ProjectReference Include="..\CalystoBlazorWasm\Client\CalystoBlazorWasm.Client.csproj" />
+		<ProjectReference Include="..\CalystoBlazor\Calysto.Blazor.csproj" />
+		<ProjectReference Include="..\CalystoDataShared\CalystoDataShared.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<Content Remove="tsconfig.json" />
+		<_WebToolingArtifacts Remove="Properties\PublishProfiles\PocCalystoFrameworkMvc.pubxml" />
+		<Content Include="tsconfig.json">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+			<CopyToPublishDirectory>Never</CopyToPublishDirectory>
+		</Content>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include="Properties\PublishProfiles\" />
+	</ItemGroup>
+
+</Project>

@@ -1,0 +1,101 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+		<DebugType>full</DebugType>
+		<DebugSymbols>true</DebugSymbols>
+	</PropertyGroup>
+	
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.11.0" />
+    <PackageReference Include="MSTest.TestAdapter" Version="2.2.7" />
+    <PackageReference Include="MSTest.TestFramework" Version="2.2.7" />
+    <PackageReference Include="coverlet.collector" Version="3.1.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Calysto.UnitTesting\Calysto.UnitTesting.csproj" />
+    <ProjectReference Include="..\AjaxMinDll\AjaxMinDll.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="EnvDTE\EnvDteCalystoMinTests.cs">
+      <DependentUpon>EnvDteCalystoMinTests.tt</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="EnvDTE\EnvDteCalystoMinTests.tt">
+      <LastGenOutput>EnvDteCalystoMinTests.cs</LastGenOutput>
+      <Generator>TextTemplatingFileGenerator</Generator>
+    </None>
+    <None Update="es5Tests\TestFiles\Actual\TestMethod22.js">
+      <SubType>Code</SubType>
+    </None>
+    <None Update="es5Tests\TestFiles\Actual\TestMethod23.js">
+      <SubType>Code</SubType>
+    </None>
+    <None Update="es5Tests\TestFiles\Expected\TestMethod22.js">
+      <SubType>Code</SubType>
+    </None>
+    <None Update="es5Tests\TestFiles\Expected\TestMethod23.js">
+      <SubType>Code</SubType>
+    </None>
+    <None Update="es6Tests\TestFiles\TestMethod43\Expected.js">
+      <SubType>Code</SubType>
+    </None>
+    <None Update="es6Tests\TestFiles\TestMethod44\Expected.js">
+      <SubType>Code</SubType>
+    </None>
+    <None Update="es6Tests\TestFiles\TestMethod44\Input.js">
+      <SubType>Code</SubType>
+    </None>
+    <None Update="es6Tests\TestFiles\TestMethod44\Output.js">
+      <SubType>Code</SubType>
+    </None>
+    <None Update="es6Tests\TestFiles\TestMethod45\Expected.js">
+      <SubType>Code</SubType>
+    </None>
+    <None Update="es6Tests\TestFiles\TestMethod46\Expected.js">
+      <SubType>Code</SubType>
+    </None>
+    <None Update="es6Tests\TestFiles\TestMethod46\Input.js">
+      <SubType>Code</SubType>
+    </None>
+    <None Update="es6Tests\TestFiles\TestMethod46\Output.js">
+      <SubType>Code</SubType>
+    </None>
+    <None Update="es6Tests\TestFiles\TestMethod45\Input.js">
+      <SubType>Code</SubType>
+    </None>
+    <None Update="es6Tests\TestFiles\TestMethod45\Output.js">
+      <SubType>Code</SubType>
+    </None>
+    <None Update="es6Tests\TestFiles\TestMethod43\Input.js">
+      <SubType>Code</SubType>
+    </None>
+    <None Update="es6Tests\TestFiles\TestMethod43\Output.js">
+      <SubType>Code</SubType>
+    </None>
+    <None Update="es6Tests\TestFiles\TestMethod42\Output.js">
+      <SubType>Code</SubType>
+    </None>
+    <None Update="es6Tests\TestFiles\TestMethod42\Expected.js">
+      <SubType>Code</SubType>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Service Include="{508349b6-6b84-4df5-91f0-309beebad82d}" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,49 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+      {
+        "label": "Sass Compile map embedded",
+        "type": "shell",
+        "command": "node-sass --indent-type=tab --indent-width=1 --output-style=expanded --source-map=true --source-map-contents --source-map-embed _dist/aero-light-blue.scss _dist/aero-light-blue2.css",
+        "group": "build",
+        "problemMatcher": [
+          "$go"
+        ]
+      },
+      {
+        "label": "Sass Compile expanded",
+        "type": "shell",
+        "command": "node-sass --indent-type=tab --indent-width=1 --output-style=expanded --source-map=true _dist/aero-light-blue.scss _dist/aero-light-blue2.css",
+        "group": "build",
+        "problemMatcher": [
+          "$go"
+        ]
+      },
+      {
+        "label": "Sass Compile compressed",
+        "type": "shell",
+        "command": "node-sass --output-style=compressed _dist/aero-light-blue.scss _dist/aero-light-blue2.min.css",
+        "group": "build",
+        "problemMatcher": [
+          "$go"
+        ]
+      },
+      {
+        "label": "Run All",
+        "type": "shell",
+        "group": "build",
+        "command": "echo All_Done",
+        "dependsOrder": "sequence",
+        "dependsOn": [
+          "Sass Compile expanded",
+          "Sass Compile compressed"
+        ],
+        "problemMatcher": [
+          "$go"
+        ]
+      }
+    ]
+}
+ 

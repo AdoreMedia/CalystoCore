@@ -1,0 +1,86 @@
+@import "../common/functions.scss";
+@import "../common/mixins.scss";
+@import "themes.scss";
+
+@mixin mxAllTextInputElements {
+	input[type=text],
+	input[type=number],
+	input[type=datetime-local],
+	input[type=file],
+	input[type=tel],
+	input[type=email],
+	input[type=datetime],
+	input[type=password],
+	input[type=password],
+	textarea {
+		@content;
+	}
+}
+
+@mixin tmplInputsBasicTheme($discriminator: "", $defaultColor: $defaultThemeColor, $controlHeight: $defaultButtonHeight) {
+
+	$themeColor: if($defaultColor, $defaultColor, $defaultThemeColor);
+	$shadowColor: #cfcfcf;
+	$controlHeight: if($controlHeight, $controlHeight, $defaultButtonHeight);
+	$buttonPadding: 0px $controlHeight * 0.2666;
+
+	// input element must have calystoInp class attached
+	%inputElements#{$discriminator} {
+		box-sizing: border-box;
+		background-color: white;
+		vertical-align: middle;
+		display: inline-block;
+		box-shadow: 1px 1px 6px $shadowColor inset;
+		outline: none !important;
+		border: solid 1px fnGetButtonBorderColor($themeColor);
+		border-radius: $controlHeight * 0.1333;
+		padding: $buttonPadding;
+		height: $controlHeight;
+		font-size:$controlHeight * 0.5;
+
+		&:focus {
+			box-shadow: 0px 0px 4px $shadowColor;
+		}
+	}
+
+	@include mxAllTextInputElements {
+		@extend %inputElements; // only %inputElements, $discriminator part will be applied to elements selectors
+	}
+
+	textarea#{$discriminator} {
+		overflow: auto;
+		height: initial;
+	}
+}
+
+@mixin tmplInputsAeroTheme($discriminator: "", $defaultColor: $defaultThemeColor, $controlHeight: $defaultButtonHeight) {
+	@include tmplInputsBasicTheme($discriminator, $defaultColor, $controlHeight);
+
+	$map2: map-merge(("": $defaultColor), $mapColors);
+
+	@each $name, $color in $map2 {
+		$selector: if($discriminator, $discriminator, "") + if(str-length($name) > 1, "." + $name, "");
+		$themeColor: $color;
+
+		%inputElements#{$selector} {
+			border-color: fnGetButtonBorderColor($themeColor);
+		}
+	}
+}
+
+@mixin tmplInputsMetroTheme($discriminator: "", $defaultColor: $defaultThemeColor, $controlHeight: $defaultButtonHeight) {
+	@include tmplInputsAeroTheme($discriminator, $defaultColor, $controlHeight);
+
+	%inputElements#{$discriminator} {
+		border-radius: 0px;
+	}
+}
+
+
+
+// apply to any element with .calystoInp class
+@include tmplInputsAeroTheme(".calystoInp");
+
+//@include tmplInputsBasicTheme();
+//@include tmplInputsMetroTheme();
+//@include tmplInputsAeroTheme();

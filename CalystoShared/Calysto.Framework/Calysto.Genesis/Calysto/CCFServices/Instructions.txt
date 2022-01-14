@@ -1,0 +1,2 @@
+﻿
+Full instructions and examples are located in UniTest project Calysto.Genesis.UnitTest, namespace Calysto.CCFServices.Tests

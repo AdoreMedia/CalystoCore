@@ -1,0 +1,63 @@
+﻿@using Calysto.AspNetCore.Razor.Binding
+@using Calysto.Serialization.Json
+@functions{
+	class SingleItem
+	{
+		public string Name { get; set; }
+		public int[] Items { get; set; }
+	}
+	class BindingModel
+	{
+		public bool Ready { get; set; }
+		public string Name { get; set; }
+		public List<SingleItem> Values { get; set; }
+	}
+}
+@{ 
+	var model1 = new BindingModel()
+	{
+		Ready = true,
+		Name = "this is name",
+		Values = new List<SingleItem>()
+		{
+			new SingleItem(){Name = "first item", Items = new int[]{1,2,3,4,5,6}},
+			new SingleItem(){Name = "second item", Items = new int[]{1,2,3,4,5,6}},
+			new SingleItem(){Name = "third item", Items = new int[]{1,2,3,4,5,6}},
+			new SingleItem(){Name = "fourth item", Items = new int[]{1,2,3,4,5,6}}
+		}
+	};
+	var Binding = new BindingFactory<BindingModel>();
+	Binding.Model = model1;
+}
+
+<div calysto-binding="@Binding.Assign("root element", o=>o.Root().Bind("visible", "Ready"))" style="display:none">
+	<div calysto-binding="@Binding.Assign("mainRepeater", o=>o.Repeater("DataItem.Values"))" style="display:none">
+		<div calysto-binding="@Binding.Assign(o=>o.Template(TemplateKind.Header))">outer header</div>
+		<div calysto-binding="@Binding.Assign(o=>o.Template(TemplateKind.Footer))">outer footer</div>
+		<div calysto-binding="@Binding.Assign(o=>o.Template(TemplateKind.NoData))">outer no data</div>
+		<div calysto-binding="@Binding.Assign(o=>o.Template(TemplateKind.Separator))">outer separator</div>
+		<div calysto-binding="@Binding.Assign(o=>o.Template(TemplateKind.Item))">
+			<div calysto-binding="@Binding.Assign("silverBackground", o=>o.Bind("innerHTML", "Name"))" style="background:#d89c9c"></div>
+			<div calysto-binding="@Binding.Assign(o=>o.Bind("innerHTML", "ItemIndex", "Converters.ItemIndexConverter"))" style="background:silver"></div>
+			<div calysto-binding="@Binding.Assign(o=>o.Repeater("Items"))" style="display:none">
+				<div calysto-binding="@Binding.Assign(o=>o.Template(TemplateKind.Item))">
+					<div calysto-binding="@Binding.Assign("divDataItem", o=>o.Bind("innerHTML", "DataItem"))"></div>
+					<input calysto-binding="@Binding.Assign(o=>o.Bind("value", "DataItem", null, null, new[] { "change", "input", "click", "mouseover", "mouseout" }))" type="text" />
+					<input calysto-binding="@Binding.Assign(o=>o.Bind("value", "DataItem"))" type="text" />
+					<input calysto-binding="@Binding.Assign(o=>o.Bind("value", "DataItem"))" type="text" />
+					<input calysto-binding="@Binding.Assign(o=>o.Bind("value", "DataItem"))" type="text" />
+					<input calysto-binding="@Binding.Assign(o=>o.Bind("value", "DataItem"))" type="text" />
+				</div>
+				<div calysto-binding="@Binding.Assign(o=>o.Template(TemplateKind.Separator))">----------------------------</div>
+				<div calysto-binding="@Binding.Assign(o=>o.Template(TemplateKind.Header))">inner header</div>
+				<div calysto-binding="@Binding.Assign(o=>o.Template(TemplateKind.Footer))">inner footer</div>
+				<div calysto-binding="@Binding.Assign(o=>o.Template(TemplateKind.NoData))">nema podataka unutrasnji</div>
+			</div>
+		</div>
+	</div>
+</div>
+<script>
+	var model1 = @Binding.GetModelJs();
+	var factory1 = @Binding.GetFactoryJs();
+</script>
+	<script src="~/CalystoUI/Binding3/Binding3.js" calysto-append-version="true"></script>

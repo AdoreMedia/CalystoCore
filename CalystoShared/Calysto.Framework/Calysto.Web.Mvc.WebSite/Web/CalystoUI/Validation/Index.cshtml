@@ -1,0 +1,33 @@
+﻿@using Calysto.Web.TestSite.Web.CalystoUI.Validation
+@using Calysto.Web.TestSite.Web.CalystoUI.Validation.Models
+@model ValidationViewModel
+	<div id="divLoginPanel">
+		<div class="col-form-label">Not authenticated</div>
+		<form id="form1" calysto-form-target="#divLoginPanel" calysto-controller-action="CalystoMvcUtility.UseTranslatorSafe(a=>a.Translate<ValidationController, ValidationViewModel>(c=>c.Validatate))" method="post">
+			<label asp-for="@Model"></label>
+
+			<label class="col-form-label" asp-for="@Model.BirthDate"></label>
+			<input class="form-control" asp-for="@Model.BirthDate" type="text" />
+			<span asp-validation-for="@Model.BirthDate"></span>
+
+			<label class="col-form-label" asp-for="@Model.Height"></label>
+			<input class="form-control" asp-for="@Model.Height" />
+			<span asp-validation-for="@Model.Height"></span>
+
+			@*<label class="col-form-label" asp-for="@Model.Username"></label>
+		<input class="form-control" asp-for="@Model.Username" />
+		<span asp-validation-for="@Model.Username"></span>
+
+		<label class="col-form-label" asp-for="@Model.Password"></label>
+		<input class="form-control" asp-for="@Model.Password" type="text" />
+		<span asp-validation-for="@Model.Password"></span>*@
+
+			<div asp-validation-summary="@ValidationSummary.All" style="margin-top:10px;"></div>
+			<div id="@nameof(ValidationViewModel)"></div>
+			<button class="btn btn-success">Validate</button>
+			<calysto-spinner>
+				@this.Calysto().Preloader(s=>s.Snake("green"))
+			</calysto-spinner>
+
+		</form>
+	</div>

@@ -1,0 +1,26 @@
+{
+	"compilerOptions": {
+		"target": "ES5",
+		"lib": [ "dom", "ESNext" ],
+		"alwaysStrict": false,
+		"strict": true,
+		"strictNullChecks": true,
+		"strictPropertyInitialization": false,
+		"incremental": false,
+		"noImplicitAny": false,
+		"noEmitOnError": true,
+		"noImplicitReturns": true,
+		"noFallthroughCasesInSwitch": true,
+		"allowUnreachableCode": true,
+		"allowUnusedLabels": false,
+		"removeComments": false,
+		"emitBOM": true,
+		"declaration": false,
+		"listEmittedFiles": false,
+		"inlineSourceMap": false,
+		"inlineSources": false,
+		"sourceMap": true,
+		"downlevelIteration": true
+	},
+	"compileOnSave": true
+}

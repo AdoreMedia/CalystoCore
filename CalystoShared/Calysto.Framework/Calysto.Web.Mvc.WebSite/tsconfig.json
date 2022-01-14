@@ -1,0 +1,6 @@
+{
+	"extends": "..\\Calysto.Web\\TypeScriptConfig\\tsconfig.json",
+	"include": ["Web", "wwwroot"]
+}
+
+

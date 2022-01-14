@@ -1,0 +1,17 @@
+
+declare namespace CalystoWebTests.Calysto.TypeLite.Model
+{
+	interface MyAsyncFunctions
+	{
+	}
+
+	namespace MyAsyncFunctions
+	{
+		export function DoWorkTask(): Calysto.Net.WebService.AjaxServiceClientVoid;
+		export function DoWorkAsync(): Calysto.Net.WebService.AjaxServiceClientVoid;
+		export function AreYouReadyTask(): Calysto.Net.WebService.AjaxServiceClientWithReturn<boolean>;
+		export function AreYouReadyAsync(): Calysto.Net.WebService.AjaxServiceClientWithReturn<boolean>;
+	}
+
+}
+

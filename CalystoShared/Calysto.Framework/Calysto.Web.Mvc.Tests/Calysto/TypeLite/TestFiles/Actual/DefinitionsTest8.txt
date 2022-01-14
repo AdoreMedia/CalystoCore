@@ -1,0 +1,14 @@
+
+declare namespace CalystoWebTests.Calysto.TypeLite.Model
+{
+	interface ServiceOne
+	{
+	}
+
+	namespace ServiceOne
+	{
+		export function GetPrometItems(skip: number, take: number, keys1: { [key: string]: number }, keys2: { [key: string]: string }): Calysto.Net.WebService.AjaxServiceClientWithReturn<{ [key: number]: string }>;
+	}
+
+}
+

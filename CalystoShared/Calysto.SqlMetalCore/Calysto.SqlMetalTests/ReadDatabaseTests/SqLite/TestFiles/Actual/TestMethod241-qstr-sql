@@ -1,0 +1,9 @@
+.param set @__x1_0 '2019-06-16 15:55:26'
+.param set @__x2_1 352
+.param set @__p_3 2
+.param set @__p_2 1
+
+SELECT "t"."AppMemberID", "t"."Address", "t"."AppMemberStatusID", "t"."BirthDate", "t"."City", "t"."Country", "t"."CreationDate", "t"."Email", "t"."FacebookId", "t"."FirstName", "t"."Gender", "t"."GoogleId", "t"."HomeMemberAddressID", "t"."IP", "t"."IsQuizQuestionsEditor", "t"."LastLoginDate", "t"."LastName", "t"."LoginsCount", "t"."MSISDN", "t"."Password", "t"."PersonalNote", "t"."PosFirmaID", "t"."PrimaryMemberAddressID", "t"."StanjeRacuna", "t"."Username", "t"."WebUrl", "t"."WorkMemberAddressID", "t"."ZipCode"
+FROM "tblAppMember" AS "t"
+WHERE ((("t"."BirthDate" > @__x1_0) AND ("t"."AppMemberID" > @__x2_1)) AND "t"."Address" IS NOT NULL) AND "t"."BirthDate" IS NULL
+LIMIT @__p_3 OFFSET @__p_2

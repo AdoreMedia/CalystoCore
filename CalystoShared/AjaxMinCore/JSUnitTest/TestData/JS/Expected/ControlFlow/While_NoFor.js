@@ -1,0 +1,1 @@
+var b=10;while(1)if(!--b)break;while(1)alert("infinite loop!")

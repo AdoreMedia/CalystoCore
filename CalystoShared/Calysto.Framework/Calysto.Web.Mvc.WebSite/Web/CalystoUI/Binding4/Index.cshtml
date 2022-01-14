@@ -1,0 +1,172 @@
+﻿@using Calysto.AspNetCore.Razor.Binding
+@using Calysto.Serialization.Json
+@functions{
+	class SingleItem
+	{
+		public string Name { get; set; }
+		public int[] Items { get; set; }
+	}
+	class BindingModel
+	{
+		public bool Ready { get; set; }
+		public string Name { get; set; }
+		public List<SingleItem> Values { get; set; }
+	}
+}
+@{
+
+	//new AccessorExtractor<BindingModel>().Base(o => o.Values.First()).Accessor(o => o.Items);
+
+	var model1 = new BindingModel()
+	{
+		Ready = true,
+		Name = "this is name",
+		Values = new List<SingleItem>()
+{
+			new SingleItem(){Name = "first item", Items = new int[]{1,2,3,4,5,6}},
+			new SingleItem(){Name = "second item", Items = new int[]{1,2,3,4,5,6}},
+			new SingleItem(){Name = "third item", Items = new int[]{1,2,3,4,5,6}},
+			new SingleItem(){Name = "fourth item", Items = new int[]{1,2,3,4,5,6}}
+		}
+	};
+	var Binding = new BindingFactory<BindingModel>();
+}
+
+<style type="text/css">
+	* {
+		font-size: 14px;
+	}
+
+	.testtitle {
+		display: block;
+		background: cyan !important;
+	}
+</style>
+
+<div calysto-binding="@Binding.Assign(o=>o.Root().Bind("visible", "ready"))" style="display: none">
+	<div style="padding: 10px; background-color: #267bc5">
+		<button calysto-binding="@Binding.Assign(o=>o.ListenView(new[] { "click" }, "Binding4.Rebind1"))">Rebind1</button>
+		<button calysto-binding="@Binding.Assign(o=>o.ListenView(new[] { "click" }, "Binding4.Rebind2"))">Rebind2</button>
+		<button calysto-binding="@Binding.Assign(o=>o.ListenView(new[] { "click" }, "Binding4.Rebind3"))">Rebind3</button>
+	</div>
+
+	<div calysto-binding="@Binding.Assign(o=>o.Bind("someValue", "state", 
+			"(cx, dsValue)=>'vrijednost: ' + dsValue", 
+			"(cx, elValue)=>parseInt(elValue)", 
+			new[] {"click","mouseover", "mouseout", "change", "input" }))"></div>
+
+	<div calysto-binding="@Binding.Assign(o=>o.Source("state")
+			.ListenView(new[] { "click" }, "HandleClick"))">
+
+		<div calysto-binding="@Binding.Assign(o=>o.Source("state")
+			.ListenView(new[] { "click" }, "HandleClick")
+			.ListenView(new[] {"mouseover", "mouseout" }, "Binding4.MouseHandler"))"
+			 style="background: silver">klikni za alert [TEST1: click to show alert("DivClick")</div>
+
+	</div>
+
+	<div class="div11" style="overflow: hidden; transition: all 1s; -webkit-transition: all 1s;" calysto-bind="aaaastyle.height:::(state.isActive)=>state.isActive ? '400px' : '15px'">
+		<div>REPEATER TEST</div>
+		
+		<div calysto-binding="@Binding.Assign(o=>o.Repeater("selitems").ListenData(new[] { "selitems" }, "Binding4.SelitemsHandler"))"
+				style="display: none">
+			<div calysto-binding="@Binding.Assign(o=>o.Template(TemplateKind.Header))">ovo je header</div>
+			<div calysto-binding="@Binding.Assign(o=>o.Template(TemplateKind.Separator))">ovo je separator</div>
+			<div calysto-binding="@Binding.Assign(o=>o.Template(TemplateKind.Footer))">ovo je footer</div>
+			<div calysto-binding="@Binding.Assign(o=>o.Template(TemplateKind.Item).ListenData(new[] { "Selected", "NotSelected", "Any.New.Year" }, "Binding4.ItemTemplateHandler"))">
+				<div calysto-binding="@Binding.Assign(o=>o.Bind("innerHTML", "DataItem.Selected", "value => value ? 'selected' : 'not selected' "))"></div>
+				<div>main repeater item</div>
+				<div style="padding-left: 20px;">
+					<div calysto-binding="@Binding.Assign(o=>o.Repeater("Ages"))" style="display: none">
+						<span calysto-binding="@Binding.Assign(o=>o.Template(TemplateKind.NoData))" style="background-color: red;">nema podataka</span>
+						<div calysto-binding="@Binding.Assign(o=>o.Template(TemplateKind.Item))">
+							DataItem: <span calysto-binding="@Binding.Assign(o=>o.Bind("innerHTML", "DataItem"))"></span>, ItemIndex: <span calysto-binding="@Binding.Assign(o=>o.Bind("innerHTML", "ItemIndex"))"></span>
+							<input type="checkbox" calysto-binding="@Binding.Assign(o => o.Bind("checked", "@.state.isActive"))" />
+							<label calysto-binding="@Binding.Assign(o=>o.Source("@.state"))">
+								<input type="checkbox" calysto-binding="@Binding.Assign(o=>o.Bind("checked", "isActive", "Binding4.Checkbox2Set", "Binding4.Checkbox2Get"))" />
+								<input type="checkbox" calysto-binding="@Binding.Assign(o=>o.Bind("checked", "isActive"))" />
+								<input type="checkbox" calysto-binding="@Binding.Assign(o=>o.Bind("checked", "@.state.isActive"))" />
+							</label>
+						</div>
+						<span calysto-binding="@Binding.Assign(o=>o.Template(TemplateKind.Separator))">------------</span>
+					</div>
+				</div>
+				Text:<span calysto-binding="@Binding.Assign(o=>o.Bind("innerHTML", "Text"))"></span>
+				Value:<span calysto-binding="@Binding.Assign(o=>o.Bind("innerHTML", "Value"))"></span>
+				Selected:<span calysto-binding="@Binding.Assign(o=>o.Bind("innerHTML", "Selected"))"></span>
+			</div>
+		</div>
+
+		<span></span>
+		<span></span>
+		<div>naslov mozemo stavit ako je <span calysto-binding="@Binding.Assign(o=>o
+			.Bind("innerHTML", "state.isActive", "Binding4.ActiveStateConverter1")
+			.Bind("style.color", "state.isActive", "Binding4.ActiveStateConverter2"))"></span>stanje ili nije</div>
+
+		<span calysto-binding="@Binding.Assign(o=>o.Bind("innerHTML", "text"))">dva</span>
+		<div class="fds mychk" calysto-binding="@Binding.Assign(o=>o
+				.Bind("innerHTML", "state.isActive", "Binding4.ActiveConverter1")
+				.Bind("style.color", "state.isActive", "Binding4.ActiveConverter2"))"></div>
+		<label style="display:block">
+			<input type="checkbox" calysto-binding="@Binding.Assign(o=>o.Bind("checked", "state.isActive", "Binding4.Checkbox5"))" />
+			<div class="testtitle" style="display: inline">[TEST2: uncheck/check to update other checkboxes and text colors]</div>
+			<div calysto-binding="@Binding.Assign(o=>o.Bind("innerHTML", "state.isActive", "Calysto.Genesis.WebTest.CalystoWebControlsTests.CalystoBindable4.Web.fnActiveOpis" ))"></div>
+		</label>
+
+		<label calysto-binding="@Binding.Assign(o=>o.Source("state"))">
+			<input type="checkbox" calysto-binding="@Binding.Assign(o=>o.Bind("checked", "@.state.isActive")
+					.ListenView(new[] {"mouseover", "mouseout"}, "cx => console.log(cx)")
+					.ListenView(new[] {"mouseover", "mouseout" }, "@.state.DoSomething"))" />
+			<input type="checkbox" calysto-binding="@Binding.Assign(o=>o.Bind("checked", "@.state.isActive"))" />
+		</label>
+
+		<input type="checkbox" calysto-binding="@Binding.Assign(o=>o.Bind("checked", "state.isActive", "Binding4.Checkbox8", "Binding4.Checkbox8"))" />
+		<div class="testtitle" style="margin-top: 10px;">[TEST3: write text into textbox, clik outside to update GetOpis() text]</div>
+		<div id="d111" calysto-binding="@Binding.Assign(o=>o
+				.Bind("innerHTML", "state.isActive", "Calysto.Genesis.WebTest.CalystoWebControlsTests.CalystoBindable4.Web.fnGetOpis")
+				.Bind("style.color", "state.isActive", "Calysto.Genesis.WebTest.CalystoWebControlsTests.CalystoBindable4.Web.fnGetColor"))"></div>
+		<input calysto-binding="@Binding.Assign(o=>o.Source("state").Bind("value", "isActive"))" type="text" style="width: 200px; height: 20px;" />
+		<div calysto-binding="@Binding.Assign(o=>o.Bind("innerHTML", "selitems", "Calysto.Genesis.WebTest.CalystoWebControlsTests.CalystoBindable4.Web.fnSelected"))"></div>
+	</div>
+
+	<div class="testtitle">[TEST4: select items in one ddl, they will select in other ddl and will change colors in repeater]</div>
+
+	<select calysto-binding="@Binding.Assign(o=>o.Bind("options", "selitems"))" multiple="multiple" id="ss2" style="min-height: 100px; min-width: 100px;"></select>
+
+	<select calysto-binding="@Binding.Assign(o=>o.Bind("options", "selitems"))" multiple="multiple" style="min-height: 100px; min-width: 100px;"></select>
+
+	<div style="border: solid 1px silver; padding: 10px;">
+		<div calysto-binding="@Binding.Assign(o=>o.Repeater("selitems"))" style="display: none">
+			<div calysto-binding="@Binding.Assign(o=>o.Template(TemplateKind.Item))">
+				<label>
+					<input type="radio" name="radioSelitems1" calysto-binding="@Binding.Assign(o=>o.Bind("checked", "Selected").Bind("value", "Value"))" />
+					<span calysto-binding="@Binding.Assign(o=>o.Bind("innerHTML", "Text"))"></span>
+				</label>
+			</div>
+		</div>
+	</div>
+	<div style="border: solid 1px silver; padding: 10px;">
+		<div calysto-binding="@Binding.Assign(o=>o.Repeater("selitems"))" style="display: none">
+			<div calysto-binding="@Binding.Assign(o=>o.Template(TemplateKind.Item))">
+				<label>
+					<input type="checkbox" name="radioSelitems1" calysto-binding="@Binding.Assign(o=>o.Bind("value", "Value").Bind("checked", "Selected"))" />
+					<span calysto-binding="@Binding.Assign(o=>o.Bind("innerHTML", "Text"))"></span>
+				</label>
+			</div>
+		</div>
+	</div>
+
+	<div style="padding: 10px; background-color: #267bc5">
+		<button calysto-binding="@Binding.Assign(o=>o.ListenView(new[] { "click" }, "Binding4.Rebind1"))">Rebind1</button>
+		<button calysto-binding="@Binding.Assign(o=>o.ListenView(new[] { "click" }, "Binding4.Rebind2"))">Rebind2</button>
+		<button calysto-binding="@Binding.Assign(o=>o.ListenView(new[] { "click" }, "Binding4.Rebind3"))">Rebind3</button>
+	</div>
+
+</div>
+<script>
+	var model1 = @Binding.GetModelJs();
+	var factory1 = @Binding.GetFactoryJs();
+</script>
+
+<script src="~/CalystoUI/Binding4/Binding4.js" calysto-append-version="true"></script>
+

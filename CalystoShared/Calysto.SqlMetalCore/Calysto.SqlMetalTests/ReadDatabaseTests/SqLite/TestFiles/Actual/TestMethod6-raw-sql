@@ -1,0 +1,3 @@
+update "tblAppMember" AS "t"
+set "MSISDN" = @p_upd1634_0_MSISDN
+where (("t"."AppMemberID" < @__id1_0) AND ("t"."BirthDate" > @__dt1_1)) AND ("t"."BirthDate" < @__dt2_2)

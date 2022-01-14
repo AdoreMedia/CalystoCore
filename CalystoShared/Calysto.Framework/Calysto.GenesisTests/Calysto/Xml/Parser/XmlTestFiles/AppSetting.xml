@@ -1,0 +1,103 @@
+<?xml version="1.0" standalone="yes"?>
+<NewDataSet>
+  <xs:schema id="NewDataSet" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop">
+    <xs:element name="NewDataSet" msdata:IsDataSet="true" msdata:MainDataTable="AppSetting" msdata:UseCurrentLocale="true">
+      <xs:complexType>
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
+          <xs:element name="AppSetting" msprop:ReaderSchemaTable="SchemaTable">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="AppSettingID" msdata:ReadOnly="true" msdata:AutoIncrement="true" type="xs:int"/>
+                <xs:element name="Active" type="xs:boolean"/>
+                <xs:element name="AuthCookieRequired" type="xs:boolean"/>
+                <xs:element name="LocalBTProcessor" type="xs:boolean"/>
+                <xs:element name="LocalMOSend" type="xs:boolean"/>
+                <xs:element name="LocalMTSend" type="xs:boolean"/>
+                <xs:element name="LocalProcessInbox" type="xs:boolean"/>
+                <xs:element name="LocalProcessNotifs" type="xs:boolean"/>
+                <xs:element name="LocalKlubRenew" type="xs:boolean"/>
+                <xs:element name="LocalMadRenew" type="xs:boolean"/>
+                <xs:element name="LocalTasks" type="xs:boolean"/>
+                <xs:element name="RemoteBTProcessor" type="xs:boolean"/>
+                <xs:element name="RemoteMOSend" type="xs:boolean"/>
+                <xs:element name="RemoteMTSend" type="xs:boolean"/>
+                <xs:element name="RemoteProcessInbox" type="xs:boolean"/>
+                <xs:element name="RemoteProcessNotifs" type="xs:boolean"/>
+                <xs:element name="RemoteKlubRenew" type="xs:boolean"/>
+                <xs:element name="RemoteMadRenew" type="xs:boolean"/>
+                <xs:element name="RemoteTasks" type="xs:boolean"/>
+                <xs:element name="SmsRemoveHRChars" type="xs:boolean"/>
+                <xs:element name="WapRemoveHRChars" type="xs:boolean"/>
+                <xs:element name="ForceXhtmlAlways" type="xs:boolean"/>
+                <xs:element name="ServeWmlOnly" type="xs:boolean"/>
+                <xs:element name="WapPortalActive" type="xs:boolean"/>
+                <xs:element name="WapRootCategoryID" type="xs:int"/>
+                <xs:element name="DelayedProcessSeconds" type="xs:int"/>
+                <xs:element name="ProcessTryCountMax" type="xs:int"/>
+                <xs:element name="ProviderPasword" minOccurs="0">
+                  <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                      <xs:maxLength value="100"/>
+                    </xs:restriction>
+                  </xs:simpleType>
+                </xs:element>
+                <xs:element name="Movie3gpPriceLipa" type="xs:int" minOccurs="0"/>
+                <xs:element name="AudioMp3PriceLipa" type="xs:int" minOccurs="0"/>
+                <xs:element name="ImageGifPriceLipa" type="xs:int" minOccurs="0"/>
+                <xs:element name="SeparateMediaByType" type="xs:boolean"/>
+                <xs:element name="WebAdminInactivityTimeoutSeconds" type="xs:int" minOccurs="0"/>
+                <xs:element name="WebAdminNoReplyTimeoutMinutes" type="xs:int" minOccurs="0"/>
+                <xs:element name="ChatAnimatorWorkTimeControl" type="xs:boolean"/>
+                <xs:element name="ChatAnimatorLockTimeoutMinutes" type="xs:int" minOccurs="0"/>
+                <xs:element name="MadSignature" minOccurs="0">
+                  <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                      <xs:maxLength value="255"/>
+                    </xs:restriction>
+                  </xs:simpleType>
+                </xs:element>
+                <xs:element name="RoutoUsername" minOccurs="0">
+                  <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                      <xs:maxLength value="50"/>
+                    </xs:restriction>
+                  </xs:simpleType>
+                </xs:element>
+                <xs:element name="RoutoPassword" minOccurs="0">
+                  <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                      <xs:maxLength value="50"/>
+                    </xs:restriction>
+                  </xs:simpleType>
+                </xs:element>
+                <xs:element name="ChargeMadOnDemandFirst" type="xs:boolean"/>
+                <xs:element name="AllowSkipMadYesQText" type="xs:boolean"/>
+                <xs:element name="AlwaysShowMadAddPhones" type="xs:boolean"/>
+                <xs:element name="NthUsername" minOccurs="0">
+                  <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                      <xs:maxLength value="50"/>
+                    </xs:restriction>
+                  </xs:simpleType>
+                </xs:element>
+                <xs:element name="NthPassword" minOccurs="0">
+                  <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                      <xs:maxLength value="50"/>
+                    </xs:restriction>
+                  </xs:simpleType>
+                </xs:element>
+                <xs:element name="MadSmsMaxChars" type="xs:int"/>
+                <xs:element name="OglasnikRootCategoryID" type="xs:int"/>
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+        </xs:choice>
+      </xs:complexType>
+      <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+        <xs:selector xpath=".//AppSetting"/>
+        <xs:field xpath="AppSettingID"/>
+      </xs:unique>
+    </xs:element>
+  </xs:schema>
+</NewDataSet>

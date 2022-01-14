@@ -1,0 +1,1 @@
+function foo(){var x;<%= test %>;return bar(x)}function bar(){var x;<%= test %>return x}

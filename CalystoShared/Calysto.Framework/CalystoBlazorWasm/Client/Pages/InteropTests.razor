@@ -1,0 +1,121 @@
+﻿@page "/interoptests"
+@inject Calysto.Blazor.Utility.BrowserContext Browser
+@inject IJSRuntime js
+@implements IAsyncDisposable
+
+<h3>InteropTests: @Naziv</h3>
+<p @ref="_p1">Watch results in browser console</p>
+
+<button class="btn btn-primary" @onclick="Test1">Test1</button>
+<button class="btn btn-primary" @onclick="Test2">Test2</button>
+<button class="btn btn-primary" @onclick="Test3">Test3</button>
+<button class="btn btn-primary" @onclick="Test4">Test4</button>
+<button class="btn btn-primary" @onclick="Test5">Test5</button>
+<hr />
+<button class="btn btn-primary" @onclick="AlertTest">AlertTest</button>
+<button class="btn btn-primary" @onclick="ConfirmTest">ConfirmTest</button>
+<button class="btn btn-primary" @onclick="PromptTest">PromptTest</button>
+
+@code {
+
+	ElementReference _p1;
+	EventListenerState<MouseEventArgs> _state1;
+
+	[Parameter]
+	public string Naziv { get; set; }
+
+	public async ValueTask DisposeAsync()
+	{
+		await _state1.DisposeAsync();
+	}
+
+	protected override async Task OnAfterRenderAsync(bool firstRender)
+	{
+		await base.OnAfterRenderAsync(firstRender);
+		if (firstRender)
+		{
+			_state1 = await Browser.AddEventListener<MouseEventArgs>(_p1, "mousemove", (arg) =>
+			{
+				Console.WriteLine("mouse move");
+				return false;
+			});
+		}
+	}
+
+	protected override async Task OnInitializedAsync()
+	{
+		await base.OnInitializedAsync();
+
+
+	}
+
+	private async Task Test1()
+	{
+		await Task.CompletedTask;
+
+		//await Task.Delay(5000);
+
+		await _state1.DisposeAsync();
+	}
+
+	private async Task Test2()
+	{
+		var bodyRef = await Browser.GetWindowPropertyReference("document.body");
+		await Browser.SetPropertyValue(bodyRef, "style.backgroundColor", "green");
+
+		await Task.CompletedTask;
+	}
+
+	private async Task Test3()
+	{
+		var winVal = await Browser.GetWindowPropertyValue<object>("document.body");
+		Console.WriteLine(System.Text.Json.JsonSerializer.Serialize(winVal));
+
+		var winRef = await Browser.GetWindowPropertyReference("location");
+		Console.WriteLine(System.Text.Json.JsonSerializer.Serialize(winRef));
+
+		await Task.CompletedTask;
+	}
+
+	private async Task Test4()
+	{
+		//await Browser.InvokeWindowFunctionVoid("Calysto.Test1", "ovo je poruka", "druga poruka");
+
+		if (await Browser.HasWindowFunction("alert"))
+			await Browser.InvokeWindowFunctionVoid("alert", "ovo je poruka", "druga poruka");
+
+		var res1 = await Browser.InvokeWindowFunction<bool>("confirm", "ovo je poruka", "druga poruka");
+		Console.WriteLine(res1);
+		var res2 = await Browser.InvokeWindowFunction<string>("prompt", "ovo je poruka", "druga poruka");
+		Console.WriteLine(res2);
+	}
+
+	private async Task Test5()
+	{
+		string res1 = await Browser.InvokeWindowFunction<string>("prompt", "Please enter the destination url", "https://www.eprivrednik.eu");
+		Console.WriteLine(res1);
+		if (!string.IsNullOrEmpty(res1))
+		{
+			var locRef = await Browser.GetWindowPropertyReference("location");
+			await Browser.InvokeObjectFunctionVoid(locRef, "assign", res1);
+		}
+	}
+
+	private async Task AlertTest()
+	{
+		await Browser.SystemAlertAsync("ovo je alert");
+		Console.WriteLine("AlertTest done");
+	}
+
+	private async Task ConfirmTest()
+	{
+		var res1 = await Browser.SystemConfirmAsync("This is ConfirmTest. Ok?");
+		Console.WriteLine("ConfirmTest done: " + res1);
+	}
+
+	private async Task PromptTest()
+	{
+		var res1 = await Browser.SystemPromptAsync("This is PromptTest. Enter anything.");
+		Console.WriteLine("PromptTest done: " + res1);
+	}
+}

@@ -1,0 +1,59 @@
+/***************************************************************
+*	SCSS file template 
+*	To run automatic compilation in Visual Studio:
+*		right click on file -> Properties -> Custom Tool: CalystoCssGenerator
+***************************************************************/
+
+.razorPreloaders{
+	display:flex;
+	> div {
+		width:100px;
+		margin:5px;
+		border:solid 1px silver;
+		position:relative;
+		> div {
+			padding:5px;
+		}
+		> label {
+			background-color:black;
+			color:white;
+			text-align:center;
+			display:block;
+		}
+	}
+}
+
+
+.spinnerItem {
+	margin: 0 5px 5px 0;
+	float: left;
+	border: solid 1px green;
+	text-align: center;
+}
+
+.spinnerLabel {
+	padding: 2px;
+	background-color: black;
+	color: white;
+	font-family: Arial;
+}
+
+.svgContainer {
+	height: 70px;
+	width: 70px;
+	padding: 10px;
+	font-size: 14px;
+	overflow: hidden;
+}
+
+#divContainer1 .spinnerItem {
+	background: #e9efb7;
+}
+
+#divContainer2 .spinnerItem {
+	background: #7373d6;
+}
+
+#divContainer3 .spinnerItem {
+	background: #504f4f;
+}

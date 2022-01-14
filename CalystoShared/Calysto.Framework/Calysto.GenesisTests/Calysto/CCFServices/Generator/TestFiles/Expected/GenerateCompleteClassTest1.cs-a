@@ -1,0 +1,149 @@
+using System;
+using System.Collections.Generic;
+using Calysto.CCFServices;
+using Calysto.CCFServices.Client;
+using Calysto.CCFServices.Transport;
+
+namespace UnitTests.Calysto.CCFServices.Contract
+{
+	public class RemoteClient : IRemoteController
+	{
+		public CalystoServiceClient Client { get; private set; }
+
+		public RemoteClient(ICCFTransportClient transportClient)
+		{
+			Client = new CalystoServiceClient(this, transportClient);
+		}
+
+		public System.TimeSpan DateDiff(System.DateTime dt1, System.DateTime dt2)
+		{
+			return Client.SendRequest<System.TimeSpan>(nameof(DateDiff), new object[]{dt1, dt2});
+		}
+
+		public int GetAge(int height)
+		{
+			return Client.SendRequest<int>(nameof(GetAge), new object[]{height});
+		}
+
+		public string GetToken()
+		{
+			return Client.SendRequest<string>(nameof(GetToken), new object[]{});
+		}
+
+		public List<List<System.Tuple<int, string>>> GetTuples1(int a, string name, byte[] data, byte[][] doubleArray)
+		{
+			return Client.SendRequest<List<List<System.Tuple<int, string>>>>(nameof(GetTuples1), new object[]{a, name, data, doubleArray});
+		}
+
+		public List<List<System.Tuple<int?[][], double, string>>> GetTuples2(int? a, int b, string name, byte[] data, byte[][] doubleArray)
+		{
+			return Client.SendRequest<List<List<System.Tuple<int?[][], double, string>>>>(nameof(GetTuples2), new object[]{a, b, name, data, doubleArray});
+		}
+
+		public System.Tuple<int, byte[]> MeasureLength(byte[] data)
+		{
+			return Client.SendRequest<System.Tuple<int, byte[]>>(nameof(MeasureLength), new object[]{data});
+		}
+
+		public void SetAge(int age)
+		{
+			Client.SendRequest(nameof(SetAge), new object[]{age});
+		}
+
+		public System.Tuple<int, int, int> SumNumbers(int a, int b)
+		{
+			return Client.SendRequest<System.Tuple<int, int, int>>(nameof(SumNumbers), new object[]{a, b});
+		}
+
+		public int SumNumbers2(int a, int b)
+		{
+			return Client.SendRequest<int>(nameof(SumNumbers2), new object[]{a, b});
+		}
+
+		public System.DateTime GetCurrentDateTime()
+		{
+			return Client.SendRequest<System.DateTime>(nameof(GetCurrentDateTime), new object[]{});
+		}
+
+		public IEnumerable<int> GetNumbers(int a, int b = 123, int? c = 22, decimal mn = 123.52m, double mk = 52.323, bool? isLight = null, string name1 = "so me \"john\" of '2'\r\n	new line with tabs	a	a\r\nanother")
+		{
+			return Client.SendRequest<IEnumerable<int>>(nameof(GetNumbers), new object[]{a, b, c, mn, mk, isLight, name1});
+		}
+
+		public int TestExceptionThrowing()
+		{
+			return Client.SendRequest<int>(nameof(TestExceptionThrowing), new object[]{});
+		}
+
+		public int GetNameLength(string name1, int age1)
+		{
+			return Client.SendRequest<int>(nameof(GetNameLength), new object[]{name1, age1});
+		}
+
+		public void MakeListChanged(List<string> list)
+		{
+			Client.SendRequest(nameof(MakeListChanged), new object[]{list});
+		}
+
+		public TResult GetSomeResult1<TSource, TResult>(List<TSource> list)
+		{
+			return Client.SendRequest<TResult>(nameof(GetSomeResult1), new object[]{list});
+		}
+
+		public TResult GetSomeResult2<TSource, TResult>(TSource[] list)
+		{
+			return Client.SendRequest<TResult>(nameof(GetSomeResult2), new object[]{list});
+		}
+
+		public List<TResult[]> GetSomeResult3<TSource, TResult>(List<TSource[][]> list, List<TSource[]> list2, List<TResult> list3)
+		{
+			return Client.SendRequest<List<TResult[]>>(nameof(GetSomeResult3), new object[]{list, list2, list3});
+		}
+
+		public string UploadBinaryData(string name, byte[] data)
+		{
+			return Client.SendRequest<string>(nameof(UploadBinaryData), new object[]{name, data});
+		}
+
+		public byte[] DownloadBinaryData()
+		{
+			return Client.SendRequest<byte[]>(nameof(DownloadBinaryData), new object[]{});
+		}
+
+		private event System.Action _mOnConnected;
+		public event System.Action OnConnected
+		{
+			add { _mOnConnected += value; Client.EventSubscription(nameof(OnConnected), true, _mOnConnected); }
+			remove { _mOnConnected -= value; Client.EventSubscription(nameof(OnConnected), false, _mOnConnected); }
+		}
+
+		private event System.Action<int, string> _mOnAgeChanged;
+		public event System.Action<int, string> OnAgeChanged
+		{
+			add { _mOnAgeChanged += value; Client.EventSubscription(nameof(OnAgeChanged), true, _mOnAgeChanged); }
+			remove { _mOnAgeChanged -= value; Client.EventSubscription(nameof(OnAgeChanged), false, _mOnAgeChanged); }
+		}
+
+		private event System.Threading.ThreadStart _mOnThreadStart;
+		public event System.Threading.ThreadStart OnThreadStart
+		{
+			add { _mOnThreadStart += value; Client.EventSubscription(nameof(OnThreadStart), true, _mOnThreadStart); }
+			remove { _mOnThreadStart -= value; Client.EventSubscription(nameof(OnThreadStart), false, _mOnThreadStart); }
+		}
+
+		private event System.Action<System.Threading.ThreadStart> _mOnThreadStart2;
+		public event System.Action<System.Threading.ThreadStart> OnThreadStart2
+		{
+			add { _mOnThreadStart2 += value; Client.EventSubscription(nameof(OnThreadStart2), true, _mOnThreadStart2); }
+			remove { _mOnThreadStart2 -= value; Client.EventSubscription(nameof(OnThreadStart2), false, _mOnThreadStart2); }
+		}
+
+		private event System.Action<int, List<string>> _mOnListChanged;
+		public event System.Action<int, List<string>> OnListChanged
+		{
+			add { _mOnListChanged += value; Client.EventSubscription(nameof(OnListChanged), true, _mOnListChanged); }
+			remove { _mOnListChanged -= value; Client.EventSubscription(nameof(OnListChanged), false, _mOnListChanged); }
+		}
+
+	}
+}

@@ -1,0 +1,11 @@
+/***************************************************************
+*	SCSS file template 
+*	To run automatic compilation in Visual Studio:
+*		right click on file -> Properties -> Custom Tool: CalystoCssGenerator
+***************************************************************/
+.navigation a {
+  display: block;
+  margin: 5px;
+}
+
+/*# sourceMappingURL=CalystoHome.css.map */

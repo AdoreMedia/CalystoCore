@@ -1,0 +1,12 @@
+﻿
+Install vsix extension:
+https://marketplace.visualstudio.com/items?itemName=DavidEbbo.RazorGenerator
+
+- right click on .cshtml file -> properties -> Custom Tool: RazorGenerator
+
+Example of usage and settings inside of file:
+C:\LOCAL\VSPROJECTS\California.Core\Arizona\Arizona.App\ArizonaReporting\ArizonaReportingEngine\Reporting\Html\ReportFiles\Racun\EPosRacunView.cshtml
+
+Full tutorial, options, source:
+https://github.com/RazorGenerator/RazorGenerator
+

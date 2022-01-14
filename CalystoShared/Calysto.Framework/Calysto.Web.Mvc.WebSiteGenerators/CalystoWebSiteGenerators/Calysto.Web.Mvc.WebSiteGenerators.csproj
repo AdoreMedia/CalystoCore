@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+    <Exec Command="$(TargetDir)Calysto.Web.Mvc.WebSiteGenerators.exe" />
+  </Target>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Calysto.Web.Mvc.WebSite\Calysto.Web.Mvc.WebSite.csproj" />
+  </ItemGroup>
+
+</Project>

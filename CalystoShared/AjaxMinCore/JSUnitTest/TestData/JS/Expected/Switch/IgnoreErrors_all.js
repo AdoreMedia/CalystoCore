@@ -1,0 +1,1 @@
+(function($){myAlert($[msg]+10)})

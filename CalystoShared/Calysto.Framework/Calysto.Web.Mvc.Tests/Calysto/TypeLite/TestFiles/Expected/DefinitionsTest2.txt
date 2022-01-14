@@ -1,0 +1,24 @@
+﻿declare namespace CalystoWebTests.Calysto.TypeLite.Validators
+{
+	export interface Validators { }
+
+	export namespace Validators
+	{
+		export const CalystoDateTimeValidatorMaximumValue = "{name} date may not be greater than {strMaxValue}";
+		export const CalystoDateTimeValidatorMinimumValue = "{name} date may not be lower than {strMinValue}";
+		export const CalystoDateTimeValidatorMustBeBetween = "{name} date must be between {strMinValue} and {strMaxValue}";
+		export const CalystoDateTimeValidatorNotInValidFormat = "{name} is not in valid format for date";
+		export const CalystoEmailValidatorNotInValidFormat = "{name} is not in valid format for e-mail address";
+		export const CalystoNumericValidatorMaximumValue = "{name} number may not be greater than {strMaxValue}";
+		export const CalystoNumericValidatorMinimumValue = "{name} number may not be lower than {strMinValue}";
+		export const CalystoNumericValidatorMustBeBetween = "{name} number must be between {strMinValue} and {strMaxValue}";
+		export const CalystoNumericValidatorNotInValidFormat = "{name} number is not in valid format";
+		export const CalystoRegexValidatorNotInValidFormat = "{name} is not in valid format";
+		export const CalystoStringValidatorLengthMustBeBetween = "{name} length must be between {minLength} and {maxLength} chars";
+		export const CalystoStringValidatorMaximumRequiredLength = "{name} maximum required length is {maxLength} chars";
+		export const CalystoStringValidatorMinimumRequiredLength = "{name} minimum required length is {minLength} chars";
+		export const CalystoValidatorValueIsRequired = "{name} is required";
+	}
+
+}
+

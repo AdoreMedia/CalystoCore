@@ -1,0 +1,6 @@
+delete 
+from "tblAppMember" AS "t"
+where ((("t"."AppMemberID" < {0}) AND ("t"."BirthDate" > {1})) AND ("t"."BirthDate" < {2})) AND EXISTS (
+    SELECT 1
+    FROM "tblAppMemberPermission" AS "t0"
+    WHERE "t"."AppMemberID" = "t0"."AppMemberID")

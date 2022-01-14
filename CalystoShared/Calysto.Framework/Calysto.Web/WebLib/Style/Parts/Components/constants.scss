@@ -1,0 +1,52 @@
+﻿@import "../common/functions.scss";
+
+$defaultThemeColor: #2196F3 !default;
+$defaultThemeTextColor: white !default;
+$defaultWindowBackColor: white !default;
+$defaultWindowBackDarkColor: #1E1E1E !default;
+$defaultWindowTextColor: black !default;
+$defaultButtonHeight: 30px !default;
+$defaultCheckboxHeight: $defaultButtonHeight * 0.8 !default;
+$defaultErrorColor: red !default;
+$defaultThemeMode: "Light" !default;
+$defaultThemeFamily: "Aero" !default;
+
+$mapThemeModes: (
+    "Light": "Light", 
+    "Dark": "Dark" 
+);
+
+// verify that name exists in map
+$defaultThemeMode: fnGetMapValueSafe($mapThemeModes, $defaultThemeMode);
+
+@if($defaultThemeMode == "Dark"){
+    $defaultWindowBackColor: $defaultWindowBackDarkColor;
+    $defaultWindowTextColor: white;
+}
+
+$mapThemeFamilies: ( 
+    "Aero": "Aero", 
+    "Metro": "Metro" 
+);
+
+// verify that name exists in map
+$defaultThemeFamily: fnGetMapValueSafe($mapThemeFamilies, $defaultThemeFamily);
+
+$mapColors: (
+    "calystoColorArizonaBlue": #2A579A,
+    "calystoColorBlue": #03a9f3,
+    "calystoColorGreen": #00c292,
+    "calystoColorOrange": #ff9900,
+    "calystoColorMagenta": #733590,
+    "calystoColorIndigo": #6610f2,
+    "calystoColorPurple": #9675ce,
+    "calystoColorGray": #5a6575,
+    "calystoColorSilver": #989898,
+    "calystoColorBlack": #000000,
+    "calystoColorWhite": #FFFFFF,
+    "calystoColorRed": #e64251,
+    "calystoColorPink": #e83e8c,
+    "calystoColorYellow": #ffc107,
+    "calystoColorTeal": #20c997,
+    "calystoColorCyan": #17a2b8,
+);

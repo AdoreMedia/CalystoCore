@@ -1,0 +1,29 @@
+/*#region Calysto Notification position container */
+
+.calystoNotifyContainer {
+	position: fixed;
+	max-width: 600px;
+	right: 0;
+	left: 0;
+	margin: auto;
+
+	&.top {
+		top: 8px;
+	}
+
+	&.bottom {
+		bottom: 8px;
+	}
+
+	&.right {
+		right: 0px;
+		margin-right: 0;
+	}
+
+	&.left {
+		left: 0px;
+		margin-left: 0;
+	}
+}
+
+/*#endregion*/

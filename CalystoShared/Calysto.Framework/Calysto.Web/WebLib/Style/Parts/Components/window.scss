@@ -1,0 +1,133 @@
+﻿@import "themes.scss";
+
+/*#region Calysto.Window */
+
+.calystoWindow {
+	font-family: sans-serif;
+	position: relative;
+	box-shadow: 0 0 12px black;
+	background-color: $defaultWindowBackColor;
+
+	&.windowBorder {
+		border: solid 2px $defaultThemeColor;
+	}
+
+	&.windowTitleHidden {
+		.calystoWindowXMark {
+			color: #9097a2;
+		}
+	}
+
+	.calystoWindowXMark {
+		position: absolute;
+		z-index: 10;
+		right: 0;
+		top: 0;
+		height: 35px;
+		width: 50px;
+		cursor: pointer;
+		line-height: 35px;
+		color: white;
+		transition: all 0.3s;
+
+		&:hover {
+			background-color: #F44336;
+			color: white;
+		}
+
+		&:before {
+			font-size: 18px;
+			position: absolute;
+			transform: translateX(-50%);
+			left: 50%;
+		}
+	}
+
+	.calystoWindowTitle {
+		position: relative;
+		padding: 10px;
+		background-color: $defaultThemeColor;
+		color: white;
+	}
+
+	&.windowTitleHidden {
+		.calystoWindowTitle {
+			display: none;
+		}
+	}
+
+	.calystoWindowTitleText {
+		overflow: hidden;
+		font-size: 16px;
+		text-align: left;
+	}
+
+	.calystoWindowContent {
+		position: relative;
+
+		& .calystoWindowPre {
+			font-weight: normal;
+			margin: 0;
+			padding: 10px;
+			font-family: monospace;
+			border: none;
+			overflow: initial;
+			overflow-x: initial;
+			overflow-y: initial;
+			white-space: pre-wrap;
+			color: $defaultWindowTextColor;
+		}
+	}
+
+	.calystoWindowButtons {
+		padding: 10px;
+		text-align: right;
+
+		button {
+			min-width: 80px;
+			margin: 0 5px;
+			line-height: initial;
+		}
+	}
+
+	.calystoWindowTable1 {
+		width: 100%;
+
+		.calystoWindowTd1 {
+			display: none;
+		}
+
+		.calystoWindowTd2 {
+			border: none;
+			vertical-align: top;
+			width: 100%;
+		}
+	}
+
+	.calystoWindowIcon {
+		color: white;
+		font-size: 24px;
+		padding-right: 6px;
+	}
+}
+/*#endregion Calysto.Window */
+/*#region Calysto.Window colors */
+@each $name, $color in $mapColors {
+	.calystoWindow.#{$name} {
+		.calystoWindowTitle {
+			background-color: $color;
+		}
+
+		.calystoWindowIcon {
+			color: $color;
+		}
+	}
+	// this colors are used in Calysto.Dialog:
+	// calystoWindowIconRed
+	// calystoWindowIconGreen
+	// etc. in str-slice(str, index) index starts from 1
+	.calystoWindowIcon#{str-slice($name, 13)} {
+		color: $color !important;
+	}
+}
+/*#endregion Calysto.Window colors */

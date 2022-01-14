@@ -1,0 +1,5 @@
+SELECT `t`.`AppMemberID`, `t`.`Address`, `t`.`AppMemberStatusID`, `t`.`BirthDate`, `t`.`City`, `t`.`Country`, `t`.`CreationDate`, `t`.`Email`, `t`.`FacebookId`, `t`.`FirstName`, `t`.`Gender`, `t`.`GoogleId`, `t`.`HomeMemberAddressID`, `t`.`IP`, `t`.`IsQuizQuestionsEditor`, `t`.`LastLoginDate`, `t`.`LastName`, `t`.`LoginsCount`, `t`.`MSISDN`, `t`.`Password`, `t`.`PersonalNote`, `t`.`PosFirmaID`, `t`.`PrimaryMemberAddressID`, `t`.`StanjeRacuna`, `t`.`Username`, `t`.`WebUrl`, `t`.`WorkMemberAddressID`, `t`.`ZipCode`
+FROM `dbCalystoUnittest`.`tblAppMember` AS `t`
+WHERE (`t`.`BirthDate` > {0}) AND (`t`.`AppMemberID` > {1})
+ORDER BY (SELECT 1)
+LIMIT {2} OFFSET {3}

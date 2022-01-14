@@ -1,0 +1,1 @@
+function test1(){var n=[1,2,3,4,5,6,7,8,9,10],t=[for(u of n)if(u%2)u*u],i=[for(f of n)if(f!=2)for(e of n)if(e!=2)if(f!=e)[f,e]],r=[o*o for(o in n)if(o%2)];return t.concat(i,r)}

@@ -1,0 +1,1 @@
+function meow(){alert("MEOW!")}var a="foobar is batman",b="not foobar",c="ackbar"

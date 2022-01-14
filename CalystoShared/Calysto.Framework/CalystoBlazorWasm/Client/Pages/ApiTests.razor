@@ -1,0 +1,69 @@
+﻿@page "/apitests"
+@inject IAjaxService AjaxService
+@inject SocketSessionClient SocketService
+@inject BrowserContext Browser
+
+<h1>ApiTests</h1>
+
+<button class="btn btn-primary" @onclick="Ajax1">Ajax1</button>
+<button class="btn btn-primary" @onclick="Ajax2">Ajax2</button>
+<button class="btn btn-primary" @onclick="Ajax3">Ajax3</button>
+<button class="btn btn-primary" @onclick="Socket1">Socket1</button>
+<button class="btn btn-primary" @onclick="Socket2">Socket2</button>
+
+<div @ref="_div1" style="height:100px;overflow:auto;">
+	@foreach (string str in _items)
+	{
+		<div>@str</div>
+	}
+</div>
+
+@code {
+	private ElementReference _div1;
+	private List<string> _items = new List<string>();
+
+	private async Task Ajax1()
+	{
+		string resp = await AjaxService.AjaxSend("Message from blazor", new Calysto.Web.CalystoBlob[0]);
+		_items.Add(DateTime.Now + ": " + resp);
+		Console.WriteLine(resp);
+	}
+
+	private async Task Ajax2()
+	{
+		await Task.CompletedTask;
+	}
+
+	private async Task Ajax3()
+	{
+		await AjaxService.Javascript1();
+	}
+
+	private async Task Socket1()
+	{
+		await Task.CompletedTask;
+		string resp = await SocketService.SetHelloString("hello socket");
+		Console.WriteLine(resp);
+	}
+
+	private async Task Socket2()
+	{
+		await Task.CompletedTask;
+		await SocketService.SocketSendToAll("message to all " + DateTime.Now);
+	}
+
+	protected override async Task OnAfterRenderAsync(bool firstRender)
+	{
+		await Browser.SetPropertyValue(_div1, "scrollTop", await Browser.GetPropertyValue<int>(_div1, "scrollHeight"));
+
+		if (firstRender)
+		{
+			SocketService.OnBroadcastMessage += (sender, msg) => Console.WriteLine("Broadcast: " + msg);
+			SocketService.OnError += (sender, err) => Console.WriteLine("Error: " + err);
+			SocketService.OnSocketClosed += (sender) => Console.WriteLine("SocketClosed");
+		}
+
+		await base.OnAfterRenderAsync(firstRender);
+	}
+
+}

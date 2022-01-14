@@ -1,0 +1,9 @@
+
+declare namespace Calysto.Genesis.Web.UnitTests.Calysto.TypeLite.Model
+{
+	interface CustomCollection<TItem>
+	{
+	}
+
+}
+

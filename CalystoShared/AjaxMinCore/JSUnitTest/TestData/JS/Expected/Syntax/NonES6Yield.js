@@ -1,0 +1,1 @@
+function test1(n){var t=+n;alert(t*42)}function myGenerator(n){for(var t in n)yield t}

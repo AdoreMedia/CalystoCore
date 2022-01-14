@@ -1,0 +1,1 @@
+function raf(){return requestAnimationFrame||webkitRequestAnimationFrame||mozRequestAnimationFrame||oRequestAnimationFrame||msRequestAnimationFrame||function(n){typeof n=="function"&&setTimeout(n,16.7)}}

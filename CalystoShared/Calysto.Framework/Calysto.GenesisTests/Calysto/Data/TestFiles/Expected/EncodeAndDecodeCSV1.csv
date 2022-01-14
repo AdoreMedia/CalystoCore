@@ -1,0 +1,9 @@
+AppMemberID,AppMemberStatusID,MSISDN,FacebookId,GoogleId,Email,Username,Password,BirthDate,CreationDate,LastLoginDate,LoginsCount,FirstName,LastName,Gender,PersonalNote,WebUrl,Address,ZipCode,City,Country,IP,PosFirmaID,IsQuizQuestionsEditor,StanjeRacuna,HomeMemberAddressID,WorkMemberAddressID,PrimaryMemberAddressID
+2,200,,,,mail@fsda.com,bnerew,fyyrewq,,,10/08/2017 23:31:21,182,Imbro,432632,,,,,,,,,,,,,,
+17,100,,,,memo@nn.com,tare,ahs4252,,,05/19/2017 13:18:13,12,Jovo,Ante,,,,Street1,,,,,,,,,,
+18,50,,,,evi@htj.com,amebbs,432hsd,01/01/1950 00:00:00,,10/07/2017 11:23:33,19,Jovan,Ahoj,,,,Street2,,,,,,,,,,
+19,50,,,,toto@mbds.com,adhas,has432,01/02/1950 00:00:00,,10/17/2017 17:10:37,18,Daria,Nesto,,,,Street3,,,,,,,,,,
+20,50,,,,tomba@fsa.rh,hsadf532,juert634,01/03/1950 00:00:00,,03/10/2017 12:00:34,16,Antonija,Timba,,,,,,,,,,,,,,
+21,50,,,,hr@htr.cm,surewt43,asgh24123,01/04/1950 00:00:00,,10/17/2017 16:18:32,49,Juliana,Bumds,,,,,,,,,,,,,,
+22,50,,,,mm@nyyws.com,user56234,aghh,01/05/1950 00:00:00,,06/27/2017 15:58:09,10,Ivan,Urew,,,,,,,,,,,,,,
+24,50,,,,aier.ag@fsa.fs,user23432,523432,,,10/10/2017 10:38:42,24,Marko,Antisa,,,,,,,,,,,,,,

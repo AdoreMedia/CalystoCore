@@ -1,0 +1,1 @@
+let fun1=async(n,t)=>SumNumbers(n,t)

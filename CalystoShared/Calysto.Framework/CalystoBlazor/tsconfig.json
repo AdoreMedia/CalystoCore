@@ -1,0 +1,3 @@
+{
+	"extends": "..\\Calysto.Web\\TypeScriptConfig\\tsconfig.json"
+}

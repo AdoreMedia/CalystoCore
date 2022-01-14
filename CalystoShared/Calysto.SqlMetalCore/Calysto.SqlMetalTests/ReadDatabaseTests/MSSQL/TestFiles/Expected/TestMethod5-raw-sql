@@ -1,0 +1,3 @@
+delete [t]
+from [dbo].[tblAppMember] AS [t]
+where (([t].[AppMemberID] < {0}) AND ([t].[BirthDate] > {1})) AND ([t].[BirthDate] < {2})

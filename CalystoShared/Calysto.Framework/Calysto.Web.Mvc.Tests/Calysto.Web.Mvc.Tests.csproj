@@ -1,0 +1,107 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <IsPackable>false</IsPackable>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>CalystoWebTests</RootNamespace>
+  </PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)'!='Release'">
+		<TypeScriptCompileBlocked>true</TypeScriptCompileBlocked>
+		<TypeScriptEnabled>false</TypeScriptEnabled>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+		<DebugType>full</DebugType>
+		<DebugSymbols>true</DebugSymbols>
+	</PropertyGroup>
+	
+  <ItemGroup>
+    <Compile Remove="Calysto\Optimization\**" />
+    <EmbeddedResource Remove="Calysto\Optimization\**" />
+    <None Remove="Calysto\Optimization\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Remove="Calysto\TypeLite\Validators\Validators.hr-HR.resx" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="Calysto\AspNetCore\Mvc\Razor\Templating\Views\Input\Index.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Calysto\AspNetCore\Mvc\Razor\Templating\Views\Input\Index.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="Calysto\TypeLite\Validators\Validators.hr-HR.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.WebUtilities" Version="2.2.0" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.11.0" />
+    <PackageReference Include="MSTest.TestAdapter" Version="2.2.7" />
+    <PackageReference Include="MSTest.TestFramework" Version="2.2.7" />
+    <PackageReference Include="coverlet.collector" Version="3.1.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Calysto.UnitTesting\Calysto.UnitTesting.csproj" />
+    <ProjectReference Include="..\Calysto.Web.Mvc\Calysto.Web.Mvc.csproj" />
+    <ProjectReference Include="..\CalystoDataShared\CalystoDataShared.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Calysto\TypeLite\Validators\Validators.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Validators.resx</DependentUpon>
+    </Compile>
+    <Compile Update="EnvDTE\EnvDTECalystoWebTests.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>EnvDTECalystoWebTests.tt</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Calysto\TypeLite\Validators\Validators.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Validators.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Calysto\TypeLite\TestFiles\Expected\DefinitionsTest2.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Calysto\TypeLite\TestFiles\Expected\DefinitionsTest3.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Calysto\TypeLite\TestFiles\Expected\DefinitionsTest6.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Calysto\TypeLite\TestFiles\Expected\DefinitionsTest8.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Calysto\TypeLite\TestFiles\Expected\DefinitionsTest7.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="EnvDTE\EnvDTECalystoWebTests.tt">
+      <LastGenOutput>EnvDTECalystoWebTests.cs</LastGenOutput>
+      <Generator>TextTemplatingFileGenerator</Generator>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Service Include="{508349b6-6b84-4df5-91f0-309beebad82d}" />
+  </ItemGroup>
+
+</Project>

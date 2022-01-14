@@ -1,0 +1,1 @@
+import{arf}from"lib/testmodule";arf("hey, there!")

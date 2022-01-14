@@ -1,0 +1,4 @@
+update "tblAppMember" AS "t"
+INNER JOIN "tblAppMemberStatus" AS "t0" ON "t"."AppMemberStatusID" = "t0"."AppMemberStatusID"
+set "MSISDN" = @p_upd1634_0_MSISDN, "BirthDate" = NULL
+where ((("t"."AppMemberID" < @__id1_0) AND ("t"."BirthDate" > @__dt1_1)) AND ("t"."BirthDate" < @__dt2_2)) AND "t0"."IsActive"

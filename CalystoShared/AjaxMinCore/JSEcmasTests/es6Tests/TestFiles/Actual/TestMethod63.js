@@ -1,0 +1,1 @@
+let fun01=()=>SumNumbers(),fun1=async()=>SumNumbers(),fun2=async n=>SumNumbers(n),fun3=async(n,t)=>SumNumbers(n,t),fun4=async(n,t)=>SumNumbers(n,t)

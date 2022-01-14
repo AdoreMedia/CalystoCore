@@ -1,0 +1,61 @@
+﻿@{
+	ViewData["Title"] = "Preloaders";
+}
+@this.Calysto().ScriptManager(s =>
+{
+	s.RegisterScriptFile("~/CalystoUI/Preloaders/Preloaders.css");
+	s.RegisterScriptFile("~/CalystoUI/Preloaders/Preloaders.js");
+})
+
+<h1>Razor preloaders</h1>
+
+<div class="razorPreloaders">
+	<div>
+		<label>Snake</label>
+		<div>@this.Calysto().Preloader(p=>p.Snake("purple"))</div>
+	</div>
+	<div>
+		<label>BallsRing</label>
+		<div>@this.Calysto().Preloader(p=>p.BallsRing("orange"))</div>
+	</div>
+	<div>
+		<label>MsRing</label>
+		<div>@this.Calysto().Preloader(s=>s.MsRing("green", "silver", true))</div>
+	</div>
+	<div>
+		<label>TwoArrows</label>
+		<div>@this.Calysto().Preloader(s=>s.TwoArrows("purple"))</div>
+	</div>
+	<div>
+		<label>Flower</label>
+		<div>@this.Calysto().Preloader(s=>s.Flower("green"))</div>
+	</div>
+	<div>
+		<label>ThreeArcs</label>
+		<div>@this.Calysto().Preloader(s=>s.ThreeArcs("green", true))</div>
+	</div>
+	<div>
+		<label>BallTriangle</label>
+		<div>@this.Calysto().Preloader(s=>s.BallTriangle("orange"))</div>
+	</div>
+	<div>
+		<label>Bars</label>
+		<div>@this.Calysto().Preloader(s=>s.Bars("purple"))</div>
+	</div>
+	<div>
+		<label>Oval</label>
+		<div>@this.Calysto().Preloader(s=>s.Oval("purple", "silver"))</div>
+	</div>
+</div>
+
+<h1>Preloaders</h1>
+
+<div id="divContainer1">
+</div>
+<div style="clear:both"></div>
+<div id="divContainer2">
+</div>
+<div style="clear:both"></div>
+<div id="divContainer3">
+</div>
+<div style="clear:both"></div>

@@ -1,0 +1,39 @@
+﻿.fa-heart:before {
+  content: "\f004";
+}
+/* this is some comment */
+/*#region number1*/
+.fa-star:before {
+  content: "\f005";
+}
+/*#endregion number1*/
+/*
+	this is multiline
+	comment
+
+*/
+
+@media (min-width: 1200px) {
+	.siteFoot .newsletter p {
+		font-size: 22px;
+		line-height: 1.58333em;
+		border: 2px 3px 5px 10px;
+		margin: 10px 0px 5px auto;
+	}
+
+	.siteFoot .newsletter #mc_embed_signup {
+		margin-top: 50px;
+	}
+}
+
+@media (max-width: 767px) {
+	.siteFoot .newsletter p {
+		font-size: 18px;
+		line-height: 1.58333em;
+	}
+
+	.siteFoot .newsletter #mc_embed_signup {
+		margin-top: 30px;
+	}
+}
+

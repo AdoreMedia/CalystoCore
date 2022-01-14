@@ -1,0 +1,37 @@
+﻿@using Calysto.Web.TestSite.Web.CalystoUI.Flexbox
+@using Calysto.Web.TestSite.Web.CalystoUI.Flexbox.Model
+@using Calysto.Common
+@using Calysto.Common.Extensions
+@model FlexModel
+
+<link href="~/CalystoUI/Flexbox/Flexbox.css" rel="stylesheet" calysto-append-version="true" />
+<script src="~/CalystoUI/Flexbox/Flexbox.js" calysto-append-version="true"></script>
+<h1>Flexbox</h1>
+
+<div class="fxContainer">
+	@for (int n1 = 0; n1 < 20; n1++)
+	{
+		<div>@n1</div>
+	}
+</div>
+
+<h1>Calysto session</h1>
+@{
+	var sessionItem = CalystoMvcHostingEnvironment.Current.SessionProvider.GetCurrentSession();
+	string previous = sessionItem.GetValue("curr1") as string;
+	<div>previous: @previous</div>
+	if (previous == null)
+	{
+		string str1 = DateTime.Now.ToISOTDateTimeString();
+		CalystoMvcHostingEnvironment.Current.SessionProvider.GetCurrentSession().SetValue("curr1", str1);
+		<div>new value: @str1</div>
+	}
+	else
+	{
+		<div>value not changed</div>
+	}
+	<div>sessionId: @sessionItem?.SessionId</div>
+	<div>LastGetDate: @sessionItem?.LastGetDate</div>
+	<div>LastSetDate: @sessionItem?.LastSetDate</div>
+	<div>CookieSavedDate: @sessionItem?.CookieSavedDate</div>
+}

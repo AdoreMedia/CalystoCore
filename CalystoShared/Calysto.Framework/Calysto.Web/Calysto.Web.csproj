@@ -1,0 +1,104 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+	
+	<PropertyGroup>
+		<TargetFramework>netstandard2.0</TargetFramework>
+		<OutputType>Library</OutputType>
+		<AssemblyName>Calysto.Web</AssemblyName>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)'!='Release'">
+		<TypeScriptCompileBlocked>true</TypeScriptCompileBlocked>
+		<TypeScriptEnabled>false</TypeScriptEnabled>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+		<DebugType>full</DebugType>
+		<DebugSymbols>true</DebugSymbols>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<Content Include="**\*.tt">
+			<Generator>TextTemplatingFileGenerator</Generator>
+		</Content>
+		<Content Include="**\*.scss; **\*.less">
+			<Generator>CalystoCssGenerator</Generator>
+		</Content>
+	</ItemGroup>
+	<ItemGroup>
+		<EmbeddedResource Include="WebLib\Images\**" />
+		<EmbeddedResource Include="WebLib\Resources\**\*.js;" />
+		<EmbeddedResource Include="WebLib\**\_dist\**" />
+		<EmbeddedResource Remove="**\*.map" />
+		<EmbeddedResource Remove="**\*.d.ts" />
+	</ItemGroup>
+	<ItemGroup>
+		<Content Include="WebLib\**\*.d.ts">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</Content>
+	</ItemGroup>
+	<ItemGroup>
+	  <Compile Remove="bin\**" />
+	  <Content Remove="bin\**" />
+	  <EmbeddedResource Remove="bin\**" />
+	  <None Remove="bin\**" />
+	  <TypeScriptCompile Remove="bin\**" />
+	</ItemGroup>
+	<ItemGroup>
+	  <Content Remove="compilerconfig.json" />
+	</ItemGroup>
+		
+	<ItemGroup>
+		<PackageReference Include="Brotli.NET" Version="2.1.1" />
+		<PackageReference Include="Microsoft.Extensions.Caching.Memory" Version="5.0.0" />
+		<PackageReference Include="Microsoft.TypeScript.MSBuild" Version="4.5.2">
+		  <PrivateAssets>all</PrivateAssets>
+		  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+		<PackageReference Include="System.CodeDom" Version="5.0.0" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\..\AjaxMinCore\AjaxMinDll\AjaxMinDll.csproj" />
+		<ProjectReference Include="..\Calysto.Genesis\Calysto.Genesis.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<Service Include="{508349b6-6b84-4df5-91f0-309beebad82d}" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Compile Update="EnvDTE\EnvDTECalystoWeb.cs">
+	    <DependentUpon>EnvDTECalystoWeb.tt</DependentUpon>
+	    <DesignTime>True</DesignTime>
+	    <AutoGen>True</AutoGen>
+	  </Compile>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Content Update="EnvDTE\EnvDTECalystoWeb.tt">
+	    <LastGenOutput>EnvDTECalystoWeb.cs</LastGenOutput>
+	  </Content>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Include="compilerconfig.json" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<Content Remove="TypeScriptConfig\tsconfig.json" />
+		<Content Include="TypeScriptConfig\tsconfig.json">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+			<CopyToPublishDirectory>Never</CopyToPublishDirectory>
+		</Content>
+		<Content Remove="tsconfig.json" />
+		<Content Include="tsconfig.json">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+			<CopyToPublishDirectory>Never</CopyToPublishDirectory>
+		</Content>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include="WebLib\Engine\_dist\Core\" />
+	</ItemGroup>
+	
+</Project>

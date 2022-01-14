@@ -1,0 +1,26 @@
+﻿
+declare namespace Calysto.Genesis.UnitTest.Calysto.TypeLite.Model
+{
+	interface AdminUrlExample
+	{
+	}
+
+	interface UrlItem
+	{
+		DataIcon: string;
+		Name: string;
+	}
+
+	export interface AdminUrlExample { }
+
+	export namespace AdminUrlExample
+	{
+		export const AdministrativeMenu : Calysto.Genesis.UnitTest.Calysto.TypeLite.Model.UrlItem;
+		export const BookkeepingMenu : Calysto.Genesis.UnitTest.Calysto.TypeLite.Model.UrlItem;
+		export const FinancesMenu : Calysto.Genesis.UnitTest.Calysto.TypeLite.Model.UrlItem;
+		export const JobMenu : Calysto.Genesis.UnitTest.Calysto.TypeLite.Model.UrlItem;
+		export const PosSettingsMenu : Calysto.Genesis.UnitTest.Calysto.TypeLite.Model.UrlItem;
+	}
+
+}
+

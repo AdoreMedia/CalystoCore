@@ -1,0 +1,5 @@
+update [t]
+set [t].[MSISDN] = @p_upd1634_0_MSISDN, [t].[BirthDate] = NULL
+from [dbo].[tblAppMember] AS [t]
+INNER JOIN [dbo].[tblAppMemberStatus] AS [t0] ON [t].[AppMemberStatusID] = [t0].[AppMemberStatusID]
+where ((([t].[AppMemberID] < @__id1_0) AND ([t].[BirthDate] > @__dt1_1)) AND ([t].[BirthDate] < @__dt2_2)) AND ([t0].[IsActive] = CAST(1 AS Bit))

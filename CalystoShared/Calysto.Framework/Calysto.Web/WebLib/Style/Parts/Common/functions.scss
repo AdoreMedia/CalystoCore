@@ -1,0 +1,15 @@
+﻿// safe get, throw error if key not found
+@function fnGetMapValueSafe($map, $key){
+    @if map-has-key($map, $key) != true{
+        @error #{"Key " + $key + " not found in map: "} $map;
+    }
+    @return map-get($map, $key);
+}
+
+// returns rounded even number
+@function fnGetEvenNumber($value)
+{
+    $a: round($value);
+    @return $a - ($a % 2);
+}
+

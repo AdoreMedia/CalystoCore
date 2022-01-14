@@ -1,0 +1,26 @@
+/***************************************************************
+*	SCSS file template 
+*	To run automatic compilation in Visual Studio:
+*		right click on file -> Properties -> Custom Tool: CalystoCssGenerator
+***************************************************************/
+//@import "c:/local/vsprojects/california.core/calystoshared/calysto.genesis/calysto.web/weblib/style/_dist/calysto.scss";
+
+.loginControl form, .loginControl fpanel {
+	display: inline-block;
+	/*border: solid 1px blue;*/
+	margin: 10px 10px 0 0;
+}
+
+.loginControl button {
+	min-width: 150px;
+}
+
+div.calysto-spinner {
+	display: none;
+	width: 30px;
+	height: 30px;
+}
+
+div.calysto-spinner.calysto-visible {
+	display: inline-block;
+}

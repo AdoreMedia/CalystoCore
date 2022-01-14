@@ -1,0 +1,1 @@
+function test1(n,arg2){return n+arg2}function test2(n,arg2){console.log("arg1="+n+"; arg2="+arg2);return n+arg2}function test3(arg1,arg2){return arg1+arg2}function test4(n,t){function r(one,u){return i+one+u}var i=n+t;return r(n,t)}function test5(arg1,arg2){var v1=arg1+arg2;console.log("v1:"+v1);return v1}function test6(arg1,arg2){var v1=arg1+arg2;console.log("v1:"+v1);return v1}

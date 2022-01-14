@@ -1,0 +1,1 @@
+function test1(first,second){var local=first+second;return window.eval("window."+local)}(function(){function i(txt){var suffix=";";eval(txt+suffix)}function r(){var u=n+" boy-howdy! ";return n+u+t}var n="bar",t="gag";i("alert('"+r()+"')")})()

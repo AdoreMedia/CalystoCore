@@ -1,0 +1,1 @@
+﻿function Func(p1){var _a=1+p1,$b=2;return a+$b*$b+3+4}

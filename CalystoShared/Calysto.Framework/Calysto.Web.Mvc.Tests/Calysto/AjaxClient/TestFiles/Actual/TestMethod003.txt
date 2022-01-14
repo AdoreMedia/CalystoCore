@@ -1,0 +1,306 @@
+using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using Calysto.Net.WebService;
+using Calysto.Blazor.Utility;
+using Calysto.Web.Script.Services;
+
+namespace Calysto.Genesis.UnitTest.Calysto.TypeLite.Model
+{
+	public partial class CalystoWebSocketHandlerClient : CalystoSocketClientBase<Calysto.Genesis.UnitTest.Calysto.TypeLite.Model.Response>
+	{
+		public CalystoWebSocketHandlerClient(BrowserContext browser) : base(browser, "/calysto-handler-ty?calysto-mm=__calysto_method_name__&calysto-um=calysto-X6UuiOpH&calysto-py=gS5IundQrOV7pmVBsSBPbBlKqnhkpndQbAdxr7BPt6YKl7BMpkNFt6kKjmZApmMKgS5IundQrRtBoBdLoSJBt4xxrChIpn8I84dxr7BPt6YKlSlybARSoOVkpndQsOMwlClOsSBLrzQNbz0Kc2UMb213tmNQtn9BfmVBtnhOomMI851RoCNFoQJBulhLqSlKfmVRr6M&calysto-lc=__calysto_culture__&calysto-ye=__calysto_ss__&calysto-hd=__calysto_current_url____calysto_json_arg__&calysto-ug=")
+		{
+		}
+
+		public Task<Calysto.Web.TestSite.Web.CalystoUI.Sockets.SocketResponse1> HelloWorld(string name, string prezime, int age, Calysto.Web.CalystoBlob[] blob)
+		{
+			CalystoWebMethodAttribute attr = new CalystoWebMethodAttribute();
+			return base.MakeRequestAsync<Calysto.Web.TestSite.Web.CalystoUI.Sockets.SocketResponse1>(attr, nameof(HelloWorld), new {name, prezime, age, blob});
+		}
+
+		public Task SetHelloText(string text)
+		{
+			CalystoWebMethodAttribute attr = new CalystoWebMethodAttribute();
+			return base.MakeRequestAsync(attr, nameof(SetHelloText), new {text});
+		}
+
+	}
+}
+
+namespace Calysto.Genesis.UnitTest.Calysto.TypeLite.Model
+{
+	public partial class HostObject3Client : CalystoAjaxClientBase
+	{
+		public HostObject3Client(BrowserContext browser) : base(browser, "/calysto-handler-ty?calysto-mm=__calysto_method_name__&calysto-um=calysto-X6UuiOpH&calysto-py=gS5IundQrOV7pmVBsSBPbBlKqnhkpndQbAdxr7BPt6YKl7BMpkNFt6kKjmZApmMKi6ZPt4ZyqClzt3cI84dxr7BPt6YKlSlybARSoOVkpndQsOMwlClOsSBLrzQNbz0Kc2UMb213tmNQtn9BfmVBtnhOomMI851RoCNFoQJBulhLqSlKfmVRr6M&calysto-lc=__calysto_culture__&calysto-ye=__calysto_ss__&calysto-hd=__calysto_current_url____calysto_json_arg__&calysto-ug=")
+		{
+		}
+
+		public Task<List<Calysto.Genesis.UnitTest.Calysto.TypeLite.Model.MessageItem1>> GetTranslationMessages1()
+		{
+			CalystoWebMethodAttribute attr = new CalystoWebMethodAttribute();
+			return base.MakeRequestAsync<List<Calysto.Genesis.UnitTest.Calysto.TypeLite.Model.MessageItem1>>(attr, nameof(GetTranslationMessages1), new {});
+		}
+
+		public Task<bool?> Test1(int size, int? wheels, int height = 34, string name = "ivanho", System.DateTime? birth = null)
+		{
+			CalystoWebMethodAttribute attr = new CalystoWebMethodAttribute();
+			return base.MakeRequestAsync<bool?>(attr, nameof(Test1), new {size, wheels, height, name, birth});
+		}
+
+		public Task<List<Calysto.Genesis.UnitTest.Calysto.TypeLite.Model.HostObject3.MessageItem2>> GetTranslationMessages2()
+		{
+			CalystoWebMethodAttribute attr = new CalystoWebMethodAttribute();
+			return base.MakeRequestAsync<List<Calysto.Genesis.UnitTest.Calysto.TypeLite.Model.HostObject3.MessageItem2>>(attr, nameof(GetTranslationMessages2), new {});
+		}
+
+		public Task NoResult(string s1, int num1)
+		{
+			CalystoWebMethodAttribute attr = new CalystoWebMethodAttribute();
+			return base.MakeRequestAsync(attr, nameof(NoResult), new {s1, num1});
+		}
+
+		public Task<int> DoSomething(string s1, int num1)
+		{
+			CalystoWebMethodAttribute attr = new CalystoWebMethodAttribute();
+			return base.MakeRequestAsync<int>(attr, nameof(DoSomething), new {s1, num1});
+		}
+
+		public Task<string> DoNesto(string name)
+		{
+			CalystoWebMethodAttribute attr = new CalystoWebMethodAttribute();
+			return base.MakeRequestAsync<string>(attr, nameof(DoNesto), new {name});
+		}
+
+	}
+}
+
+namespace Calysto.Genesis.UnitTest.Calysto.TypeLite.Model
+{
+	public partial class WebServiceClassExampleClient : CalystoAjaxClientBase
+	{
+		public WebServiceClassExampleClient(BrowserContext browser) : base(browser, "/calysto-handler-ty?calysto-mm=__calysto_method_name__&calysto-um=calysto-X6UuiOpH&calysto-py=gS5IundQrOV7pmVBsSBPbBlKqnhkpndQbAdxr7BPt6YKl7BMpkNFt6kKjmZApmMKlSlykSlOtCBzpkdIondPhnxxrn1IpiMwgS5IundQrOVnpm8KjnpzbBhBsThPb21mpn9PqmZKfj4Kc2UMbz0I84dRr7hRsCkZrClRt79xr2Mwk7lyr6BziSlVl6ZHpmUZrDlIr0&calysto-lc=__calysto_culture__&calysto-ye=__calysto_ss__&calysto-hd=__calysto_current_url____calysto_json_arg__&calysto-ug=")
+		{
+		}
+
+		public Task<Calysto.Genesis.UnitTest.Calysto.TypeLite.Model.WebServiceClassExample.PrometResponse> GetPrometItems(int skip, int take)
+		{
+			CalystoWebMethodAttribute attr = new CalystoWebMethodAttribute();
+			return base.MakeRequestAsync<Calysto.Genesis.UnitTest.Calysto.TypeLite.Model.WebServiceClassExample.PrometResponse>(attr, nameof(GetPrometItems), new {skip, take});
+		}
+
+		public Task<Calysto.Genesis.UnitTest.Calysto.TypeLite.Model.WebServiceClassExample.UploadResult> UploadTransactionsData(string data, Calysto.Genesis.UnitTest.Calysto.TypeLite.Model.WebServiceClassExample.tblBankaEnum bankaKind)
+		{
+			CalystoWebMethodAttribute attr = new CalystoWebMethodAttribute();
+			return base.MakeRequestAsync<Calysto.Genesis.UnitTest.Calysto.TypeLite.Model.WebServiceClassExample.UploadResult>(attr, nameof(UploadTransactionsData), new {data, bankaKind});
+		}
+
+		public Task<Calysto.Genesis.UnitTest.Calysto.TypeLite.Model.WebServiceClassExample.SavePozivNaBrojResponse> SavePrimateljPozivNaBroj(int bankaPrometID, string primateljPozivNaBroj)
+		{
+			CalystoWebMethodAttribute attr = new CalystoWebMethodAttribute();
+			return base.MakeRequestAsync<Calysto.Genesis.UnitTest.Calysto.TypeLite.Model.WebServiceClassExample.SavePozivNaBrojResponse>(attr, nameof(SavePrimateljPozivNaBroj), new {bankaPrometID, primateljPozivNaBroj});
+		}
+
+		public Task<Treci.Peti.ArizonaJSResponse> SaveSomeData(int bankaPrometID, string primateljPozivNaBroj)
+		{
+			CalystoWebMethodAttribute attr = new CalystoWebMethodAttribute();
+			return base.MakeRequestAsync<Treci.Peti.ArizonaJSResponse>(attr, nameof(SaveSomeData), new {bankaPrometID, primateljPozivNaBroj});
+		}
+
+	}
+}
+
+namespace CalystoWebTests.Calysto.TypeLite.Model
+{
+	public partial class MyAsyncFunctionsClient : CalystoAjaxClientBase
+	{
+		public MyAsyncFunctionsClient(BrowserContext browser) : base(browser, "/calysto-handler-ty?calysto-mm=__calysto_method_name__&calysto-um=calysto-X6UuiOpH&calysto-py=gS5IundQrRtBoBhBsThPbAdxr7BPt6YKl7BMpkNFt6kKjmZApmMKjnB1sTBKoQpRrCdQqmZKsOMwgS5IundQrOVnpm8KjnpzbBhBsThPb21mpn9PqmZKfj4Kc2UMbz0I84dRr7hRsCkZrClRt79xr2Mwk7lyr6BziSlVl6ZHpmUZrDlIr0&calysto-lc=__calysto_culture__&calysto-ye=__calysto_ss__&calysto-hd=__calysto_current_url____calysto_json_arg__&calysto-ug=")
+		{
+		}
+
+		public Task DoWorkTask()
+		{
+			CalystoWebMethodAttribute attr = new CalystoWebMethodAttribute();
+			return base.MakeRequestAsync<System.Threading.Tasks.Task>(attr, nameof(DoWorkTask), new {});
+		}
+
+		public Task DoWorkAsync()
+		{
+			CalystoWebMethodAttribute attr = new CalystoWebMethodAttribute();
+			return base.MakeRequestAsync<System.Threading.Tasks.Task>(attr, nameof(DoWorkAsync), new {});
+		}
+
+		public Task<bool> AreYouReadyTask()
+		{
+			CalystoWebMethodAttribute attr = new CalystoWebMethodAttribute();
+			return base.MakeRequestAsync<bool>(attr, nameof(AreYouReadyTask), new {});
+		}
+
+		public Task<bool> AreYouReadyAsync()
+		{
+			CalystoWebMethodAttribute attr = new CalystoWebMethodAttribute();
+			return base.MakeRequestAsync<bool>(attr, nameof(AreYouReadyAsync), new {});
+		}
+
+	}
+}
+
+namespace CalystoWebTests.Calysto.TypeLite.Model
+{
+	public partial class MyAsyncFunctions2Client : CalystoAjaxClientBase
+	{
+		public MyAsyncFunctions2Client(BrowserContext browser) : base(browser, "/calysto-handler-ty?calysto-mm=__calysto_method_name__&calysto-um=calysto-X6UuiOpH&calysto-py=gS5IundQrRtBoBhBsThPbAdxr7BPt6YKl7BMpkNFt6kKjmZApmMKjnB1sTBKoQpRrCdQqmZKsP8I84dxr7BPt6YKlSlybARSoOVkpndQsOMwlClOsSBLrzQNbz0Kc2UMb213tmNQtn9BfmVBtnhOomMI851RoCNFoQJBulhLqSlKfmVRr6M&calysto-lc=__calysto_culture__&calysto-ye=__calysto_ss__&calysto-hd=__calysto_current_url____calysto_json_arg__&calysto-ug=")
+		{
+		}
+
+		public Task<IEnumerable<string>> AreYouReady2Async()
+		{
+			CalystoWebMethodAttribute attr = new CalystoWebMethodAttribute();
+			return base.MakeRequestAsync<IEnumerable<string>>(attr, nameof(AreYouReady2Async), new {});
+		}
+
+		public Task<IEnumerable<string>> AreYouReady3Async()
+		{
+			CalystoWebMethodAttribute attr = new CalystoWebMethodAttribute();
+			return base.MakeRequestAsync<IEnumerable<string>>(attr, nameof(AreYouReady3Async), new {});
+		}
+
+		public Task<IEnumerable<string>> AreYouReady4Async()
+		{
+			CalystoWebMethodAttribute attr = new CalystoWebMethodAttribute();
+			return base.MakeRequestAsync<IEnumerable<string>>(attr, nameof(AreYouReady4Async), new {});
+		}
+
+		public Task<IEnumerable<CalystoWebTests.Calysto.TypeLite.Model.MessageItem2>> AreYouReady5Async()
+		{
+			CalystoWebMethodAttribute attr = new CalystoWebMethodAttribute();
+			return base.MakeRequestAsync<IEnumerable<CalystoWebTests.Calysto.TypeLite.Model.MessageItem2>>(attr, nameof(AreYouReady5Async), new {});
+		}
+
+	}
+}
+
+namespace CalystoWebTests.Calysto.TypeLite.Model
+{
+	public partial class ServiceOneClient : CalystoAjaxClientBase
+	{
+		public ServiceOneClient(BrowserContext browser) : base(browser, "/calysto-handler-ty?calysto-mm=__calysto_method_name__&calysto-um=calysto-X6UuiOpH&calysto-py=gS5IundQrRtBoBhBsThPbAdxr7BPt6YKl7BMpkNFt6kKjmZApmMKkSlOtCBzpkZKpiMwgS5IundQrOVnpm8KjnpzbBhBsThPb21mpn9PqmZKfj4Kc2UMbz0I84dRr7hRsCkZrClRt79xr2Mwk7lyr6BziSlVl6ZHpmUZrDlIr0&calysto-lc=__calysto_culture__&calysto-ye=__calysto_ss__&calysto-hd=__calysto_current_url____calysto_json_arg__&calysto-ug=")
+		{
+		}
+
+		public Task<Dictionary<int, string>> GetPrometItems(int skip, int take, Dictionary<string, int> keys1, Dictionary<string, string> keys2)
+		{
+			CalystoWebMethodAttribute attr = new CalystoWebMethodAttribute();
+			return base.MakeRequestAsync<Dictionary<int, string>>(attr, nameof(GetPrometItems), new {skip, take, keys1, keys2});
+		}
+
+	}
+}
+
+namespace CalystoWebTests.Calysto.AjaxClient.Models
+{
+	public partial class AjaxService22Client : CalystoAjaxClientBase
+	{
+		public AjaxService22Client(BrowserContext browser) : base(browser, "/calysto-handler-ty?calysto-mm=__calysto_method_name__&calysto-um=calysto-X6UuiOpH&calysto-py=gS5IundQrRtBoBhBsThPbAdxr7BPt6YKgmFxu4dIqmlKt2VdrShBr7cKgmFxu5dBsDpFoSkOcyMwgS5IundQrOVnpm8KjnpzbBhBsThPb21mpn9PqmZKfj4Kc2UMbz0I84dRr7hRsCkZrClRt79xr2Mwk7lyr6BziSlVl6ZHpmUZrDlIr0&calysto-lc=__calysto_culture__&calysto-ye=__calysto_ss__&calysto-hd=__calysto_current_url____calysto_json_arg__&calysto-ug=")
+		{
+		}
+
+		public Task<string> AjaxSend(string msg, Calysto.Web.CalystoBlob[] files)
+		{
+			CalystoWebMethodAttribute attr = new CalystoWebMethodAttribute();
+			attr.Timeout = 5000;
+			return base.MakeRequestAsync<string>(attr, nameof(AjaxSend), new {msg, files});
+		}
+
+		public Task<string> AjaxSendThrow()
+		{
+			CalystoWebMethodAttribute attr = new CalystoWebMethodAttribute();
+			attr.SessionState = true;
+			return base.MakeRequestAsync<string>(attr, nameof(AjaxSendThrow), new {});
+		}
+
+		public Task<string> InvokeAjaxError()
+		{
+			CalystoWebMethodAttribute attr = new CalystoWebMethodAttribute();
+			return base.MakeRequestAsync<string>(attr, nameof(InvokeAjaxError), new {});
+		}
+
+		public Task<Calysto.Web.CalystoBlob> DownloadBlob()
+		{
+			CalystoWebMethodAttribute attr = new CalystoWebMethodAttribute();
+			return base.MakeRequestAsync<Calysto.Web.CalystoBlob>(attr, nameof(DownloadBlob), new {});
+		}
+
+		public Task<IEnumerable<Calysto.Web.CalystoBlob>> DownloadBlobArray()
+		{
+			CalystoWebMethodAttribute attr = new CalystoWebMethodAttribute();
+			return base.MakeRequestAsync<IEnumerable<Calysto.Web.CalystoBlob>>(attr, nameof(DownloadBlobArray), new {});
+		}
+
+		public Task<System.DateTime> SendClientDateTime(System.DateTime dt)
+		{
+			CalystoWebMethodAttribute attr = new CalystoWebMethodAttribute();
+			return base.MakeRequestAsync<System.DateTime>(attr, nameof(SendClientDateTime), new {dt});
+		}
+
+		public Task<Calysto.Web.TestSite.Web.CalystoUI.Ajax.BinaryFrameObj> DownloadBinaryFrameObject()
+		{
+			CalystoWebMethodAttribute attr = new CalystoWebMethodAttribute();
+			return base.MakeRequestAsync<Calysto.Web.TestSite.Web.CalystoUI.Ajax.BinaryFrameObj>(attr, nameof(DownloadBinaryFrameObject), new {});
+		}
+
+		public Task<Calysto.Web.CalystoBlob[]> DownloadBlobArrayError()
+		{
+			CalystoWebMethodAttribute attr = new CalystoWebMethodAttribute();
+			return base.MakeRequestAsync<Calysto.Web.CalystoBlob[]>(attr, nameof(DownloadBlobArrayError), new {});
+		}
+
+		public Task<Calysto.Web.CalystoBlob> DownloadBlobError()
+		{
+			CalystoWebMethodAttribute attr = new CalystoWebMethodAttribute();
+			return base.MakeRequestAsync<Calysto.Web.CalystoBlob>(attr, nameof(DownloadBlobError), new {});
+		}
+
+		public Task Javascript1()
+		{
+			CalystoWebMethodAttribute attr = new CalystoWebMethodAttribute();
+			return base.MakeRequestAsync<System.Threading.Tasks.Task>(attr, nameof(Javascript1), new {});
+		}
+
+	}
+}
+
+namespace CalystoWebTests.Calysto.AjaxClient.Models
+{
+	public partial class SocketSession22Client : CalystoSocketClientBase<string>
+	{
+		public SocketSession22Client(BrowserContext browser) : base(browser, "/calysto-handler-ty?calysto-mm=__calysto_method_name__&calysto-um=calysto-X6UuiOpH&calysto-py=gS5IundQrRtBoBhBsThPbAdxr7BPt6YKgmFxu4dIqmlKt2VdrShBr7cKkSZzqSlQkSlPsSBLrz8Ob213omNVsThLbBtBoyVdtCcKl6lPt7cI85pBsDdFrSUZciUMbz0Kc2MwgTlIt7lOpjRKpnlQsC5Ib21gtm9IqmdbpnBkrSJBrzRKtmNI&calysto-lc=__calysto_culture__&calysto-ye=__calysto_ss__&calysto-hd=__calysto_current_url____calysto_json_arg__&calysto-ug=")
+		{
+		}
+
+		public Task<Calysto.Web.TestSite.Web.CalystoUI.Sockets.SocketResponse1> HelloWorld(string text, Calysto.Web.CalystoBlob[] blob)
+		{
+			CalystoWebMethodAttribute attr = new CalystoWebMethodAttribute();
+			return base.MakeRequestAsync<Calysto.Web.TestSite.Web.CalystoUI.Sockets.SocketResponse1>(attr, nameof(HelloWorld), new {text, blob});
+		}
+
+		public Task SocketErrorTest(string name, string prezime, int age, Calysto.Web.CalystoBlob[] blob)
+		{
+			CalystoWebMethodAttribute attr = new CalystoWebMethodAttribute();
+			return base.MakeRequestAsync<System.Threading.Tasks.Task>(attr, nameof(SocketErrorTest), new {name, prezime, age, blob});
+		}
+
+		public Task<string> SetHelloString(string text)
+		{
+			CalystoWebMethodAttribute attr = new CalystoWebMethodAttribute();
+			return base.MakeRequestAsync<string>(attr, nameof(SetHelloString), new {text});
+		}
+
+		public Task SocketSendToAll(string text)
+		{
+			CalystoWebMethodAttribute attr = new CalystoWebMethodAttribute();
+			return base.MakeRequestAsync<System.Threading.Tasks.Task>(attr, nameof(SocketSendToAll), new {text});
+		}
+
+	}
+}

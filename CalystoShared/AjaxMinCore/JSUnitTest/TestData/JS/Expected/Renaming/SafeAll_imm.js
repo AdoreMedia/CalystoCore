@@ -1,0 +1,1 @@
+(function(){function i(code){return eval(code)}function n(r,u){alert(t+r+u)}var t="outer n";n("one","two");n("three","four"),i("debugger")})()

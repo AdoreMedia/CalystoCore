@@ -1,0 +1,49 @@
+﻿
+/******************************************
+/ SELF-HOSTED SERVICE
+/******************************************
+ * check examples in unittest project *
+
+	// start server:
+	HttpTransport transport1 = new HttpTransport();
+	CalystoServiceHost<RemoteController> host1 = new CalystoServiceHost<RemoteController>(transport1);
+	host1.UseSessionState = true;
+	host1.UseEncryptionKey("dasdfads");
+	transport1.StartListening(_url1host);
+
+	// client example:
+	RemoteClient client = new RemoteClient(_url1host);
+	client.Client.UseEncryptionKey("dasdfads");
+	string token1 = client.GetToken();
+*/
+
+/*****************************************
+/ IIS-HOSTED SERVICE
+/*****************************************
+- create custom handler with next code:
+
+public class CCFHandler : IHttpHandler
+{
+	static HttpTransport transport1;
+	static CalystoServiceHost<RemoteController> host1;
+
+	static CCFHandler()
+	{
+		transport1 = new HttpTransport();
+		host1 = new CalystoServiceHost<RemoteController>(transport1);
+		host1.UseSessionState = true;
+		host1.UseEncryptionKey("dasdfads");
+		//// transport1.StartListening(_url1host); // ne smije se pokretati listenera jer nam CCFHandler hvata requeste
+	}
+
+	public void ProcessRequest(HttpContext context)
+	{
+		transport1.ProcessRequest(context);
+	}
+}
+
+	// example request form client:
+	RemoteClient client = new RemoteClient("http://calysto.test/CCFService/CCFHandler.ashx");
+	client.Client.UseEncryptionKey("dasdfads");
+	string token1 = client.GetToken();
+*/

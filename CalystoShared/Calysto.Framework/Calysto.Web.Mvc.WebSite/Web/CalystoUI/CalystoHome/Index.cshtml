@@ -1,0 +1,24 @@
+﻿@{
+	ViewData["Title"] = "Index";
+}
+@this.Calysto().ScriptManager(s =>
+{
+	s.RegisterScriptFile("~/CalystoUI/CalystoHome/CalystoHome.css");
+	s.RegisterScriptFile("~/CalystoUI/CalystoHome/CalystoHome.js");
+})
+<h1>Calysto UI Tests</h1>
+
+<div class="navigation">
+	<a asp-controller="Checkboxes">Checkboxes</a>
+	<a asp-controller="Preloaders">Preloaders</a>
+	<a asp-controller="Dialogs">Dialogs</a>
+	<a asp-controller="Notifications">Notifications</a>
+	<a asp-controller="Ajax">Ajax</a>
+	<a asp-controller="Flexbox">Flexbox</a>
+	<a asp-controller="Binding1">Binding1</a>
+	<a asp-controller="Binding2">Binding2</a>
+	<a asp-controller="Binding3">Binding3</a>
+	<a asp-controller="Binding4">Binding4</a>
+	<a asp-controller="Validation">Validation</a>
+	<a asp-controller="Social">Social</a>
+</div>

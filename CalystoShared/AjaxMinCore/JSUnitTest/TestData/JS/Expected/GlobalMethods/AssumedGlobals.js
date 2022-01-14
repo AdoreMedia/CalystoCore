@@ -1,0 +1,1 @@
+function foo(n){window.bar&&bar(n)}function ack(n){window.bat&&bat(n)}

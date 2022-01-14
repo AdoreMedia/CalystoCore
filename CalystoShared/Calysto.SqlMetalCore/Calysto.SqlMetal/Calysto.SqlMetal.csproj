@@ -1,0 +1,69 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+	<PropertyGroup>
+		<TargetFramework>netstandard2.1</TargetFramework>
+	</PropertyGroup>
+	
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+		<DebugType>full</DebugType>
+		<DebugSymbols>true</DebugSymbols>
+	</PropertyGroup>
+	
+	<ItemGroup>
+	  <Compile Remove="LinqToSqlShared\Generator\**" />
+	  <Compile Remove="Properties\**" />
+	  <EmbeddedResource Remove="LinqToSqlShared\Generator\**" />
+	  <EmbeddedResource Remove="Properties\**" />
+	  <None Remove="LinqToSqlShared\Generator\**" />
+	  <None Remove="Properties\**" />
+	</ItemGroup>
+	<ItemGroup>
+	  <PackageReference Include="System.Data.SqlClient" Version="4.8.2" />
+	</ItemGroup>
+	<ItemGroup>
+	  <ProjectReference Include="..\..\Calysto.Framework\Calysto.Genesis\Calysto.Genesis.csproj" />
+	</ItemGroup>
+	<ItemGroup>
+	  <Compile Update="SqlMetal\Resources\LinqToSqlShared.DbmlObjectModel.Designer.cs">
+	    <DesignTime>True</DesignTime>
+	    <AutoGen>True</AutoGen>
+	    <DependentUpon>LinqToSqlShared.DbmlObjectModel.resx</DependentUpon>
+	  </Compile>
+	  <Compile Update="SqlMetal\Resources\LinqToSqlShared.Generator.Designer.cs">
+	    <DesignTime>True</DesignTime>
+	    <AutoGen>True</AutoGen>
+	    <DependentUpon>LinqToSqlShared.Generator.resx</DependentUpon>
+	  </Compile>
+	  <Compile Update="SqlMetal\Resources\LinqToSqlShared.Utility.Designer.cs">
+	    <DesignTime>True</DesignTime>
+	    <AutoGen>True</AutoGen>
+	    <DependentUpon>LinqToSqlShared.Utility.resx</DependentUpon>
+	  </Compile>
+	  <Compile Update="SqlMetal\Resources\SqlMetal.Designer.cs">
+	    <DesignTime>True</DesignTime>
+	    <AutoGen>True</AutoGen>
+	    <DependentUpon>SqlMetal.resx</DependentUpon>
+	  </Compile>
+	</ItemGroup>
+	<ItemGroup>
+	  <EmbeddedResource Update="SqlMetal\Resources\LinqToSqlShared.DbmlObjectModel.resx">
+	    <Generator>ResXFileCodeGenerator</Generator>
+	    <LastGenOutput>LinqToSqlShared.DbmlObjectModel.Designer.cs</LastGenOutput>
+	    <CustomToolNamespace>SqlMetal.Resources</CustomToolNamespace>
+	  </EmbeddedResource>
+	  <EmbeddedResource Update="SqlMetal\Resources\LinqToSqlShared.Generator.resx">
+	    <Generator>ResXFileCodeGenerator</Generator>
+	    <LastGenOutput>LinqToSqlShared.Generator.Designer.cs</LastGenOutput>
+	    <CustomToolNamespace>SqlMetal.Resources</CustomToolNamespace>
+	  </EmbeddedResource>
+	  <EmbeddedResource Update="SqlMetal\Resources\LinqToSqlShared.Utility.resx">
+	    <Generator>ResXFileCodeGenerator</Generator>
+	    <LastGenOutput>LinqToSqlShared.Utility.Designer.cs</LastGenOutput>
+	    <CustomToolNamespace>SqlMetal.Resources</CustomToolNamespace>
+	  </EmbeddedResource>
+	  <EmbeddedResource Update="SqlMetal\Resources\SqlMetal.resx">
+	    <Generator>ResXFileCodeGenerator</Generator>
+	    <LastGenOutput>SqlMetal.Designer.cs</LastGenOutput>
+	    <CustomToolNamespace>SqlMetal.Resources</CustomToolNamespace>
+	  </EmbeddedResource>
+	</ItemGroup>
+</Project>

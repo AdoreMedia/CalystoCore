@@ -1,0 +1,172 @@
+{
+   "results" : [
+      {
+         "address_components" : [
+            {
+               "long_name" : "Grančarska ulica",
+               "short_name" : "Grančarska ulica",
+               "types" : [ "route" ]
+            },
+            {
+               "long_name" : "Zagreb County",
+               "short_name" : "Zagreb County",
+               "types" : [ "administrative_area_level_1", "political" ]
+            },
+            {
+               "long_name" : "Croatia",
+               "short_name" : "HR",
+               "types" : [ "country", "political" ]
+            },
+            {
+               "long_name" : "10257",
+               "short_name" : "10257",
+               "types" : [ "postal_code" ]
+            }
+         ],
+         "formatted_address" : "Grančarska ulica, 10257, Croatia",
+         "geometry" : {
+            "bounds" : {
+               "northeast" : {
+                  "lat" : 45.70725150,
+                  "lng" : 15.89462560
+               },
+               "southwest" : {
+                  "lat" : 45.68408710,
+                  "lng" : 15.87981680
+               }
+            },
+            "location" : {
+               "lat" : 45.69529530,
+               "lng" : 15.88916590
+            },
+            "location_type" : "GEOMETRIC_CENTER",
+            "viewport" : {
+               "northeast" : {
+                  "lat" : 45.70725150,
+                  "lng" : 15.89462560
+               },
+               "southwest" : {
+                  "lat" : 45.68408710,
+                  "lng" : 15.87981680
+               }
+            }
+         },
+         "partial_match" : true,
+         "types" : [ "route" ]
+      },
+      {
+         "address_components" : [
+            {
+               "long_name" : "Grančarska ulica odvojak I",
+               "short_name" : "Grančarska ulica odvojak I",
+               "types" : [ "route" ]
+            },
+            {
+               "long_name" : "Hudi Bitek",
+               "short_name" : "Hudi Bitek",
+               "types" : [ "locality", "political" ]
+            },
+            {
+               "long_name" : "Zagreb County",
+               "short_name" : "Zagreb County",
+               "types" : [ "administrative_area_level_1", "political" ]
+            },
+            {
+               "long_name" : "Croatia",
+               "short_name" : "HR",
+               "types" : [ "country", "political" ]
+            },
+            {
+               "long_name" : "10251",
+               "short_name" : "10251",
+               "types" : [ "postal_code" ]
+            }
+         ],
+         "formatted_address" : "Grančarska ulica odvojak I, 10251, Hudi Bitek, Croatia",
+         "geometry" : {
+            "bounds" : {
+               "northeast" : {
+                  "lat" : 45.70564920,
+                  "lng" : 15.89253250
+               },
+               "southwest" : {
+                  "lat" : 45.70490980,
+                  "lng" : 15.89098580
+               }
+            },
+            "location" : {
+               "lat" : 45.70531860,
+               "lng" : 15.89179490
+            },
+            "location_type" : "GEOMETRIC_CENTER",
+            "viewport" : {
+               "northeast" : {
+                  "lat" : 45.70662848029150,
+                  "lng" : 15.89310813029150
+               },
+               "southwest" : {
+                  "lat" : 45.70393051970850,
+                  "lng" : 15.89041016970850
+               }
+            }
+         },
+         "partial_match" : true,
+         "types" : [ "route" ]
+      },
+      {
+         "address_components" : [
+            {
+               "long_name" : "Grančarska ulica odvojak I",
+               "short_name" : "Grančarska ulica odvojak I",
+               "types" : [ "route" ]
+            },
+            {
+               "long_name" : "Sobočani",
+               "short_name" : "Sobočani",
+               "types" : [ "locality", "political" ]
+            },
+            {
+               "long_name" : "Općina Kloštar Ivanić",
+               "short_name" : "Općina Kloštar Ivanić",
+               "types" : [ "administrative_area_level_2", "political" ]
+            },
+            {
+               "long_name" : "Zagreb County",
+               "short_name" : "Zagreb County",
+               "types" : [ "administrative_area_level_1", "political" ]
+            },
+            {
+               "long_name" : "Croatia",
+               "short_name" : "HR",
+               "types" : [ "country", "political" ]
+            },
+            {
+               "long_name" : "10312",
+               "short_name" : "10312",
+               "types" : [ "postal_code" ]
+            }
+         ],
+         "formatted_address" : "Grančarska ulica odvojak I, 10312, Sobočani, Croatia",
+         "geometry" : {
+            "location" : {
+               "lat" : 45.73561790,
+               "lng" : 16.45277820
+            },
+            "location_type" : "GEOMETRIC_CENTER",
+            "viewport" : {
+               "northeast" : {
+                  "lat" : 45.73696688029150,
+                  "lng" : 16.45412718029150
+               },
+               "southwest" : {
+                  "lat" : 45.73426891970851,
+                  "lng" : 16.45142921970850
+               }
+            }
+         },
+         "partial_match" : true,
+         "types" : [ "route" ]
+      }
+   ],
+   "status" : "OK"
+}

@@ -1,0 +1,1 @@
+function foo(n){function t(r){function u(f){return f+"foobar65535"}n&=65535;return r=="foobar"?u(r):"foobar"}function i(e){function o(s){return s.indexOf("foobar")&65535}return o(e)}n>65535&&(n-=65535);return t(n).substring(i(n))}function globalFunc(){return"foobar"}

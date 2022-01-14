@@ -1,0 +1,66 @@
+﻿[
+    {
+        "outputFile": "WebLib/Style/_dist/aero-light-blue.css",
+        "inputFile": "WebLib/Style/Themes/aero-light-blue.scss"
+    },
+    {
+        "outputFile": "WebLib/Style/_dist/aero-light-gray.css",
+        "inputFile": "WebLib/Style/Themes/aero-light-gray.scss"
+    },
+    {
+        "outputFile": "WebLib/Style/_dist/aero-light-green.css",
+        "inputFile": "WebLib/Style/Themes/aero-light-green.scss"
+    },
+    {
+        "outputFile": "WebLib/Style/_dist/aero-light-magenta.css",
+        "inputFile": "WebLib/Style/Themes/aero-light-magenta.scss"
+    },
+    {
+        "outputFile": "WebLib/Style/_dist/metro-dark-arizonablue.css",
+        "inputFile": "WebLib/Style/Themes/metro-dark-arizonablue.scss"
+    },
+    {
+        "outputFile": "WebLib/Style/_dist/metro-dark-blue.css",
+        "inputFile": "WebLib/Style/Themes/metro-dark-blue.scss"
+    },
+    {
+        "outputFile": "WebLib/Style/_dist/metro-dark-gray.css",
+        "inputFile": "WebLib/Style/Themes/metro-dark-gray.scss"
+    },
+    {
+        "outputFile": "WebLib/Style/_dist/metro-dark-green.css",
+        "inputFile": "WebLib/Style/Themes/metro-dark-green.scss"
+    },
+    {
+        "outputFile": "WebLib/Style/_dist/metro-dark-magenta.css",
+        "inputFile": "WebLib/Style/Themes/metro-dark-magenta.scss"
+    },
+    {
+        "outputFile": "WebLib/Style/_dist/metro-dark-purple.css",
+        "inputFile": "WebLib/Style/Themes/metro-dark-purple.scss"
+    },
+    {
+        "outputFile": "WebLib/Style/_dist/metro-light-arizonablue.css",
+        "inputFile": "WebLib/Style/Themes/metro-light-arizonablue.scss"
+    },
+    {
+        "outputFile": "WebLib/Style/_dist/metro-light-blue.css",
+        "inputFile": "WebLib/Style/Themes/metro-light-blue.scss"
+    },
+    {
+        "outputFile": "WebLib/Style/_dist/metro-light-gray.css",
+        "inputFile": "WebLib/Style/Themes/metro-light-gray.scss"
+    },
+    {
+        "outputFile": "WebLib/Style/_dist/metro-light-green.css",
+        "inputFile": "WebLib/Style/Themes/metro-light-green.scss"
+    },
+    {
+        "outputFile": "WebLib/Style/_dist/metro-light-magenta.css",
+        "inputFile": "WebLib/Style/Themes/metro-light-magenta.scss"
+    },
+    {
+        "outputFile": "WebLib/Style/_dist/metro-light-purple.css",
+        "inputFile": "WebLib/Style/Themes/metro-light-purple.scss"
+    }
+]

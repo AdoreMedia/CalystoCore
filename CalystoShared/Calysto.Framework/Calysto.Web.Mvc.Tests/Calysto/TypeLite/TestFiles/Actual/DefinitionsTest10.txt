@@ -1,0 +1,55 @@
+
+namespace Calysto.Genesis.UnitTest.Calysto.TypeLite.Model
+{
+	export class HostObject3 extends Calysto.WebView.HostObjectBase
+	{
+		protected _hostObjectName = "HostObject3";
+
+		public GetTranslationMessages1Async(): Promise<Calysto.Genesis.UnitTest.Calysto.TypeLite.Model.MessageItem1[]>
+		{
+			return super.InvokeMethodAsync("GetTranslationMessages1");
+		}
+
+		public Test1Async(size: number, wheels: number, /** default = 34 */ height: number = 34, /** default = "ivanho" */ name: string = "ivanho", /** default = <any>null */ birth: Date = <any>null): Promise<boolean>
+		{
+			return super.InvokeMethodAsync("Test1", [size, wheels, height, name, birth]);
+		}
+
+		public GetTranslationMessages2Async(): Promise<Calysto.Genesis.UnitTest.Calysto.TypeLite.Model.HostObject3.MessageItem2[]>
+		{
+			return super.InvokeMethodAsync("GetTranslationMessages2");
+		}
+
+		public NoResultAsync(s1: string, num1: number): Promise<void>
+		{
+			return super.InvokeMethodAsync("NoResult", [s1, num1]);
+		}
+
+		public DoSomethingAsync(s1: string, num1: number): Promise<number>
+		{
+			return super.InvokeMethodAsync("DoSomething", [s1, num1]);
+		}
+
+		public DoNestoAsync(name: string): Promise<string>
+		{
+			return super.InvokeMethodAsync("DoNesto", [name]);
+		}
+
+	}
+
+	interface MessageItem1
+	{
+		Name: string;
+	}
+
+}
+
+namespace Calysto.Genesis.UnitTest.Calysto.TypeLite.Model.HostObject3
+{
+	interface MessageItem2
+	{
+		Color: string;
+	}
+
+}
+

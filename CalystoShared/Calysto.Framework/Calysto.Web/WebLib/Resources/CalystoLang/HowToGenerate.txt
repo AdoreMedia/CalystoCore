@@ -1,0 +1,2 @@
+﻿
+Run "CalystoLang.ResxGen" from Calysto.Genesis\Calysto\Resources\CalystoLang\

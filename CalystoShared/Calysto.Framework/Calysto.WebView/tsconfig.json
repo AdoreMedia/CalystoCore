@@ -1,0 +1,10 @@
+{
+	"extends": "..\\Calysto.Web\\TypeScriptConfig\\tsconfig.json",
+	"compilerOptions": {
+		"declaration": true,
+		"outFile": "WebView/TypeScriptEngine/_dist/WebViewComplete.js"
+	},
+	"files": ["WebView/TypeScriptEngine/WebViewSources.ts"]
+}
+
+

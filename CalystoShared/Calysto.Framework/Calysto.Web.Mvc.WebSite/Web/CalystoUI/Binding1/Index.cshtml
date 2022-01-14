@@ -1,0 +1,112 @@
+﻿	<style type="text/css">
+		* {
+			font-size: 14px;
+		}
+
+		.testtitle {
+			display: block;
+			background: cyan !important;
+		}
+	</style>
+
+		<div id="divBindingRoot" style="display: none">
+			<div style="padding: 10px; background-color: #267bc5">
+				<button calysto-binding-uid="button1">Rebind1</button>
+				<button calysto-binding-uid="button2">Rebind2</button>
+				<button calysto-binding-uid="button3">Rebind3</button>
+			</div>
+			<div calysto-binding-uid="divSomeValue"></div>
+			<div calysto-binding-uid="divTopClicker">
+				<div calysto-binding-uid="divTopSubClick" style="background: silver">klikni za alert [TEST1: click to show alert("DivClick")</div>
+			</div>
+
+			<div class="div11" style="overflow: hidden; transition: all 1s; -webkit-transition: all 1s;" calysto-bind="aaaastyle.height:::(state.isActive)=>state.isActive ? '400px' : '15px'">
+				<div>REPEATER TEST</div>
+				<div calysto-binding-uid="repeaterOuter" style="display: none">
+					<div calysto-binding-uid="templateHeader">ovo je header</div>
+					<div calysto-binding-uid="templateSeparator">ovo je separator</div>
+					<div calysto-binding-uid="templateFooter">ovo je footer</div>
+					<div calysto-binding-uid="templateItem">
+						<div calysto-binding-uid="textSelected"></div>
+						<div>main repeater item</div>
+						<div style="padding-left: 20px;">
+							<div calysto-binding-uid="repeaterAges" style="display: none">
+								<span calysto-binding-uid="templateAgesNoData" style="background-color: red;">nema podataka</span>
+								<div calysto-binding-uid="templateAgesItem">
+									DataItem: <span calysto-binding-uid="agesDataItem"></span>, ItemIndex: <span calysto-binding-uid="agesIndexItem"></span>
+									<input type="checkbox" calysto-binding-uid="checkbox1" />
+									<label calysto-binding-uid="labelAges">
+										<input type="checkbox" calysto-binding-uid="checkbox2" />
+										<input type="checkbox" calysto-binding-uid="checkbox3" />
+										<input type="checkbox" calysto-binding-uid="checkbox4" />
+									</label>
+								</div>
+								<span calysto-binding-uid="templateAgesSeparator">------------</span>
+							</div>
+						</div>
+						Text:<span calysto-binding-uid="spantext1"></span>
+						Value:<span calysto-binding-uid="spanvalue1"></span>
+						Selected:<span calysto-binding-uid="spanselected1"></span>
+					</div>
+				</div>
+
+				<span></span>
+				<span></span>
+				<div>naslov mozemo stavit ako je <span calysto-binding-uid="spanactive1"></span>stanje ili nije</div>
+				<span calysto-binding-uid="spantext2">dva</span>
+				<div class="fds mychk" calysto-binding-uid="divextensive1"></div>
+				<label style="display:block">
+					<input type="checkbox" calysto-binding-uid="checkbox5" />
+					<div class="testtitle" style="display: inline">[TEST2: uncheck/check to update other checkboxes and text colors]</div>
+					<div calysto-binding-uid="divActiveDesc"></div>
+				</label>
+
+				<label calysto-binding-uid="labelActive1">
+					<input type="checkbox" calysto-binding-uid="checkbox6" />
+					<input type="checkbox" calysto-binding-uid="checkbox7" />
+				</label>
+
+				<input type="checkbox" calysto-binding-uid="checkbox8" />
+				<div class="testtitle" style="margin-top: 10px;">[TEST3: write text into textbox, clik outside to update GetOpis() text]</div>
+				<div id="d111" calysto-binding-uid="divDescription1"></div>
+				<input calysto-binding-uid="inputtext1" type="text" style="width: 200px; height: 20px;" />
+				<div calysto-binding-uid="divSelected1"></div>
+			</div>
+
+			<div class="testtitle">[TEST4: select items in one ddl, they will select in other ddl and will change colors in repeater]</div>
+
+			<select calysto-binding-uid="select1" multiple="multiple" id="ss2" style="min-height: 100px; min-width: 100px;"></select>
+
+			<select calysto-binding-uid="select2" multiple="multiple" style="min-height: 100px; min-width: 100px;"></select>
+
+			<div style="border: solid 1px silver; padding: 10px;">
+				<div calysto-binding-uid="repeater3" style="display: none">
+					<div calysto-binding-uid="template3Item">
+						<label>
+							<input type="radio" name="radioSelitems1" calysto-binding-uid="radio1" />
+							<span calysto-binding-uid="spanitem1"></span>
+						</label>
+					</div>
+				</div>
+			</div>
+			<div style="border: solid 1px silver; padding: 10px;">
+				<div calysto-binding-uid="repeater4" style="display: none">
+					<div calysto-binding-uid="template4Item">
+						<label>
+							<input type="checkbox" name="radioSelitems1" calysto-binding-uid="checkbox9" />
+							<span calysto-binding-uid="spantext3"></span>
+						</label>
+					</div>
+				</div>
+			</div>
+
+			<div style="padding: 10px; background-color: #267bc5">
+				<button calysto-binding-uid="button4">Rebind1</button>
+				<button calysto-binding-uid="button5">Rebind2</button>
+				<button calysto-binding-uid="button6">Rebind3</button>
+			</div>
+
+		</div>
+
+	<script src="~/CalystoUI/Binding1/Binding.js" calysto-append-version="true"></script>
+

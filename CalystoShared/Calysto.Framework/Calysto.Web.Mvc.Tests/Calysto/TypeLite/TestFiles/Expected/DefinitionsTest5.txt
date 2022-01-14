@@ -1,0 +1,28 @@
+
+declare namespace Calysto.Genesis.UnitTest.Calysto.TypeLite.Model
+{
+	class CalystoWebSocketHandler extends Calysto.Net.WebService.WebSocketSession<Calysto.Genesis.UnitTest.Calysto.TypeLite.Model.Response>
+	{
+		public constructor();
+		public HelloWorld(name: string, prezime: string, age: number, blob: Blob[]): Calysto.Net.WebService.AjaxServiceClientWithReturn<Calysto.Web.TestSite.Web.CalystoUI.Sockets.SocketResponse1>;
+		public SetHelloText(text: string): Calysto.Net.WebService.AjaxServiceClientVoid;
+	}
+
+	interface Response
+	{
+		IsActive: boolean;
+		Name: string;
+	}
+
+}
+
+declare namespace Calysto.Web.TestSite.Web.CalystoUI.Sockets
+{
+	interface SocketResponse1
+	{
+		FilesReceived: Blob[];
+		Poruka: string;
+	}
+
+}
+

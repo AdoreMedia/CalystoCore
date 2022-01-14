@@ -1,0 +1,236 @@
+@import "../common/functions.scss";
+@import "../common/mixins.scss";
+@import "themes.scss";
+
+@mixin mxAllButtonElements {
+	input[type=submit],
+	input[type=button],
+	button,
+	select {
+		@content;
+	}
+}
+
+@mixin tmplButtonsBasicTheme($discriminator: "", $defaultColor: $defaultThemeColor, $controlHeight: $defaultButtonHeight) {
+	// $discriminator is selector attached to element, e.g. button.calystoBtn
+	// if "", will create button without additional class
+	/* #{$discriminator} */
+	$themeColor: if($defaultColor, $defaultColor, $defaultButtonColor);
+	$buttonColor: $themeColor;
+	$controlHeight: if($controlHeight, $controlHeight, $defaultButtonHeight);
+	$buttonPadding: 0px $controlHeight * 0.2666;
+
+	// button element must have .calystoBtn class attached
+	%buttonElements#{$discriminator} {
+		outline: none !important;
+		box-sizing: border-box;
+		text-decoration: none;
+		vertical-align: middle;
+		display: inline-block;
+		cursor: pointer;
+		height: $controlHeight;
+		border-radius: $controlHeight * 0.1333;
+		padding: $buttonPadding;
+		line-height:$controlHeight * 0.8;
+		font-size:$controlHeight * 0.5;
+		border: solid 1px darken(fnGetButtonBorderColor($themeColor), 10);
+		color: fnGetButtonTextColor($buttonColor);
+		@include mxVLinearGradient($buttonColor, $buttonColor);
+
+		.calystoLabelText {
+			color: fnGetButtonTextColor($buttonColor);
+			text-shadow: none;
+			line-height:$controlHeight * 0.8;
+			font-size:$controlHeight * 0.5;
+		}
+
+		&:not(:disabled) {
+			&:hover {
+				color: fnGetButtonTextColor($buttonColor);
+				@include mxVLinearGradient(lighten($buttonColor, 10), lighten($buttonColor, 10));
+			}
+
+			&:active {
+				box-shadow: 0px 0px 4px gray inset;
+				@include mxVLinearGradient(darken($buttonColor, 10), darken($buttonColor, 10));
+			}
+		}
+	}
+
+	@include mxAllButtonElements {
+		@extend %buttonElements; // discriminator will be applied to mxAllButtonElements
+	}
+
+	button#{$discriminator} img {
+		margin: 0;
+		padding: 0 $controlHeight * 0.067;
+		height: $controlHeight * 0.666;
+		display:block;
+	}
+
+	select#{$discriminator} {
+		@include mxBrowsersPrefix("appearance", "none");
+		text-overflow: "";
+		background-position: right 0px center;
+		background-repeat: no-repeat;
+		margin: 0;
+		padding: $buttonPadding;
+		padding-right: 12px; // arrow placeholder is at right side
+		@include mxImageWithVLinearGradient(fnSelectArrowDown(fnGetButtonTextColor($buttonColor)), lighten($buttonColor, 5), darken($buttonColor, 20));
+
+		&:not(:disabled) {
+			&:hover {
+				color: fnGetButtonTextColor($buttonColor);
+				@include mxImageWithVLinearGradient(fnSelectArrowDown(fnGetButtonTextColor($buttonColor)), lighten($buttonColor, 10), darken($buttonColor, 15));
+			}
+
+			&:active {
+				box-shadow: 0px 0px 4px gray inset;
+				@include mxImageWithVLinearGradient(fnSelectArrowDown(fnGetButtonTextColor($buttonColor)), darken($buttonColor, 10), darken($buttonColor, 10));
+			}
+		}
+
+		option {
+			outline: none !important;
+			margin: 0;
+			padding: 0;
+			background-color: $themeColor;
+			color: fnGetThemeTextColor($themeColor);
+		}
+	}
+}
+
+@mixin tmplButtonsAeroTheme($discriminator: "", $defaultColor: $defaultThemeColor, $controlHeight: $defaultButtonHeight) {
+	// $discriminator is selector attached to element, e.g. button.calystoBtn
+	// if "", will create button without additional class
+	@include tmplButtonsBasicTheme($discriminator, $defaultColor, $controlHeight);
+
+	$map2: map-merge(("": $defaultColor), $mapColors); // if there is no color class, will use $defaultColor
+	// color variations
+	@each $name, $themeColor in $map2 {
+		$selector: if($discriminator, $discriminator, "") + if(str-length($name) > 1, "." + $name, "");
+
+		$buttonColor: $themeColor;
+
+		// button element must have .calystoBtn class attached
+		%buttonElements#{$selector} {
+			border: solid 1px darken(fnGetButtonBorderColor($themeColor), 10);
+			color: fnGetButtonTextColor($buttonColor);
+			@include mxVLinearGradient(lighten($buttonColor, 5), darken($buttonColor, 20));
+
+			.calystoLabelText {
+				color: fnGetButtonTextColor($buttonColor);
+			}
+
+			&:not(:disabled) {
+				&:hover {
+					color: fnGetButtonTextColor($buttonColor);
+					@include mxVLinearGradient(lighten($buttonColor, 10), darken($buttonColor, 15));
+				}
+
+				&:active {
+					box-shadow: 0px 0px 4px gray inset;
+					@include mxVLinearGradient(darken($buttonColor, 10), darken($buttonColor, 10));
+				}
+			}
+		}
+
+		select#{$selector} {
+			@include mxImageWithVLinearGradient(fnSelectArrowDown(fnGetButtonTextColor($buttonColor)), lighten($buttonColor, 5), darken($buttonColor, 20));
+
+			&:not(:disabled) {
+				&:hover {
+					color: fnGetButtonTextColor($buttonColor);
+					@include mxImageWithVLinearGradient(fnSelectArrowDown(fnGetButtonTextColor($buttonColor)), lighten($buttonColor, 10), darken($buttonColor, 15));
+				}
+
+				&:active {
+					@include mxImageWithVLinearGradient(fnSelectArrowDown(fnGetButtonTextColor($buttonColor)), darken($buttonColor, 10), darken($buttonColor, 10));
+				}
+			}
+
+			option {
+				background-color: $themeColor;
+				color: fnGetThemeTextColor($themeColor);
+			}
+		}
+	}
+}
+
+@mixin tmplButtonsMetroTheme($discriminator: "", $defaultColor: $defaultThemeColor, $controlHeight: $defaultButtonHeight) {
+	// $discriminator is selector attached to element, e.g. button.calystoBtn
+	// if "", will create button without additional class
+	@include tmplButtonsBasicTheme($discriminator, $defaultColor, $controlHeight);
+	$discriminator: if($discriminator, $discriminator, "");
+
+	%buttonElements#{$discriminator} {
+		border-radius: 0px;
+	}
+
+	$map2: map-merge(("": $defaultColor), $mapColors); // if there is no color class, will use $defaultColor
+	// color variations
+	@each $name, $themeColor in $map2 {
+		$selector: if($discriminator, $discriminator, "") + if(str-length($name) > 1, "." + $name, "");
+
+		$buttonColor: $themeColor;
+
+		// button element must have .calystoBtn class attached
+		%buttonElements#{$selector} {
+			border: solid 1px darken(fnGetButtonBorderColor($themeColor), 10);
+			color: fnGetButtonTextColor($buttonColor);
+			@include mxVLinearGradient($buttonColor, $buttonColor);
+
+			.calystoLabelText {
+				color: fnGetButtonTextColor($buttonColor);
+			}
+
+			&:not(:disabled) {
+				&:hover {
+					color: fnGetButtonTextColor($buttonColor);
+					@include mxVLinearGradient(lighten($buttonColor, 5), lighten($buttonColor, 5));
+				}
+
+				&:active {
+					box-shadow: 0px 0px 4px gray inset;
+					@include mxVLinearGradient(darken($buttonColor, 5), darken($buttonColor, 5));
+				}
+			}
+		}
+
+		select#{$selector} {
+			@include mxImageWithVLinearGradient(fnSelectArrowDown(fnGetButtonTextColor($buttonColor)), $buttonColor, $buttonColor);
+
+			&:not(:disabled) {
+				&:hover {
+					color: fnGetButtonTextColor($buttonColor);
+					@include mxImageWithVLinearGradient(fnSelectArrowDown(fnGetButtonTextColor($buttonColor)), lighten($buttonColor, 5), lighten($buttonColor, 5));
+				}
+
+				&:active {
+					@include mxImageWithVLinearGradient(fnSelectArrowDown(fnGetButtonTextColor($buttonColor)), darken($buttonColor, 5), darken($buttonColor, 5));
+				}
+			}
+
+			option {
+				background-color: $themeColor;
+				color: fnGetThemeTextColor($themeColor);
+			}
+		}
+	}
+}
+
+@if($defaultThemeFamily == "Aero")
+{
+	// create basic theme for buttons with .calystoBtn
+	@include tmplButtonsAeroTheme(".calystoBtn");
+}
+@else if($defaultThemeFamily == "Metro")
+{
+	// apply theme to all buttons everywhere
+	//@include tmplButtonsBasicTheme();
+	@include tmplButtonsMetroTheme(".calystoBtn");
+	//@include tmplButtonsAeroTheme();
+}
+@else{
+	@error #{"Theme family " + $defaultThemeFamily + " not found."};
+}

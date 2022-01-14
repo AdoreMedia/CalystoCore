@@ -1,0 +1,1 @@
+async function SumNumbers(n,t){return n+t}async function TestMe(n,t){let i=await SumNumbers(n,t)}async function TestMe2(n,t){return await SumNumbers(n,t)}async function TestMe2(n,t){return await SumNumbers(n,t)}async function*TestMe2(n,t){yield await SumNumbers(n,t)}

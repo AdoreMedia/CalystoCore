@@ -1,0 +1,4 @@
+delete [t]
+from [dbo].[tblAppMember] AS [t]
+INNER JOIN [dbo].[tblAppMemberStatus] AS [t0] ON [t].[AppMemberStatusID] = [t0].[AppMemberStatusID]
+where ((([t].[AppMemberID] < {0}) AND ([t].[BirthDate] > {1})) AND ([t].[BirthDate] < {2})) AND ([t0].[IsActive] = CAST(1 AS Bit))

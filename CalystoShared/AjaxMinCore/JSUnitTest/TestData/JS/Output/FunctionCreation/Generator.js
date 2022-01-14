@@ -1,0 +1,1 @@
+function*myGenerator(n){for(var t of n)yield t}

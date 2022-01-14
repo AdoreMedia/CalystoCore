@@ -1,0 +1,1 @@
+var str="now is the time

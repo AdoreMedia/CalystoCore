@@ -1,0 +1,63 @@
+﻿
+/*#region Calysto.Dialog */
+
+.calystoDialogControl {
+
+	display: none;
+	position: absolute;
+
+	.calystoDialogBoxContainer {
+		position: fixed;
+		top: 0;
+		right: 0;
+		left: 0;
+		bottom: 0;
+		overflow: visible;
+		margin-top: -20px;
+		filter: alpa(opacity=0);
+		opacity: 0;
+		transition: margin-top 0.3s, opacity 0.3s;
+	}
+
+	&.showDialog .calystoDialogBoxContainer {
+		filter: alpa(opacity=100);
+		opacity: 1;
+		margin-top: 0;
+	}
+
+	.calystoDialogMask {
+		display: none;
+	}
+
+	&.calystoDialogModal .calystoDialogMask {
+		display: block;
+		filter: alpa(opacity=0);
+		opacity: 0;
+		transition: opacity 0.4s;
+		position: fixed;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		background-color: black;
+	}
+
+	&.showDialog.calystoDialogModal .calystoDialogMask {
+		filter: alpa(opacity=80);
+		opacity: 0.8;
+	}
+
+	.calystoDialogBox {
+		display: table;
+		margin: auto;
+		box-sizing: border-box;
+		font-family: sans-serif;
+		border: solid 0px black;
+		position: relative;
+	}
+
+	.calystoWindow {
+		margin: auto;
+	}
+}
+/*#endregion */

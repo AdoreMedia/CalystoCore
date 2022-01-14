@@ -1,0 +1,58 @@
+﻿@using System.Linq;
+@{
+	ViewData["Title"] = "Home Page";
+
+	if (this.Context.Request.IsClaystoAjaxFormSubmit())
+		this.Layout = null;
+
+}
+<h1>HRVATSKI View</h1>
+<div class="text-center">
+	<h1 class="display-4">Welcome</h1>
+</div>
+<partial name="Partial/_LoginControl.cshtml" />
+<div style="height:20px;"></div>
+
+	<div class="col-form-label">GetPathByActionSafe tests:</div>
+	<div>@this.Context.GetPathByActionSafe("Home", "Login")</div>
+	<div>@this.Context.GetPathByActionSafe("Home", "index")</div>
+	<div>@this.Context.GetPathByActionSafe("Home", "Privacy")</div>
+
+	<div class="col-form-label">GetUriByActionSafe tests:</div>
+	<div>@this.Context.GetUriByActionSafe("Home", "Login")</div>
+	<div>@this.Context.GetUriByActionSafe("Home", "index")</div>
+	<div>@this.Context.GetUriByActionSafe("Home", "Privacy")</div>
+
+	<div style="height:20px;"></div>
+
+	<div>APP_POOL_ID: @Environment.GetEnvironmentVariable("APP_POOL_ID")</div>
+	<div>ASPNETCORE_IIS_PHYSICAL_PATH: @Environment.GetEnvironmentVariable("ASPNETCORE_IIS_PHYSICAL_PATH")</div>
+	<div>ASPNETCORE_ENVIRONMENT: @Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT")</div>
+	<div>COMPUTERNAME: @Environment.GetEnvironmentVariable("COMPUTERNAME")</div>
+	<div>APP_POOL_CONFIG: @Environment.GetEnvironmentVariable("APP_POOL_CONFIG")</div>
+	<div>ASPNETCORE_URLS: @Environment.GetEnvironmentVariable("ASPNETCORE_URLS")</div>
+
+<div>
+	<style type="text/css">
+		.alttable tr:nth-of-type(2n-1) td {
+			background-color: cadetblue;
+			color: white;
+		}
+		.alttable tr:nth-of-type(2n) td {
+			background-color: #808080;
+			color: white;
+		}
+	</style>
+	<table class="alttable">
+		@foreach (var kv in Environment.GetEnvironmentVariables().Cast<System.Collections.DictionaryEntry>())
+		{
+			<tr><td>@kv.Key</td><td>@kv.Value</td></tr>
+		}
+	</table>
+</div>
+
+@this.Calysto().ScriptManager(s =>
+{
+	s.RegisterScriptFile("~/Home/Home.js");
+	s.RegisterScriptFile("~/Home/Home.css");
+})

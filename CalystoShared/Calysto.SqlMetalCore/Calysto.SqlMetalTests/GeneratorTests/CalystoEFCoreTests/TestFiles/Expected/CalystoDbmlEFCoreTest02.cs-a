@@ -1,0 +1,423 @@
+//************************************************************
+// Generated using CalystoEFCoreFluentGenerator for MSSQL
+//************************************************************
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Data.Common;
+using System.Linq;
+using System.Linq.Expressions;
+using System.Reflection;
+using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Internal;
+using Microsoft.EntityFrameworkCore.Metadata;
+using Calysto.EntityFrameworkCore;
+using Calysto.Data.Direct;
+using Calysto.Common;
+using Calysto.Common.Extensions;
+
+namespace CalystoUnittestNamespace
+{
+	/// <summary>
+	/// CalystoEFCoreFluent for MSSQL
+	/// </summary>
+	public partial class dbCalystoUnittestDataContext : DbContext
+	{
+		#region Context constructors
+		
+		public dbCalystoUnittestDataContext(bool useLazyLoadingProxies)
+			: base(new DbContextOptionsBuilder<dbCalystoUnittestDataContext>()
+				.UsingThis(builder => { if (useLazyLoadingProxies) builder.UseLazyLoadingProxies(); })
+				.Options)
+		{
+			OnCreated();
+		}
+		
+		public dbCalystoUnittestDataContext(Action<DbContextOptionsBuilder<dbCalystoUnittestDataContext>> configure)
+			: base(new DbContextOptionsBuilder<dbCalystoUnittestDataContext>()
+				.UsingThis(builder => configure(builder))
+				.Options)
+		{
+			OnCreated();
+		}
+
+		public dbCalystoUnittestDataContext(DbContextOptions<dbCalystoUnittestDataContext> options) : base(options)
+		{
+			OnCreated();
+		}
+
+		#endregion Context constructors
+
+		#region OnConfiguring
+
+		protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+		{
+			if (!optionsBuilder.IsConfigured ||
+				(!optionsBuilder.Options.Extensions.OfType<RelationalOptionsExtension>().Any(ext => !string.IsNullOrEmpty(ext.ConnectionString) || ext.Connection != null) &&
+				!optionsBuilder.Options.Extensions.Any(ext => !(ext is RelationalOptionsExtension) && !(ext is CoreOptionsExtension))))
+			{
+				optionsBuilder.UseSqlServer(@"Data Source=.\MSSQL2019;Initial Catalog=dbCalystoUnittest;Integrated Security=True;Connect Timeout=30;");
+			}
+			CustomizeConfiguration(ref optionsBuilder);
+			base.OnConfiguring(optionsBuilder);
+		}
+
+		partial void CustomizeConfiguration(ref DbContextOptionsBuilder optionsBuilder);
+
+		#endregion OnConfiguring
+
+		#region Context properties for tables
+
+		public virtual DbSet<tblVehicleCustomName> tblVehicleCustomName { get; set; }
+
+		#endregion Context properties for tables
+
+		#region Context database functions
+
+		/// <param name="skip111">Int</param>
+		/// <param name="take111">Int, DefaultValue = (int)(50)</param>
+		/// <param name="validOnDate">DateTime, DefaultValue = null</param>
+		/// <param name="valuta">VarChar(50), DefaultValue = null</param>
+		/// <returns>Scalar value from function</returns>
+		public ValutaTecaj fnBankaValutaTecajCustomName(
+			int? skip111, 
+			int? take111 = (int)(50), 
+			DateTime? validOnDate = null, 
+			string valuta = null)
+		{
+			return this.ExecuteList<ValutaTecaj>($@"select dbo.fnGetBankaValutaTecaj({{0}}, {{1}}, {{2}}, {{3}})", skip111, take111, validOnDate, valuta).First();
+		}
+
+		/// <returns>Scalar value from function</returns>
+		public fnGetStariNoviGranicaResult fnGetStariNoviGranica()
+		{
+			return this.ExecuteList<fnGetStariNoviGranicaResult>($@"select dbo.fnGetStariNoviGranica()").First();
+		}
+
+		/// <param name="num1">Float</param>
+		/// <param name="num2">Float</param>
+		/// <returns>Scalar value from function</returns>
+		public double? fnSumNumbers(
+			double? num1, 
+			double? num2)
+		{
+			return this.ExecuteList<double?>($@"select dbo.fnSumNumbers({{0}}, {{1}})", num1, num2).First();
+		}
+
+		/// <param name="skip">Int, DefaultValue = (int)(0)</param>
+		/// <param name="take">Int, DefaultValue = (int)(100)</param>
+		/// <param name="res">Int</param>
+		/// <returns>MultipleResults from stored procedure</returns>
+		public spMultiResultsMultipleResults spMultiResults(
+			int? skip, 
+			int? take, 
+			ref int? res)
+		{
+			var multiple_results_1 = this.ExecuteMultipleResults($@"declare @return_value int; 
+					exec @return_value = dbo.spMultiResults {{0}}, {{1}}, {{2}} out; 
+					select @return_value as ReturnValue;", skip, take, res);
+			var final_result_1 = multiple_results_1.ReadResults(res => new spMultiResultsMultipleResults()
+			{
+				Result1 = res.GetSequence<spMultiResultsResult1>().ToList(),
+				Result2 = res.GetSequence<spMultiResultsResult2>().ToList(),
+				Result3 = res.GetSequence<spMultiResultsResult3>().ToList(),
+				Result4 = res.GetSequence<spMultiResultsResult4>().ToList(),
+				ReturnValue = res.GetSequence<int>().Single(),
+			});
+			// read Output parameter from stored procedure
+			res = Calysto.Utility.CalystoTypeConverter.ChangeType<int?>(multiple_results_1.Command.Parameters[2].Value);
+			return final_result_1;
+		}
+
+		/// <returns>MultipleResults from stored procedure</returns>
+		public spMultiResults2MultipleResults spMultiResults2()
+		{
+			var multiple_results_1 = this.ExecuteMultipleResults($@"declare @return_value int; 
+					exec @return_value = dbo.spMultiResults2; 
+					select @return_value as ReturnValue;");
+			var final_result_1 = multiple_results_1.ReadResults(res => new spMultiResults2MultipleResults()
+			{
+				Clients = res.GetSequence<int>().Single(),
+				Products = res.GetSequence<double>().ToList(),
+				Result3 = res.GetSequence<spMultiResults2Result1>().ToList(),
+				Result4 = res.GetSequence<spMultiResults2Result2>().ToList(),
+				ReturnValue = res.GetSequence<int>().Single(),
+			});
+			return final_result_1;
+		}
+
+		/// <returns>MultipleResults from stored procedure</returns>
+		public spRandomNumberMultipleResults spRandomNumber()
+		{
+			var multiple_results_1 = this.ExecuteMultipleResults($@"declare @return_value int; 
+					exec @return_value = dbo.spRandomNumber; 
+					select @return_value as ReturnValue;");
+			var final_result_1 = multiple_results_1.ReadResults(res => new spRandomNumberMultipleResults()
+			{
+				Random = res.GetSequence<double>().Single(),
+				ReturnValue = res.GetSequence<int>().Single(),
+			});
+			return final_result_1;
+		}
+
+
+		#endregion Context database functions
+
+		#region OnModelCreating
+
+		protected override void OnModelCreating(ModelBuilder modelBuilder)
+		{
+			this.Map_tblVehicleCustomName(modelBuilder);
+			this.Customize_tblVehicleCustomName(modelBuilder);
+
+			RelationshipsMapping(modelBuilder);
+			CustomizeMapping(ref modelBuilder);
+		}
+
+		#endregion
+
+		#region TablesMappingDetails
+
+		#region tblVehicleCustomName
+		private void Map_tblVehicleCustomName(ModelBuilder modelBuilder)
+		{
+			modelBuilder.Entity<tblVehicleCustomName>().ToTable("tblVehicle", "dbo");
+			modelBuilder.Entity<tblVehicleCustomName>().HasKey(x=>x.VehicleID);
+			modelBuilder.Entity<tblVehicleCustomName>().Property(x=>x.VehicleID).HasColumnName("VehicleID").HasColumnType("Int").IsRequired().ValueGeneratedOnAdd();
+			modelBuilder.Entity<tblVehicleCustomName>().Property(x=>x.VehicleRipID).HasColumnName("VehicleRipID").HasColumnType("Int").IsRequired().ValueGeneratedNever();
+		}
+
+		partial void Customize_tblVehicleCustomName(ModelBuilder modelBuilder);
+		#endregion
+
+		#endregion
+
+		#region Relationships mapping
+		private void RelationshipsMapping(ModelBuilder modelBuilder)
+		{
+		}
+		#endregion
+
+		#region Other details
+		partial void CustomizeMapping(ref ModelBuilder modelBuilder);
+		
+		public bool HasChanges()
+		{
+		    return ChangeTracker.Entries().Any(e => e.State == Microsoft.EntityFrameworkCore.EntityState.Added || e.State == Microsoft.EntityFrameworkCore.EntityState.Modified || e.State == Microsoft.EntityFrameworkCore.EntityState.Deleted);
+		}
+		
+		partial void OnCreated();
+		#endregion
+
+	}
+
+	#region Entity Tables
+
+	#region dbo.tblVehicle
+	public partial class tblVehicleCustomName : EFCoreEntityBase<tblVehicleCustomName>
+	{
+		public tblVehicleCustomName()
+		{
+			OnCreated();
+		}
+
+		public tblVehicleCustomName(DbContext context) : base(context)
+		{
+			OnCreated();
+		}
+
+		#region Columns
+		/// <summary>
+		/// DbType = "Int NOT NULL IDENTITY", IsPrimaryKey = true, IsDbGenerated = true, AutoSync = AutoSync.OnInsert
+		/// </summary>
+		public int VehicleID { get; set; }
+
+		/// <summary>
+		/// DbType = "Int NOT NULL"
+		/// </summary>
+		public int VehicleRipID { get; set; }
+
+		#endregion Columns
+
+		#region Associations
+		#endregion Associations
+
+		partial void OnCreated();
+	}
+	#endregion dbo.tblVehicle
+
+
+	#endregion
+
+	#region Functions Return types
+
+	#region fnGetStariNoviGranicaResult
+	public partial class fnGetStariNoviGranicaResult
+	{
+		public fnGetStariNoviGranicaResult(){ }
+
+		/// <summary>
+		/// DbType = "DateTime NOT NULL"
+		/// </summary>
+		public DateTime StartDate { get; set; }
+
+		/// <summary>
+		/// DbType = "DateTime NOT NULL"
+		/// </summary>
+		public DateTime EndDate { get; set; }
+
+	}
+	#endregion fnGetStariNoviGranicaResult
+
+	#region spMultiResultsMultipleResults
+	public partial class spMultiResultsMultipleResults
+	{
+		public spMultiResultsMultipleResults(){ }
+
+		public List<spMultiResultsResult1> Result1 { get; set; }
+
+		public List<spMultiResultsResult2> Result2 { get; set; }
+
+		public List<spMultiResultsResult3> Result3 { get; set; }
+
+		public List<spMultiResultsResult4> Result4 { get; set; }
+
+		public int ReturnValue { get; set; }
+
+	}
+	#endregion spMultiResultsMultipleResults
+
+	#region spMultiResults2MultipleResults
+	public partial class spMultiResults2MultipleResults
+	{
+		public spMultiResults2MultipleResults(){ }
+
+		public Single<int> Clients { get; set; }
+
+		public List<double> Products { get; set; }
+
+		public List<spMultiResults2Result1> Result3 { get; set; }
+
+		public List<spMultiResults2Result2> Result4 { get; set; }
+
+		public int ReturnValue { get; set; }
+
+	}
+	#endregion spMultiResults2MultipleResults
+
+	#region spRandomNumberMultipleResults
+	public partial class spRandomNumberMultipleResults
+	{
+		public spRandomNumberMultipleResults(){ }
+
+		public double Random { get; set; }
+
+		public int ReturnValue { get; set; }
+
+	}
+	#endregion spRandomNumberMultipleResults
+
+	#region spMultiResultsResult1
+	public partial class spMultiResultsResult1
+	{
+		public spMultiResultsResult1(){ }
+
+		/// <summary>
+		/// DbType = "DateTime NOT NULL"
+		/// </summary>
+		public DateTime CurrentDate1 { get; set; }
+
+	}
+	#endregion spMultiResultsResult1
+
+	#region spMultiResultsResult2
+	public partial class spMultiResultsResult2
+	{
+		public spMultiResultsResult2(){ }
+
+		/// <summary>
+		/// DbType = "Int NOT NULL"
+		/// </summary>
+		public int RowID { get; set; }
+
+		/// <summary>
+		/// DbType = "Int NOT NULL"
+		/// </summary>
+		public int Name { get; set; }
+
+	}
+	#endregion spMultiResultsResult2
+
+	#region spMultiResultsResult3
+	public partial class spMultiResultsResult3
+	{
+		public spMultiResultsResult3(){ }
+
+		/// <summary>
+		/// DbType = "VarChar(100)"
+		/// </summary>
+		public string Name { get; set; }
+
+		/// <summary>
+		/// DbType = "VarChar(100)"
+		/// </summary>
+		public string Value { get; set; }
+
+	}
+	#endregion spMultiResultsResult3
+
+	#region spMultiResultsResult4
+	public partial class spMultiResultsResult4
+	{
+		public spMultiResultsResult4(){ }
+
+		/// <summary>
+		/// DbType = "DateTime NOT NULL"
+		/// </summary>
+		public DateTime CurrentDate2 { get; set; }
+
+	}
+	#endregion spMultiResultsResult4
+
+	#region spMultiResults2Result1
+	public partial class spMultiResults2Result1
+	{
+		public spMultiResults2Result1(){ }
+
+		/// <summary>
+		/// DbType = "DateTime NOT NULL"
+		/// </summary>
+		public DateTime StartDate { get; set; }
+
+		/// <summary>
+		/// DbType = "DateTime NOT NULL"
+		/// </summary>
+		public DateTime EndDate { get; set; }
+
+	}
+	#endregion spMultiResults2Result1
+
+	#region spMultiResults2Result2
+	public partial class spMultiResults2Result2
+	{
+		public spMultiResults2Result2(){ }
+
+		/// <summary>
+		/// DbType = "Int NOT NULL"
+		/// </summary>
+		public int Ordinal { get; set; }
+
+		/// <summary>
+		/// DbType = "VarChar(6) NOT NULL"
+		/// </summary>
+		public string Name { get; set; }
+
+	}
+	#endregion spMultiResults2Result2
+
+	#endregion
+
+}

@@ -1,0 +1,7 @@
+update [t]
+set [t].[MSISDN] = @p_upd1634_0_MSISDN
+from [dbo].[tblAppMember] AS [t]
+where ((([t].[AppMemberID] < @__id1_0) AND ([t].[BirthDate] > @__dt1_1)) AND ([t].[BirthDate] < @__dt2_2)) AND EXISTS (
+    SELECT 1
+    FROM [dbo].[tblAppMemberPermission] AS [t0]
+    WHERE [t].[AppMemberID] = [t0].[AppMemberID])

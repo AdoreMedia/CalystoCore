@@ -1,0 +1,110 @@
+﻿@using Calysto.Web.TestSite.Web.VS.Home.Models
+@using Calysto.Web.TestSite.Web.VS.Home
+@model LoginViewModel
+<div class="loginControl">
+	<div id="divLoginPanel">
+		@if (User.Identity.IsAuthenticated)
+		{
+			<div class="col-form-label">Authenticated: @User.Identity.Name</div>
+			<form calysto-form-target="#divLoginPanel" calysto-controller-action="CalystoMvcUtility.UseTranslatorSafe(a=>a.Translate<HomeController>(c=>c.Logout))" method="post">
+				<div id="@nameof(LoginViewModel)"></div>
+				<button class="btn btn-danger">Log out</button>
+				<calysto-spinner>
+					@this.Calysto().Preloader(s=>s.Snake("green"))
+				</calysto-spinner>
+			</form>
+		}
+		else
+		{
+			<div class="col-form-label">Not authenticated</div>
+			<form id="form1" calysto-form-target="#divLoginPanel" calysto-controller-action="CalystoMvcUtility.UseTranslatorSafe(a=>a.Translate<HomeController, LoginViewModel>(c=>c.Login))" enctype="multipart/form-data" method="post">
+				<label asp-for="@Model"></label>
+
+				<label class="col-form-label" asp-for="@Model.Username"></label>
+				<input class="form-control" asp-for="@Model.Username" />
+				<span asp-validation-for="@Model.Username"></span>
+
+				<label class="col-form-label" asp-for="@Model.Password"></label>
+				<input class="form-control" asp-for="@Model.Password" />
+				<span asp-validation-for="@Model.Password"></span>
+
+				<div asp-validation-summary="@ValidationSummary.All" style="margin-top:10px;"></div>
+				<div id="@nameof(LoginViewModel)"></div>
+				<button class="btn btn-success">Log in</button>
+				<calysto-spinner>
+					@this.Calysto().Preloader(s=>s.Snake("green"))
+				</calysto-spinner>
+
+			</form>
+		}
+	</div>
+
+	<div style="padding-top:20px">Calysto Mvc form submit:</div>
+
+	<form calysto-form-target="#divLoginPanel"calysto-controller-action="CalystoMvcUtility.UseTranslatorSafe(a=>a.Translate<HomeController>(c=>c.DirectJson))" method="post">
+		<button class="btn btn-primary">Direct Json</button>
+		<calysto-spinner>
+			@this.Calysto().Preloader(s=>s.Snake("green"))
+		</calysto-spinner>
+	</form>
+
+	<form calysto-form-target="#divLoginPanel" calysto-controller-action="CalystoMvcUtility.UseTranslatorSafe(a=>a.Translate<HomeController>(c=>c.DirectHtml))" method="post">
+		<button class="btn btn-primary">Direct Html</button>
+		<calysto-spinner>
+			@this.Calysto().Preloader(s=>s.Snake("green"))
+		</calysto-spinner>
+	</form>
+
+	<form calysto-form-target="#divLoginPanel" calysto-controller-action="CalystoMvcUtility.UseTranslatorSafe(a=>a.Translate<HomeController>(c=>c.Redirect))" method="post">
+		<button class="btn btn-primary">Redirect</button>
+		<calysto-spinner>
+			@this.Calysto().Preloader(s=>s.Snake("green"))
+		</calysto-spinner>
+	</form>
+
+	<form calysto-form-target="#divLoginPanel" calysto-controller-action="CalystoMvcUtility.UseTranslatorSafe(a=>a.Translate<HomeController>(c=>c.InvokeError))" method="post">
+		<button class="btn btn-primary">InvokeError</button>
+		<calysto-spinner>
+			@this.Calysto().Preloader(s=>s.Snake("green"))
+		</calysto-spinner>
+	</form>
+
+	<form calysto-form-target="#divLoginPanel" calysto-controller-action="CalystoMvcUtility.UseTranslatorSafe(a=>a.Translate<HomeController>(c=>c.InvokeException))" method="post">
+		<button class="btn btn-primary">InvokeException</button>
+		<calysto-spinner>
+			@this.Calysto().Preloader(s=>s.Snake("green"))
+		</calysto-spinner>
+	</form>
+
+	<form calysto-form-target="#divLoginPanel" calysto-controller-action="CalystoMvcUtility.UseTranslatorSafe(a=>a.Translate<HomeController>(c=>c.DelayTest))" method="post">
+		<button class="btn btn-primary">DelayTest</button>
+		<calysto-spinner>
+			@this.Calysto().Preloader(s=>s.Snake("green"))
+		</calysto-spinner>
+	</form>
+
+	<div style="padding-top:20px">Calysto ajax WebMethods:</div>
+	<fpanel>
+		<button class="btn btn-primary" test-func="GetHtmlString1"></button>
+	</fpanel>
+
+	<fpanel>
+		<button class="btn btn-primary" test-func="GetHtmlString2"></button>
+	</fpanel>
+
+	<fpanel>
+		<button class="btn btn-primary" test-func="GetHtmlString3"></button>
+	</fpanel>
+
+	<fpanel>
+		<button class="btn btn-primary" test-func="GetAgeString1"></button>
+
+		<fpanel>
+			<button class="btn btn-primary" test-func="GetAgeString2"></button>
+		</fpanel>
+
+		<fpanel>
+			<button id="btnCheckLoginModel" class="btn btn-primary">CheckLoginModel</button>
+		</fpanel>
+
+</div>

@@ -1,0 +1,90 @@
+
+/*#region Calysto Notification v1 */
+
+.calystoNotify1 {
+	overflow: hidden;
+	transition: all 500ms;
+	cursor: pointer;
+
+	&.hiddeNotifBox {
+		height: 0 !important;
+	}
+
+	.calystoNotifyInner {
+		padding: 4px 10px;
+	}
+
+	.calystoNotifyIcon {
+		font-size: 40px;
+		padding-right: 10px;
+	}
+
+	.calystoNotifyContent {
+		border: solid 1px #44617b;
+		border-left-width: 10px;
+		box-shadow: 0px 0px 6px #989a9c;
+		background-color: white;
+		font-family: sans-serif;
+		font-weight: bold;
+		font-size: 16px;
+		padding: 15px;
+
+		* {
+			color: #44617b;
+		}
+	}
+
+	.tdIcon {
+	}
+
+	.tdBtnClose {
+		padding-left: 10px;
+	}
+
+	.calystoNotifyContent.error {
+		border: solid 1px #ff4141;
+		border-left-width: 10px;
+
+		* {
+			color: #ff4141;
+		}
+	}
+
+	.calystoNotifyContent.success {
+		border: solid 1px #58ab58;
+		border-left-width: 10px;
+
+		* {
+			color: #58ab58;
+		}
+	}
+
+	.calystoNotifyContent.info {
+		border: solid 1px #308ad4;
+		border-left-width: 10px;
+
+		* {
+			color: #308ad4;
+		}
+	}
+
+	.calystoNotifyContent.warning {
+		border: solid 1px #ff9900;
+		border-left-width: 10px;
+
+		* {
+			color: #ff9900;
+		}
+	}
+
+	.calystoCloseBtn {
+		padding: 5px;
+		border-radius: 0px;
+
+		&:hover {
+			background-color: red;
+			color: white;
+		}
+	}
+}
+/*#endregion*/

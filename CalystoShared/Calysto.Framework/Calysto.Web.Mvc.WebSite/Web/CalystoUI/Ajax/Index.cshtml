@@ -1,0 +1,53 @@
+﻿@using Calysto.Web.TestSite.Web.CalystoUI.Ajax
+@using Calysto.Web.TestSite.Web.CalystoUI.Sockets
+@{
+	ViewData["Title"] = "Ajax";
+}
+@this.Calysto().ScriptManager(s =>
+{
+	s.RegisterWebService(typeof(SocketSession));
+	s.RegisterWebService(typeof(AjaxService));
+	s.RegisterScriptFile("~/CalystoUI/Ajax/Ajax.css");
+	s.RegisterScriptFile("~/CalystoUI/Ajax/Common.js");
+	s.RegisterScriptFile("~/CalystoUI/Ajax/Sockets.js");
+	s.RegisterScriptFile("~/CalystoUI/Ajax/Ajax.js");
+})
+
+<h3>Web sockets</h3>
+<div class="div1" style="padding:10px;border:solid 5px silver;margin-bottom:10px;">
+	<div style="padding:5px;">CalystoWebSocketTest test, watch results in console</div>
+	<input type="button" value="SocketOpen" id="btnConnect" onclick="Sockets.SocketOpen(this)" />
+	<input type="button" value="SocketClose" id="btnDisconnect" onclick="Sockets.SocketClose(this)" /><br />
+	<input class="iceThemeGreen" type="text" id="socketInput" /><br />
+	<input type="button" value="Send" id="btnSend" onclick="Sockets.SendSocket(this)" />
+	<input type="button" value="Send Delayed" id="btnSend" onclick="Sockets.SendSocketDelayed(this)" />
+	<input type="file" id="socketFiles" value="SocketSendFiles" onchange="Sockets.SendSocket(this)" multiple="multiple" /><br />
+	<input class="iceThemeGreen" type="button" value="Invoke Server Error" id="btnInvokeServerError" onclick="Sockets.SocketErrorTest(this, 'baci gresku')" />
+	<input type="button" value="HelloWorld" onclick="Sockets.SocketHelloWorld(this);" />
+	<input type="button" value="Send to all" onclick="Sockets.SocketSendToAll(this);" />
+	<br/>
+	<input type="button" value="Send-ResultAsync" onclick="Sockets.SocketSendResultAsync(this);" />
+</div>
+
+<h3>Ajax</h3>
+<div class="div1" style="padding:10px;border:solid 5px silver;margin-bottom:10px;">
+	<div style="padding:5px;">Ajax test, watch results in console</div>
+	<input type="text" id="ajaxInput" />
+	<input type="file" id="ajaxFiles" value="AjaxSendFiles" onchange="Ajax.AjaxSend(this)" multiple="multiple" /><br />
+	<input type="button" value="Ajax Send" id="btnAjaxSend" onclick="Ajax.AjaxSend(this)" />
+	<input type="button" value="Ajax Send Throw" id="btnAjaxSendThrow" onclick="Ajax.AjaxSendThrow(this)" />
+	<input type="button" value="Ajax Send Delayed" id="btnAjaxSend" onclick="Ajax.AjaxSendDelayed(this)" />
+	<input type="button" value="Invoke Server Error" id="btnAjaxSend2" onclick="Ajax.InvokeAjaxError(this)" /><br />
+
+	<input type="button" value="DownloadBlob" id="btnAjaxSend41" onclick="Ajax.DownloadBlob(this)" />
+	<input type="button" value="DownloadBlobError" id="btnAjaxSend42" onclick="Ajax.DownloadBlobError(this)" /><br />
+	<input type="button" value="DownloadBlobArray" id="btnAjaxSend43" onclick="Ajax.DownloadBlobArray(this)" />
+	<input type="button" value="DownloadBlobArrayError" id="btnAjaxSend44" onclick="Ajax.DownloadBlobArrayError(this)" /><br />
+	<input type="button" value="DownloadBinaryFrameObject" id="btnAjaxSend45" onclick="Ajax.DownloadBinaryFrameObject(this)" />
+	<br />
+	<input type="button" value="SendClientDateTime" id="btnAjaxSend46" onclick="Ajax.SendClientDateTime(this)" />
+	<input type="button" value="Send-ResultAsync" onclick="Ajax.SendResultAsync(this);" />
+	<input type="button" value="AjaxVoid" onclick="Ajax.AjaxVoidAsync(this);" />
+
+</div>
+

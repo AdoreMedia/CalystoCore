@@ -1,0 +1,42 @@
+﻿@using Calysto.Web.TestSite.Web.VS.Routes.Models
+@model List<RouteInfo>;
+@functions{ 
+	private string GetUsername() => User.Identity.IsAuthenticated ? User.Identity.Name : "Anonymous";
+}
+	<style type="text/css">
+		.master-table{border-bottom:solid 5px darkslateblue;border-collapse:collapse;font-size:14px;}
+		.master-table td{padding:5px 10px; margin:0;}
+		.master-table .header{background-color:darkslateblue;}
+		.master-table .header td{color:white;padding:8px 10px;}
+		.master-table tr:nth-of-type(2n+3){background-color:lightblue;}
+		.master-table a{text-decoration:none;}
+		.master-table a:hover{text-decoration:underline;}
+		.container.main-content {max-width:unset !important;}
+	</style>
+	<h4>@ViewData["Title"] (@this.GetUsername())</h4>
+	<table class="master-table">
+		<tr class="header">
+			<td>DisplayName</td>
+			<td>ControllerName</td>
+			<td>ActionName</td>
+			<td>AttributedTemplate</td>
+			<td>AttributedName</td>
+			<td>Access</td>
+			<td>NoAction</td>
+			<td>VirtualPath</td>
+		</tr>
+		@foreach (var info in this.Model)
+		{
+			<tr>
+				<td>@info.DisplayName</td>
+				<td>@info.ControllerName</td>
+				<td>@info.ActionName</td>
+				<td>@info.AttributeRouteTemplate</td>
+				<td>@info.AttributeRouteName</td>
+				<td>@info.Access</td>
+				<td>@(info.NoAction ? "NoAction" : "")</td>
+				<td><a href="@info.ActionVirtualPath">@info.ActionVirtualPath</a></td>
+			</tr>
+		}
+	</table>
+

@@ -1,0 +1,1 @@
+"use strict";function foo(bar){alert("foo: "+bar)}function bar(foo){alert("bar: "+foo)}

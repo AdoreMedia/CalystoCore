@@ -1,0 +1,18 @@
+﻿[*.cs]
+
+# CS0067: The event 'TcpTransport.OnProgress' is never used
+dotnet_diagnostic.CS0067.severity = silent
+
+# CS0162: Unreachable code detected
+dotnet_diagnostic.CS0162.severity = silent
+
+# CS0649: Field 'MemberAccessorPathExtractorTests.Driver1.Name1' is never assigned to, and will always have its default value null
+dotnet_diagnostic.CS0649.severity = silent
+
+
+# IDE0060: Remove unused parameter
+dotnet_code_quality_unused_parameters = all:none
+
+
+# CS0414: The field 'TcpTransport.OnProgress' is assigned but its value is never used
+dotnet_diagnostic.CS0414.severity = none

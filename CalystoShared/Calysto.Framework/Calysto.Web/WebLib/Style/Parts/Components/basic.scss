@@ -1,0 +1,52 @@
+﻿@import "../common/functions.scss";
+@import "../common/mixins.scss";
+@import "themes.scss";
+
+[disabled] {
+	@include mxDisabledElement();
+}
+
+[readonly] {
+	@include mxDisabledElement();
+}
+
+.calystoCommon {
+
+	*, *::after, *::before {
+		box-sizing: border-box;
+	}
+}
+
+/*#region some general styles */
+
+.calystoNoUserSelect {
+	@include mxNoUserSelect();
+}
+
+.formItemError {
+	border-color: $defaultErrorColor !important;
+	background-color: #ffebeb !important;
+}
+
+.calystoInputError {
+	border: solid 1px $defaultErrorColor;
+}
+
+/*apply style to all descendants*/
+.calystoAjaxLoading * {
+	cursor: wait !important;
+}
+
+.calystoOverflowHidden {
+	overflow: hidden !important;
+}
+
+/*#endregion*/
+
+// used int CalystoUI web page for testing
+// colors are read from TypeScript
+.calystoColorsList {
+	@each $name, $color in $mapColors {
+		--calystoColor-#{$name}: #{$color};
+	}
+}

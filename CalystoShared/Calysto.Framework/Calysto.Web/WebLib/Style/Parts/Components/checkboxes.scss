@@ -1,0 +1,256 @@
+﻿@import "../common/mixins.scss";
+@import "../common/functions.scss";
+@import "themes.scss";
+/*************************************************************
+	HTML template:
+<container class="themeMetro|themeAero">
+	<label class="calystoChk [right] [calystoColor]">
+		<input type="checkbox" />
+		<span>This is text</span>
+	</label>
+
+	<label class="calystoChk">
+		<input type="radio" />
+		<span>This is text</span>
+	</label>
+</container>
+**************************************************************/
+// ::before and ::after doesn't work on input fields in Firefox
+
+@mixin mxCheckboxAdjustColors($themeColor) {
+	// adjust checkbox and radio for white theme color
+	@if($themeColor == white) {
+		$borderColor: black;
+		$fillColor: white;
+		$checkColor: black; // kvacica
+		> input + span::before {
+			border-color: $borderColor;
+		}
+
+		> input[type=radio] {
+			&:checked + span::before {
+				background-color: $borderColor;
+				border-color: $borderColor;
+			}
+
+			& + span::after {
+				background-color: $borderColor;
+				border-color: $fillColor;
+			}
+		}
+
+		> input[type=checkbox] {
+			&:checked + span::before {
+				background-color: $fillColor;
+				border-color: $borderColor;
+			}
+
+			&:checked + span::after {
+				border-color: black;
+			}
+		}
+	}
+}
+
+@mixin tmplCheckboxesBasicTheme($discriminator: "", $defaultColor: $defaultThemeColor, $controlHeight: $defaultCheckboxHeight) {
+
+	$themeColor: if($defaultColor, $defaultColor, $defaultThemeColor);
+	$discriminator: if($discriminator, $discriminator, "");
+	$controlHeight: if($controlHeight, $controlHeight, $defaultCheckboxHeight);
+	$borderColor: $themeColor;
+	$fillColor: $themeColor;
+	$checkColor: white; // kvacica
+	$transition: all 0.3s ease;
+	// main element must have calystoChk class atached
+	%container#{$discriminator} {
+		@include mxNoUserSelect();
+		display: block;
+		position: relative;
+		margin: 0 auto;
+		cursor: pointer;
+		min-height: $controlHeight;
+		line-height: $controlHeight;
+		line-height: $controlHeight;
+		font-size: round($controlHeight * 0.625);
+
+		> input {
+			// Hide the browser's default checkbox
+			position: absolute;
+			cursor: pointer;
+			height: 1px;
+			width: 1px;
+			top: 50%;
+			opacity: 0;
+			@include mxBrowsersPrefix("filter", "alpha(opacity=0)");
+
+			& + span {
+				display: block;
+				padding-left: round($controlHeight * 1.2);
+			}
+
+			& + span::before {
+				// Create a custom checkbox
+				content: "";
+				position: absolute;
+				top: 50%;
+				@include mxBrowsersPrefix("transform", "translateY(-50%)");
+				left: 0;
+				height: $controlHeight;
+				width: $controlHeight;
+				border: solid 1px $borderColor;
+				border-color: $borderColor;
+				box-shadow: 2px 2px 6px gainsboro inset;
+				background-color: whitesmoke;
+				border-radius: round($controlHeight * 0.1666);
+			}
+
+			&[type=radio] + span::before {
+				border-radius: 50%;
+			}
+
+			&:disabled ~ * {
+				@include mxDisabledElement();
+			}
+		}
+
+		&:hover:not(:disabled):not([disabled]) > input:not(:disabled):not(:checked) + span::before {
+			// On mouse-over, add a grey background color
+			background-color: white;
+			box-shadow: none;
+		}
+
+		> input[type=checkbox]:checked + span::before {
+			// When the checkbox is checked, add a blue background
+			background-color: $fillColor;
+			box-shadow: none;
+		}
+
+		> input[type=radio]:checked + span::before {
+			// When the checkbox is checked, add a blue background
+			background-color: $borderColor;
+			box-shadow: none;
+		}
+
+		> input {
+			& + span::after {
+				opacity: 0;
+				filter: opacity(0);
+				transition: $transition;
+			}
+
+			&:checked + span::after {
+				opacity: 1;
+				filter: opacity(100);
+			}
+		}
+
+		> input[type=checkbox] + span::after {
+			// Create the checkmark/indicator (hidden when not checked)
+			content: "";
+			position: absolute;
+			left: round($controlHeight * 0.3333);
+			top: 50%;
+			width: round($controlHeight * 0.3333);
+			height: round($controlHeight * 0.625);
+			border-style: solid;
+			border-color: $checkColor;
+			border-width: 0 3px 3px 0;
+			@include mxBrowsersPrefix("transform", "translateY(-59%) rotate(35deg)");
+		}
+
+		> input[type=radio] + span::after {
+			content: "";
+			position: absolute;
+			left: round($controlHeight * 0.125);
+			top: 50%;
+			@include mxBrowsersPrefix("transform", "translateY(-50%)");
+			width: round($controlHeight * 0.75);
+			height: round($controlHeight * 0.75);
+			border: solid round($controlHeight * 0.125) white;
+			border-radius: 50%;
+		}
+
+		&.right {
+			text-align: right;
+
+			> input + span {
+				padding-left: initial;
+				padding-right: round($controlHeight * 1.2);
+
+				&::before {
+					right: 0;
+					left: initial;
+				}
+			}
+
+			> input[type=checkbox] + span::after {
+				right: round($controlHeight * 0.333);
+				left: initial;
+			}
+
+
+			> input[type=radio] + span::after {
+				right: round($controlHeight * 0.125);
+				left: initial;
+			}
+		}
+
+		@include mxCheckboxAdjustColors($themeColor);
+	}
+	// assign definition to concrete selectors
+	label {
+		@extend %container;
+	}
+}
+
+@mixin tmplCheckboxesAeroTheme($discriminator: "", $defaultColor: $defaultThemeColor, $controlHeight: $defaultCheckboxHeight) {
+
+	@include tmplCheckboxesBasicTheme($discriminator, $defaultColor);
+
+	$map2: map-merge(("": $defaultColor), $mapColors);
+
+	// color variations
+	@each $name, $themeColor in $map2 {
+		$selector: if($discriminator, $discriminator, "") + if(str-length($name) > 1, "." + $name, "");
+
+		%container#{$selector} {
+			> input + span::before {
+				border-color: $themeColor;
+			}
+
+			> input:checked {
+				& + span::before {
+					background-color: $themeColor;
+					border-color: $themeColor;
+				}
+
+				& + span::after {
+					border-color: white;
+				}
+			}
+
+			@include mxCheckboxAdjustColors($themeColor);
+		}
+	}
+}
+
+@mixin tmplCheckboxesMetroTheme($discriminator: "", $defaultColor: $defaultThemeColor, $controlHeight: $defaultCheckboxHeight) {
+	@include tmplCheckboxesAeroTheme($discriminator, $defaultColor);
+	$discriminator: if($discriminator, $discriminator, "");
+
+	label#{$discriminator} > input[type=checkbox] + span::before {
+		border-radius: 0;
+	}
+}
+
+@if($defaultThemeFamily == "Aero") {
+	// default theme, checkbox container above input element must have calystoChk class
+	@include tmplCheckboxesAeroTheme(".calystoChk");
+}
+@else if($defaultThemeFamily == "Metro") {
+	@include tmplCheckboxesMetroTheme(".calystoChk");
+}
+@else {
+	@error #{"Theme family " + $defaultThemeFamily + " not found."};
+}
+

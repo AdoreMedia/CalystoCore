@@ -1,0 +1,1 @@
+var n=42+event.x;alert(n);event.preventDefault();return!1

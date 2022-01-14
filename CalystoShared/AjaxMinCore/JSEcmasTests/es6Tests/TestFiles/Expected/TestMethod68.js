@@ -1,0 +1,1 @@
+let nes0=myobje0?.dva.tri?[2],nes1=myobje1?.dva.tri["som eValue"],nes2=myobje2?.someValue,nes3=myobje3?["so meValue"];this.maxMarkerLeft=this.hMarkerEl?.parentNode?.clientWidth-this.hMarkerEl.offsetWidth;this.maxMarkerLeft=this.hMarkerEl?.parentNode?.clientWidth-this.hMarkerEl.offsetWidth;var state3=[...state,2,3],state2={...state,isErrorStatus:xhr.status<200||xhr.status>=300}

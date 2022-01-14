@@ -1,0 +1,38 @@
+@import "themes.scss";
+
+/*#region calystoTable */
+.calystoTable1 {
+	border-collapse: collapse;
+	border-bottom: solid 5px $defaultThemeColor;
+
+	.theadItem, .trowItem {
+		padding: 5px 10px;
+		border-bottom: solid 1px #d2dee8;
+	}
+
+	.theadItem {
+		padding: 5px 10px;
+		background-color: $defaultThemeColor;
+		color: $defaultThemeTextColor;
+	}
+
+	.trow:nth-of-type(2n+1) td {
+		background-color: aliceblue;
+	}
+
+	.trow:nth-of-type(2n) td {
+		background-color: white;
+	}
+	/*#endregion calystoTable*/
+	/*#region calystoTable colors */
+	@each $name, $color in $mapColors {
+		&.#{$name} {
+			border-bottom: solid 5px $color;
+
+			& .theadItem {
+				border-color: $color;
+			}
+		}
+	}
+}
+/*#endregion calystoTable colors */

@@ -1,0 +1,568 @@
+//************************************************************
+// Generated using CalystoEFCoreFluentGenerator for MSSQL
+//************************************************************
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Data.Common;
+using System.Linq;
+using System.Linq.Expressions;
+using System.Reflection;
+using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Internal;
+using Microsoft.EntityFrameworkCore.Metadata;
+using Calysto.EntityFrameworkCore;
+using Calysto.Data.Direct;
+using Calysto.Common;
+using Calysto.Common.Extensions;
+
+namespace CalystoUnittestNamespace2
+{
+	/// <summary>
+	/// CalystoEFCoreFluent for MSSQL
+	/// </summary>
+	public partial class dbCalystoUnittestDataContext2 : DbContext
+	{
+		#region Context constructors
+		
+		public dbCalystoUnittestDataContext2(bool useLazyLoadingProxies)
+			: base(new DbContextOptionsBuilder<dbCalystoUnittestDataContext2>()
+				.UsingThis(builder => { if (useLazyLoadingProxies) builder.UseLazyLoadingProxies(); })
+				.Options)
+		{
+			OnCreated();
+		}
+		
+		public dbCalystoUnittestDataContext2(Action<DbContextOptionsBuilder<dbCalystoUnittestDataContext2>> configure)
+			: base(new DbContextOptionsBuilder<dbCalystoUnittestDataContext2>()
+				.UsingThis(builder => configure(builder))
+				.Options)
+		{
+			OnCreated();
+		}
+
+		public dbCalystoUnittestDataContext2(DbContextOptions<dbCalystoUnittestDataContext2> options) : base(options)
+		{
+			OnCreated();
+		}
+
+		#endregion Context constructors
+
+		#region OnConfiguring
+
+		protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+		{
+			if (!optionsBuilder.IsConfigured ||
+				(!optionsBuilder.Options.Extensions.OfType<RelationalOptionsExtension>().Any(ext => !string.IsNullOrEmpty(ext.ConnectionString) || ext.Connection != null) &&
+				!optionsBuilder.Options.Extensions.Any(ext => !(ext is RelationalOptionsExtension) && !(ext is CoreOptionsExtension))))
+			{
+				optionsBuilder.UseSqlServer(@"Data Source=.\MSSQL2019;Initial Catalog=dbCalystoUnittest;Integrated Security=True;Connect Timeout=30;");
+			}
+			CustomizeConfiguration(ref optionsBuilder);
+			base.OnConfiguring(optionsBuilder);
+		}
+
+		partial void CustomizeConfiguration(ref DbContextOptionsBuilder optionsBuilder);
+
+		#endregion OnConfiguring
+
+		#region Context properties for tables
+
+		public virtual DbSet<tblAppMember> tblAppMember { get; set; }
+
+		#endregion Context properties for tables
+
+		#region Context database functions
+
+		/// <param name="nick">VarChar(100)</param>
+		/// <param name="name">NVarChar(100), DefaultValue = "my name"</param>
+		/// <param name="names">NVarChar(100), DefaultValue = "my name2"</param>
+		/// <param name="date">DateTime, DefaultValue = /*2020-01-01 23:55*/ new DateTime(637135197000000000)</param>
+		/// <param name="skip">Int, DefaultValue = null</param>
+		/// <param name="take">Int, DefaultValue = (int)(100)</param>
+		/// <param name="totalCount">Int, DefaultValue = null</param>
+		/// <param name="nick3">VarChar(100)</param>
+		/// <param name="name3">NVarChar(100), DefaultValue = "my name"</param>
+		/// <param name="names3">NVarChar(100), DefaultValue = "my name2"</param>
+		/// <param name="date3">DateTime, DefaultValue = null</param>
+		/// <param name="skip3">Int, DefaultValue = (int)(0)</param>
+		/// <param name="take3">Int, DefaultValue = null</param>
+		/// <param name="nick4">VarChar(100), DefaultValue = "bla"</param>
+		/// <param name="name4">NVarChar(100), DefaultValue = "my name"</param>
+		/// <param name="names4">NVarChar(100), DefaultValue = "my name2"</param>
+		/// <param name="date4">DateTime, DefaultValue = null</param>
+		/// <param name="skip4">Int, DefaultValue = (int)(0)</param>
+		/// <param name="take4">Int, DefaultValue = (int)(100)</param>
+		/// <returns>MultipleResults from stored procedure</returns>
+		public spGetAppMembers2MultipleResults spGetAppMembers2(
+			string nick, 
+			string name, 
+			ref string names, 
+			DateTime? date, 
+			int? skip, 
+			int? take, 
+			ref int? totalCount, 
+			string nick3, 
+			string name3, 
+			ref string names3, 
+			DateTime? date3 = null, 
+			int? skip3 = (int)(0), 
+			int? take3 = null, 
+			string nick4 = "bla", 
+			string name4 = "my name", 
+			string names4 = "my name2", 
+			DateTime? date4 = null, 
+			int? skip4 = (int)(0), 
+			int? take4 = (int)(100))
+		{
+			var multiple_results_1 = this.ExecuteMultipleResults($@"declare @return_value int; 
+					exec @return_value = dbo.spGetAppMembers2 {{0}}, {{1}}, {{2}} out, {{3}}, {{4}}, {{5}}, {{6}} out, {{7}}, {{8}}, {{9}} out, {{10}}, {{11}}, {{12}}, {{13}}, {{14}}, {{15}}, {{16}}, {{17}}, {{18}}; 
+					select @return_value as ReturnValue;", nick, name, names, date, skip, take, totalCount, nick3, name3, names3, date3, skip3, take3, nick4, name4, names4, date4, skip4, take4);
+			var final_result_1 = multiple_results_1.ReadResults(res => new spGetAppMembers2MultipleResults()
+			{
+				Result1 = res.GetSequence<spGetAppMembers2Result1>().ToList(),
+				Result2 = res.GetSequence<spGetAppMembers2Result2>().ToList(),
+				ReturnValue = res.GetSequence<int>().Single(),
+			});
+			// read Output parameter from stored procedure
+			names = Calysto.Utility.CalystoTypeConverter.ChangeType<string>(multiple_results_1.Command.Parameters[2].Value);
+			// read Output parameter from stored procedure
+			totalCount = Calysto.Utility.CalystoTypeConverter.ChangeType<int?>(multiple_results_1.Command.Parameters[6].Value);
+			// read Output parameter from stored procedure
+			names3 = Calysto.Utility.CalystoTypeConverter.ChangeType<string>(multiple_results_1.Command.Parameters[9].Value);
+			return final_result_1;
+		}
+
+
+		#endregion Context database functions
+
+		#region OnModelCreating
+
+		protected override void OnModelCreating(ModelBuilder modelBuilder)
+		{
+			this.Map_tblAppMember(modelBuilder);
+			this.Customize_tblAppMember(modelBuilder);
+
+			RelationshipsMapping(modelBuilder);
+			CustomizeMapping(ref modelBuilder);
+		}
+
+		#endregion
+
+		#region TablesMappingDetails
+
+		#region tblAppMember
+		private void Map_tblAppMember(ModelBuilder modelBuilder)
+		{
+			modelBuilder.Entity<tblAppMember>().ToTable("tblAppMember", "dbo");
+			modelBuilder.Entity<tblAppMember>().HasKey(x=>x.AppMemberID);
+			modelBuilder.Entity<tblAppMember>().Property(x=>x.AppMemberID).HasColumnName("AppMemberID").HasColumnType("Int").IsRequired().ValueGeneratedOnAdd();
+			modelBuilder.Entity<tblAppMember>().Property(x=>x.AppMemberStatusID).HasColumnName("AppMemberStatusID").HasColumnType("Int").IsRequired().ValueGeneratedNever();
+			modelBuilder.Entity<tblAppMember>().Property(x=>x.MSISDN).HasColumnName("MSISDN").HasColumnType("VarChar(15)").ValueGeneratedNever().HasMaxLength(15);
+			modelBuilder.Entity<tblAppMember>().Property(x=>x.FacebookId).HasColumnName("FacebookId").HasColumnType("VarChar(50)").ValueGeneratedNever().HasMaxLength(50);
+			modelBuilder.Entity<tblAppMember>().Property(x=>x.GoogleId).HasColumnName("GoogleId").HasColumnType("VarChar(50)").ValueGeneratedNever().HasMaxLength(50);
+			modelBuilder.Entity<tblAppMember>().Property(x=>x.Email).HasColumnName("Email").HasColumnType("VarChar(150)").ValueGeneratedNever().HasMaxLength(150);
+			modelBuilder.Entity<tblAppMember>().Property(x=>x.Username).HasColumnName("Username").HasColumnType("NVarChar(50)").ValueGeneratedNever().HasMaxLength(50);
+			modelBuilder.Entity<tblAppMember>().Property(x=>x.Password).HasColumnName("Password").HasColumnType("NVarChar(50)").ValueGeneratedNever().HasMaxLength(50);
+			modelBuilder.Entity<tblAppMember>().Property(x=>x.BirthDate).HasColumnName("BirthDate").HasColumnType("DateTime").ValueGeneratedNever();
+			modelBuilder.Entity<tblAppMember>().Property(x=>x.CreationDate).HasColumnName("CreationDate").HasColumnType("DateTime").ValueGeneratedNever();
+			modelBuilder.Entity<tblAppMember>().Property(x=>x.LastLoginDate).HasColumnName("LastLoginDate").HasColumnType("DateTime").ValueGeneratedNever();
+			modelBuilder.Entity<tblAppMember>().Property(x=>x.LoginsCount).HasColumnName("LoginsCount").HasColumnType("Int").IsRequired().ValueGeneratedNever();
+			modelBuilder.Entity<tblAppMember>().Property(x=>x.FirstName).HasColumnName("FirstName").HasColumnType("NVarChar(100)").ValueGeneratedNever().HasMaxLength(100);
+			modelBuilder.Entity<tblAppMember>().Property(x=>x.LastName).HasColumnName("LastName").HasColumnType("NVarChar(100)").ValueGeneratedNever().HasMaxLength(100);
+			modelBuilder.Entity<tblAppMember>().Property(x=>x.Gender).HasColumnName("Gender").HasColumnType("VarChar(10)").ValueGeneratedNever().HasMaxLength(10);
+			modelBuilder.Entity<tblAppMember>().Property(x=>x.PersonalNote).HasColumnName("PersonalNote").HasColumnType("NVarChar(1000)").ValueGeneratedNever().HasMaxLength(1000);
+			modelBuilder.Entity<tblAppMember>().Property(x=>x.WebUrl).HasColumnName("WebUrl").HasColumnType("VarChar(255)").ValueGeneratedNever().HasMaxLength(255);
+			modelBuilder.Entity<tblAppMember>().Property(x=>x.Address).HasColumnName("Address").HasColumnType("NVarChar(255)").ValueGeneratedNever().HasMaxLength(255);
+			modelBuilder.Entity<tblAppMember>().Property(x=>x.ZipCode).HasColumnName("ZipCode").HasColumnType("NVarChar(50)").ValueGeneratedNever().HasMaxLength(50);
+			modelBuilder.Entity<tblAppMember>().Property(x=>x.City).HasColumnName("City").HasColumnType("NVarChar(250)").ValueGeneratedNever().HasMaxLength(250);
+			modelBuilder.Entity<tblAppMember>().Property(x=>x.Country).HasColumnName("Country").HasColumnType("NVarChar(250)").ValueGeneratedNever().HasMaxLength(250);
+			modelBuilder.Entity<tblAppMember>().Property(x=>x.IP).HasColumnName("IP").HasColumnType("VarChar(50)").ValueGeneratedNever().HasMaxLength(50);
+			modelBuilder.Entity<tblAppMember>().Property(x=>x.PosFirmaID).HasColumnName("PosFirmaID").HasColumnType("Int").ValueGeneratedNever();
+			modelBuilder.Entity<tblAppMember>().Property(x=>x.IsQuizQuestionsEditor).HasColumnName("IsQuizQuestionsEditor").HasColumnType("Bit").ValueGeneratedNever();
+			modelBuilder.Entity<tblAppMember>().Property(x=>x.StanjeRacuna).HasColumnName("StanjeRacuna").HasColumnType("Money").ValueGeneratedNever();
+			modelBuilder.Entity<tblAppMember>().Property(x=>x.HomeMemberAddressID).HasColumnName("HomeMemberAddressID").HasColumnType("Int").ValueGeneratedNever();
+			modelBuilder.Entity<tblAppMember>().Property(x=>x.WorkMemberAddressID).HasColumnName("WorkMemberAddressID").HasColumnType("Int").ValueGeneratedNever();
+			modelBuilder.Entity<tblAppMember>().Property(x=>x.PrimaryMemberAddressID).HasColumnName("PrimaryMemberAddressID").HasColumnType("Int").ValueGeneratedNever();
+		}
+
+		partial void Customize_tblAppMember(ModelBuilder modelBuilder);
+		#endregion
+
+		#endregion
+
+		#region Relationships mapping
+		private void RelationshipsMapping(ModelBuilder modelBuilder)
+		{
+		}
+		#endregion
+
+		#region Other details
+		partial void CustomizeMapping(ref ModelBuilder modelBuilder);
+		
+		public bool HasChanges()
+		{
+		    return ChangeTracker.Entries().Any(e => e.State == Microsoft.EntityFrameworkCore.EntityState.Added || e.State == Microsoft.EntityFrameworkCore.EntityState.Modified || e.State == Microsoft.EntityFrameworkCore.EntityState.Deleted);
+		}
+		
+		partial void OnCreated();
+		#endregion
+
+	}
+
+	#region Entity Tables
+
+	#region dbo.tblAppMember
+	public partial class tblAppMember : EFCoreEntityBase<tblAppMember>
+	{
+		public tblAppMember()
+		{
+			OnCreated();
+		}
+
+		public tblAppMember(DbContext context) : base(context)
+		{
+			OnCreated();
+		}
+
+		#region Columns
+		/// <summary>
+		/// DbType = "Int NOT NULL IDENTITY", IsPrimaryKey = true, IsDbGenerated = true, AutoSync = AutoSync.OnInsert
+		/// </summary>
+		public int AppMemberID { get; set; }
+
+		/// <summary>
+		/// DbType = "Int NOT NULL"
+		/// </summary>
+		public int AppMemberStatusID { get; set; }
+
+		/// <summary>
+		/// DbType = "VarChar(15)"
+		/// </summary>
+		public string MSISDN { get; set; }
+
+		/// <summary>
+		/// DbType = "VarChar(50)"
+		/// </summary>
+		public string FacebookId { get; set; }
+
+		/// <summary>
+		/// DbType = "VarChar(50)", DefaultValue = "google-default-id"
+		/// </summary>
+		public string GoogleId { get; set; } = "google-default-id";
+
+		/// <summary>
+		/// DbType = "VarChar(150)"
+		/// </summary>
+		public string Email { get; set; }
+
+		/// <summary>
+		/// DbType = "NVarChar(50)"
+		/// </summary>
+		public string Username { get; set; }
+
+		/// <summary>
+		/// DbType = "NVarChar(50)"
+		/// </summary>
+		public string Password { get; set; }
+
+		/// <summary>
+		/// DbType = "DateTime"
+		/// </summary>
+		public DateTime? BirthDate { get; set; }
+
+		/// <summary>
+		/// DbType = "DateTime", DefaultValue = /*getdate()*/ DateTime.Now
+		/// </summary>
+		public DateTime? CreationDate { get; set; } = /*getdate()*/ DateTime.Now;
+
+		/// <summary>
+		/// DbType = "DateTime", DefaultValue = /*2020-02-01*/ new DateTime(637161120000000000)
+		/// </summary>
+		public DateTime? LastLoginDate { get; set; } = /*2020-02-01*/ new DateTime(637161120000000000);
+
+		/// <summary>
+		/// DbType = "Int NOT NULL", DefaultValue = (int)(-1)
+		/// </summary>
+		public int LoginsCount { get; set; } = (int)(-1);
+
+		/// <summary>
+		/// DbType = "NVarChar(100)"
+		/// </summary>
+		public string FirstName { get; set; }
+
+		/// <summary>
+		/// DbType = "NVarChar(100)"
+		/// </summary>
+		public string LastName { get; set; }
+
+		/// <summary>
+		/// DbType = "VarChar(10)"
+		/// </summary>
+		public string Gender { get; set; }
+
+		/// <summary>
+		/// DbType = "NVarChar(1000)"
+		/// </summary>
+		public string PersonalNote { get; set; }
+
+		/// <summary>
+		/// DbType = "VarChar(255)"
+		/// </summary>
+		public string WebUrl { get; set; }
+
+		/// <summary>
+		/// DbType = "NVarChar(255)"
+		/// </summary>
+		public string Address { get; set; }
+
+		/// <summary>
+		/// DbType = "NVarChar(50)"
+		/// </summary>
+		public string ZipCode { get; set; }
+
+		/// <summary>
+		/// DbType = "NVarChar(250)"
+		/// </summary>
+		public string City { get; set; }
+
+		/// <summary>
+		/// DbType = "NVarChar(250)"
+		/// </summary>
+		public string Country { get; set; }
+
+		/// <summary>
+		/// DbType = "VarChar(50)"
+		/// </summary>
+		public string IP { get; set; }
+
+		/// <summary>
+		/// DbType = "Int"
+		/// </summary>
+		public int? PosFirmaID { get; set; }
+
+		/// <summary>
+		/// DbType = "Bit", DefaultValue = true
+		/// </summary>
+		public bool? IsQuizQuestionsEditor { get; set; } = true;
+
+		/// <summary>
+		/// DbType = "Money", DefaultValue = (decimal)(12.930134)
+		/// </summary>
+		public decimal? StanjeRacuna { get; set; } = (decimal)(12.930134);
+
+		/// <summary>
+		/// DbType = "Int"
+		/// </summary>
+		public int? HomeMemberAddressID { get; set; }
+
+		/// <summary>
+		/// DbType = "Int"
+		/// </summary>
+		public int? WorkMemberAddressID { get; set; }
+
+		/// <summary>
+		/// DbType = "Int"
+		/// </summary>
+		public int? PrimaryMemberAddressID { get; set; }
+
+		#endregion Columns
+
+		#region Associations
+		#endregion Associations
+
+		partial void OnCreated();
+	}
+	#endregion dbo.tblAppMember
+
+
+	#endregion
+
+	#region Functions Return types
+
+	#region spGetAppMembers2MultipleResults
+	public partial class spGetAppMembers2MultipleResults
+	{
+		public spGetAppMembers2MultipleResults(){ }
+
+		public List<spGetAppMembers2Result1> Result1 { get; set; }
+
+		public List<spGetAppMembers2Result2> Result2 { get; set; }
+
+		public int ReturnValue { get; set; }
+
+	}
+	#endregion spGetAppMembers2MultipleResults
+
+	#region spGetAppMembers2Result1
+	public partial class spGetAppMembers2Result1
+	{
+		public spGetAppMembers2Result1(){ }
+
+		/// <summary>
+		/// DbType = "BigInt"
+		/// </summary>
+		public long? num { get; set; }
+
+		/// <summary>
+		/// DbType = "Int NOT NULL"
+		/// </summary>
+		public int AppMemberID { get; set; }
+
+		/// <summary>
+		/// DbType = "Int NOT NULL"
+		/// </summary>
+		public int AppMemberStatusID { get; set; }
+
+		/// <summary>
+		/// DbType = "VarChar(15)"
+		/// </summary>
+		public string MSISDN { get; set; }
+
+		/// <summary>
+		/// DbType = "VarChar(50)"
+		/// </summary>
+		public string FacebookId { get; set; }
+
+		/// <summary>
+		/// DbType = "VarChar(50)"
+		/// </summary>
+		public string GoogleId { get; set; }
+
+		/// <summary>
+		/// DbType = "VarChar(150)"
+		/// </summary>
+		public string Email { get; set; }
+
+		/// <summary>
+		/// DbType = "NVarChar(50)"
+		/// </summary>
+		public string Username { get; set; }
+
+		/// <summary>
+		/// DbType = "NVarChar(50)"
+		/// </summary>
+		public string Password { get; set; }
+
+		/// <summary>
+		/// DbType = "DateTime"
+		/// </summary>
+		public DateTime? BirthDate { get; set; }
+
+		/// <summary>
+		/// DbType = "DateTime"
+		/// </summary>
+		public DateTime? CreationDate { get; set; }
+
+		/// <summary>
+		/// DbType = "DateTime"
+		/// </summary>
+		public DateTime? LastLoginDate { get; set; }
+
+		/// <summary>
+		/// DbType = "Int NOT NULL"
+		/// </summary>
+		public int LoginsCount { get; set; }
+
+		/// <summary>
+		/// DbType = "NVarChar(100)"
+		/// </summary>
+		public string FirstName { get; set; }
+
+		/// <summary>
+		/// DbType = "NVarChar(100)"
+		/// </summary>
+		public string LastName { get; set; }
+
+		/// <summary>
+		/// DbType = "VarChar(10)"
+		/// </summary>
+		public string Gender { get; set; }
+
+		/// <summary>
+		/// DbType = "NVarChar(1000)"
+		/// </summary>
+		public string PersonalNote { get; set; }
+
+		/// <summary>
+		/// DbType = "VarChar(255)"
+		/// </summary>
+		public string WebUrl { get; set; }
+
+		/// <summary>
+		/// DbType = "NVarChar(255)"
+		/// </summary>
+		public string Address { get; set; }
+
+		/// <summary>
+		/// DbType = "NVarChar(50)"
+		/// </summary>
+		public string ZipCode { get; set; }
+
+		/// <summary>
+		/// DbType = "NVarChar(250)"
+		/// </summary>
+		public string City { get; set; }
+
+		/// <summary>
+		/// DbType = "NVarChar(250)"
+		/// </summary>
+		public string Country { get; set; }
+
+		/// <summary>
+		/// DbType = "VarChar(50)"
+		/// </summary>
+		public string IP { get; set; }
+
+		/// <summary>
+		/// DbType = "Int"
+		/// </summary>
+		public int? PosFirmaID { get; set; }
+
+		/// <summary>
+		/// DbType = "Bit"
+		/// </summary>
+		public bool? IsQuizQuestionsEditor { get; set; }
+
+		/// <summary>
+		/// DbType = "Money"
+		/// </summary>
+		public decimal? StanjeRacuna { get; set; }
+
+		/// <summary>
+		/// DbType = "Int"
+		/// </summary>
+		public int? HomeMemberAddressID { get; set; }
+
+		/// <summary>
+		/// DbType = "Int"
+		/// </summary>
+		public int? WorkMemberAddressID { get; set; }
+
+		/// <summary>
+		/// DbType = "Int"
+		/// </summary>
+		public int? PrimaryMemberAddressID { get; set; }
+
+	}
+	#endregion spGetAppMembers2Result1
+
+	#region spGetAppMembers2Result2
+	public partial class spGetAppMembers2Result2
+	{
+		public spGetAppMembers2Result2(){ }
+
+		/// <summary>
+		/// DbType = "Int"
+		/// </summary>
+		public int? TotalCount { get; set; }
+
+	}
+	#endregion spGetAppMembers2Result2
+
+	#endregion
+
+}

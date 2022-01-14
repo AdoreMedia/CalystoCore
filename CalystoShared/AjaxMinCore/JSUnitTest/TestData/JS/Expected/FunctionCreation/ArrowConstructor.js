@@ -1,0 +1,1 @@
+var obj=new((n,t,i)=>{this.sum=n+t+i})(1,2,3)

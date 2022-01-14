@@ -1,0 +1,1 @@
+function one(a,b){"use strict";a=b+b;return b+a}function two(c,d){"some other prologue";"use strict";c=d+c+d;return c}function three(e,f){"use strict";var d=e+f;"this is not a prologue directive";return d}

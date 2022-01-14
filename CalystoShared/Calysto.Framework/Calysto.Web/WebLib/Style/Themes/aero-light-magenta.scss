@@ -1,0 +1,8 @@
+﻿@import "../parts/common/functions.scss";
+@import "../parts/Components/constants.scss";
+
+$defaultThemeColor: fnGetMapValueSafe($mapColors, "calystoColorMagenta");
+$defaultThemeFamily: fnGetMapValueSafe($mapThemeFamilies, "Aero");
+$defaultThemeMode: fnGetMapValueSafe($mapThemeModes, "Light");
+
+@import "../parts/PartsAll.scss";

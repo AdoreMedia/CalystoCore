@@ -1,0 +1,1 @@
+function foo(a,b){return a!==null&&typeof b=="string"?a+b:""}

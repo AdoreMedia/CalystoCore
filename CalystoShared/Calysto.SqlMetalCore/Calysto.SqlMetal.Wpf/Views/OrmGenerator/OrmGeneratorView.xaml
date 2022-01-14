@@ -1,0 +1,211 @@
+﻿<UserControl x:Class="Calysto.SqlMetal.Wpf.Views.OrmGenerator.OrmGeneratorView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Calysto.SqlMetal.Wpf.Views.OrmGenerator"
+			 xmlns:Models="clr-namespace:Calysto.SqlMetal.Wpf.Views.OrmGenerator.Models"
+			 xmlns:Converters="clr-namespace:Calysto.SqlMetal.Wpf.Views.OrmGenerator.Converters"
+             mc:Ignorable="d" 
+			 d:DataContext="{d:DesignInstance Type=Models:OrmGeneratorViewModel, IsDesignTimeCreatable=True}"
+             d:DesignHeight="450" d:DesignWidth="800">
+	<UserControl.Resources>
+		<Converters:CsvStringConverter x:Key="CsvStringConverter1" />
+		<Converters:BackColorConverter x:Key="BackColorConverter1"/>
+	</UserControl.Resources>
+
+	<Grid x:Name="grid1">
+		<Grid.RowDefinitions>
+			<RowDefinition Height="Auto"/>
+			<RowDefinition Height="*"/>
+		</Grid.RowDefinitions>
+		<!--top row-->
+		<StackPanel Grid.Row="0" Orientation="Vertical">
+			<!--top buttons-->
+			<StackPanel Orientation="Horizontal" VerticalAlignment="Top" Margin="5">
+				<StackPanel.Resources>
+					<Style TargetType="Button">
+						<Setter Property="Margin" Value="4"/>
+						<Setter Property="Padding" Value="4"/>
+						<Setter Property="MinWidth" Value="100"/>
+					</Style>
+				</StackPanel.Resources>
+				<Button Content="Open Settings" Command="{Binding CmdOpenSettings}"/>
+				<Button Content="Reload Settings" Command="{Binding CmdReloadSettings}"/>
+				<Button Content="Save Settings" Command="{Binding CmdSaveSettings}"/>
+				<Button Content="Read Database" Command="{Binding CmdReadDatabase}"/>
+				<Button Content="Generate Linq2Sql" Command="{Binding CmdGenerateLinq2Sql}"/>
+				<Button Content="Generate EF Core Fluent" Command="{Binding CmdGenerateEfCoreFluent}"/>
+			</StackPanel>
+			<!--text inputs-->
+			<Grid>
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="120"/>
+					<ColumnDefinition Width="*"/>
+					<ColumnDefinition Width="120"/>
+					<ColumnDefinition Width="*"/>
+				</Grid.ColumnDefinitions>
+				<Grid.RowDefinitions>
+					<RowDefinition/>
+					<RowDefinition/>
+					<RowDefinition/>
+					<RowDefinition/>
+					<RowDefinition/>
+				</Grid.RowDefinitions>
+				<Grid.Resources>
+					<Style TargetType="TextBox">
+						<Setter Property="Margin" Value="4"/>
+						<Setter Property="Padding" Value="4"/>
+					</Style>
+					<Style TargetType="ComboBox">
+						<Setter Property="Margin" Value="4"/>
+						<Setter Property="Padding" Value="4"/>
+						<Setter Property="HorizontalAlignment" Value="Left"/>
+						<Setter Property="MinWidth" Value="150"/>
+					</Style>
+					<Style TargetType="TextBlock">
+						<Setter Property="Padding" Value="10 0 0 0"/>
+						<Setter Property="VerticalAlignment" Value="Center"/>
+						<Setter Property="Width" Value="130"/>
+						<Setter Property="TextWrapping" Value="Wrap"/>
+					</Style>
+				</Grid.Resources>
+				<!--row1-->
+				<TextBlock Grid.Row="0" Grid.Column="0" Text="Settings file:" />
+				<TextBox Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="3" Text="{Binding Path=Settings.SettingsFile}"/>
+				<!--row2-->
+				<TextBlock Grid.Row="1" Grid.Column="0" Text="Conn. string:" />
+				<TextBox Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3" Text="{Binding Path=Settings.ConnectionString}" />
+				<!--row3-->
+				<TextBlock Grid.Row="2" Grid.Column="0" Text="Namespace:" />
+				<TextBox Grid.Row="2" Grid.Column="1" Text="{Binding Path=Settings.Namespace}" />
+				<TextBlock Grid.Row="2" Grid.Column="2" Text="Context class:" />
+				<TextBox Grid.Row="2" Grid.Column="3" Text="{Binding Path=Settings.ContextClass}" />
+				<!--row4-->
+				<TextBlock Grid.Row="3" Grid.Column="0" Text="Collection properties suffix:" />
+				<TextBox Grid.Row="3" Grid.Column="1" Text="{Binding Path=Settings.CollectionNavigationPropSufix}" />
+				<TextBlock Grid.Row="3" Grid.Column="2" Text="FK prefixes for property name (CSV):" />
+				<TextBox Grid.Row="3" Grid.Column="3" Text="{Binding Path=Settings.FkPrefixesForPropName, Converter={StaticResource CsvStringConverter1}}" />
+				<!--row5-->
+				<TextBlock Grid.Row="4" Grid.Column="0" Text="No schema prefix for schemas (CSV):" />
+				<TextBox Grid.Row="4" Grid.Column="1" Text="{Binding Path=Settings.NeverAddSchemaPrefixForSchemas, Converter={StaticResource CsvStringConverter1}}" />
+				<TextBlock Grid.Row="4" Grid.Column="2" Text="Target:" />
+				<ComboBox Grid.Row="4" Grid.Column="3" ItemsSource="{Binding Path=DbProviderCollection}" SelectedItem="{Binding Path=Settings.TargetMode}"/>
+			</Grid>
+			<!--bottom buttons-->
+			<StackPanel Orientation="Horizontal" VerticalAlignment="Top" Margin="5">
+				<StackPanel.Resources>
+					<Style TargetType="Button">
+						<Setter Property="Margin" Value="4"/>
+						<Setter Property="Padding" Value="4"/>
+						<Setter Property="MinWidth" Value="80"/>
+					</Style>
+				</StackPanel.Resources>
+				<Button Content="All" Click="Button_SelectAll"/>
+				<Button Content="None" Click="Button_SelectNone"/>
+				<Button Content="Default" Click="Button_SelectDefault"/>
+				<Button Content="Toggle" Click="Button_SelectToggle"/>
+			</StackPanel>
+		</StackPanel>
+		
+		<!--bottom row-->
+		<Grid Grid.Row="1" x:Name="grid2">
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="2*" MinWidth="100"/>
+				<ColumnDefinition Width="Auto"/>
+				<ColumnDefinition Width="1*" MinWidth="100"/>
+			</Grid.ColumnDefinitions>
+			<!--left column-->
+
+			<Grid.Resources>
+				<CollectionViewSource x:Key="ReturnKindCollection1" Source="{Binding FunctionReturnKindItems}"/>
+			</Grid.Resources>
+			
+			<DataGrid Grid.Column="0" Name="dataGrid1" ItemsSource="{Binding Path=DatabaseItemsCollection}" 
+						HorizontalGridLinesBrush="LightGray" 
+						VerticalGridLinesBrush="WhiteSmoke" 
+					  AlternatingRowBackground="AliceBlue"
+						RowHeaderWidth="30"
+						CanUserResizeRows="false"
+						CanUserAddRows="false"
+						CanUserDeleteRows="false"
+						BorderThickness="1"
+						BorderBrush="Gray"
+						AutoGenerateColumns="False">
+				<DataGrid.Columns>
+					<DataGridTextColumn Binding="{Binding Kind}" Header="Kind" IsReadOnly="true"/>
+					<DataGridCheckBoxColumn Binding="{Binding Checked}" Header="Checked"/>
+					<DataGridTemplateColumn Header="Status" SortMemberPath="ResultStatus">
+						<DataGridTemplateColumn.CellTemplate>
+							<DataTemplate>
+								<Label Content="{Binding ResultStatus}" Padding="1" MinWidth="30">
+									<Label.Style>
+										<Style TargetType="Label">
+											<Style.Triggers>
+												<DataTrigger Binding="{Binding ResultStatus}" Value="Error">
+													<Setter Property="Background" Value="#FFE06363"/>
+													<Setter Property="Foreground" Value="White"/>
+												</DataTrigger>
+												<DataTrigger Binding="{Binding ResultStatus}" Value="Success">
+													<Setter Property="Background" Value="#FF5FA85F"/>
+													<Setter Property="Foreground" Value="White"/>
+												</DataTrigger>
+												<DataTrigger Binding="{Binding ResultStatus}" Value="Warning">
+													<Setter Property="Background" Value="#FFE2B054"/>
+													<Setter Property="Foreground" Value="White"/>
+												</DataTrigger>
+												<DataTrigger Binding="{Binding ResultStatus}" Value="Skip">
+													<Setter Property="Background" Value="Silver"/>
+													<Setter Property="Foreground" Value="White"/>
+												</DataTrigger>
+											</Style.Triggers>
+										</Style>
+									</Label.Style>
+								</Label>
+							</DataTemplate>
+						</DataGridTemplateColumn.CellTemplate>
+					</DataGridTemplateColumn>
+					<DataGridTextColumn Binding="{Binding DurationSec, StringFormat='#,##0.#####'}" Header="Duration"/>
+					<DataGridTextColumn Binding="{Binding Schema}" Header="Schema" IsReadOnly="true"/>
+					<DataGridTextColumn Binding="{Binding FullName}" Header="FullName" IsReadOnly="true"/>
+					<DataGridCheckBoxColumn Binding="{Binding Execute}" Header="Execute"/>
+					<DataGridTextColumn Binding="{Binding CsvArgs}" Header="CsvArgs"/>
+					<DataGridTextColumn Binding="{Binding CSharpName}" Header="CSharpName"/>
+					<DataGridComboBoxColumn ItemsSource="{Binding Source={StaticResource ReturnKindCollection1}}" SelectedItemBinding="{Binding ReturnKind}" Header="ReturnKind"/>
+					<DataGridTemplateColumn Header="ResultSets" SortMemberPath="ResultSets">
+						<DataGridTemplateColumn.CellTemplate>
+							<DataTemplate>
+								<TextBlock Text="{Binding ResultSets}" TextWrapping="Wrap"/>
+							</DataTemplate>
+						</DataGridTemplateColumn.CellTemplate>
+						<DataGridTemplateColumn.CellEditingTemplate>
+							<DataTemplate>
+								<TextBox Text="{Binding ResultSets}" TextWrapping="Wrap" AcceptsReturn="True" BorderThickness="0" />
+							</DataTemplate>
+						</DataGridTemplateColumn.CellEditingTemplate>
+					</DataGridTemplateColumn>
+					<DataGridTemplateColumn Header="Note" SortMemberPath="Note">
+						<DataGridTemplateColumn.CellTemplate>
+							<DataTemplate>
+								<TextBlock Text="{Binding Note}" TextWrapping="Wrap"/>
+							</DataTemplate>
+						</DataGridTemplateColumn.CellTemplate>
+						<DataGridTemplateColumn.CellEditingTemplate>
+							<DataTemplate>
+								<TextBox Text="{Binding Note}" TextWrapping="Wrap" AcceptsReturn="True" BorderThickness="0" />
+							</DataTemplate>
+						</DataGridTemplateColumn.CellEditingTemplate>
+					</DataGridTemplateColumn>
+				</DataGrid.Columns>
+			</DataGrid>
+
+			<!--splitter-->
+			<GridSplitter Grid.Column="1" Width="5" VerticalAlignment="Stretch" ResizeBehavior="PreviousAndNext" Background="LightSteelBlue"/>
+			<!--right column-->
+			<ListView Grid.Column="2" Name="listView1" ItemsSource="{Binding Path=LogItemsCollection}" 
+					  Loaded="listView_Loaded"
+					  BorderBrush="Gray"
+					  BorderThickness="1"/>
+		</Grid>
+	</Grid>
+</UserControl>

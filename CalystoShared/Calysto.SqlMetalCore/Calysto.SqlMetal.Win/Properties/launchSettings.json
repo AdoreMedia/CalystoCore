@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "Calysto.SqlMetal.Win": {
+      "commandName": "Project",
+      "commandLineArgs": "C:\\LOCAL\\VSPROJECTS\\California.Core\\CalystoShared\\Calysto.SqlMetalCore\\Calysto.SqlMetal.Win\\Database4\\dbPrivredniAppBase.CalystoEF"
+    }
+  }
+}

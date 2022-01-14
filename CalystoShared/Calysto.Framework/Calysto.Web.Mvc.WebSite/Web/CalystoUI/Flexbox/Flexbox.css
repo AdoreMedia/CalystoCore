@@ -1,0 +1,13 @@
+.fxContainer {
+  border: solid 1px red;
+  display: flex;
+  flex-flow: wrap;
+  justify-items: end;
+}
+
+.fxContainer > div {
+  border: solid 1px green;
+  width: 25%;
+}
+
+/*# sourceMappingURL=Flexbox.css.map */

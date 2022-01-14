@@ -1,0 +1,51 @@
+
+declare namespace Calysto.Genesis.UnitTest.Calysto.TypeLite.Model
+{
+	interface WebServiceClassExample
+	{
+	}
+
+	namespace WebServiceClassExample
+	{
+		export function GetPrometItems(skip: number, take: number): Calysto.Net.WebService.AjaxServiceClientWithReturn<Calysto.Genesis.UnitTest.Calysto.TypeLite.Model.WebServiceClassExample.PrometResponse>;
+		export function UploadTransactionsData(data: string, bankaKind: Calysto.Genesis.UnitTest.Calysto.TypeLite.Model.WebServiceClassExample.tblBankaEnum): Calysto.Net.WebService.AjaxServiceClientWithReturn<Calysto.Genesis.UnitTest.Calysto.TypeLite.Model.WebServiceClassExample.UploadResult>;
+		export function SavePrimateljPozivNaBroj(bankaPrometID: number, primateljPozivNaBroj: string): Calysto.Net.WebService.AjaxServiceClientWithReturn<Calysto.Genesis.UnitTest.Calysto.TypeLite.Model.WebServiceClassExample.SavePozivNaBrojResponse>;
+		export function SaveSomeData(bankaPrometID: number, primateljPozivNaBroj: string): Calysto.Net.WebService.AjaxServiceClientWithReturn<Treci.Peti.ArizonaJSResponse>;
+	}
+
+}
+
+declare namespace Calysto.Genesis.UnitTest.Calysto.TypeLite.Model.WebServiceClassExample
+{
+	export enum tblBankaEnum
+	{
+		Erste = 1,
+		Pbz = 2,
+		Zaba = 3
+	}
+
+	interface PrometResponse
+	{
+	}
+
+	interface SavePozivNaBrojResponse
+	{
+		DocumentDetailsUrl: string;
+	}
+
+	interface UploadResult
+	{
+		Message: string;
+		ReloadAfterMs: number;
+	}
+
+}
+
+declare namespace Treci.Peti
+{
+	interface ArizonaJSResponse
+	{
+	}
+
+}
+

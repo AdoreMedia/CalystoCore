@@ -1,0 +1,22 @@
+
+declare namespace CalystoWebTests.Calysto.TypeLite.Model
+{
+	interface MessageItem2
+	{
+		Name: string;
+	}
+
+	interface MyAsyncFunctions2
+	{
+	}
+
+	namespace MyAsyncFunctions2
+	{
+		export function AreYouReady2Async(): Calysto.Net.WebService.AjaxServiceClientWithReturn<string[]>;
+		export function AreYouReady3Async(): Calysto.Net.WebService.AjaxServiceClientWithReturn<string[]>;
+		export function AreYouReady4Async(): Calysto.Net.WebService.AjaxServiceClientWithReturn<string[]>;
+		export function AreYouReady5Async(): Calysto.Net.WebService.AjaxServiceClientWithReturn<CalystoWebTests.Calysto.TypeLite.Model.MessageItem2[]>;
+	}
+
+}
+

@@ -1,0 +1,10 @@
+/***************************************************************
+*	SCSS file template 
+*	To run automatic compilation in Visual Studio:
+*		right click on file -> Properties -> Custom Tool: CalystoCssGenerator
+***************************************************************/
+
+
+input[type=button], input[type=submit], button {
+	margin: 0 5px 5px 0;
+}

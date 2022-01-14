@@ -1,0 +1,51 @@
+﻿@this.Calysto().ScriptManager(s =>
+{
+	s.RegisterDefinedWords("DEBUG");
+	s.RegisterScriptFile("~/CalystoUI/Social/Social.css");
+	s.RegisterScriptFile("~/CalystoUI/Social/Social.js");
+})
+<div class="calystoThemeContainer">
+	<h3>Unittests</h3>
+	<div class="div1" style="padding:10px;border:solid 5px silver;margin-bottom:10px;">
+		<input type="button" class="calystoBtn" value="RunTests" onclick="Unittests.RunTests(this)" />
+		<div>results visible in console</div>
+	</div>
+
+	<h3>Login with Facebook</h3>
+	<div class="div1" style="padding:10px;border:solid 5px silver;margin-bottom:10px;">
+		<input type="button" class="calystoBtn" value="InitApp" onclick="Facebook.InitApp(this)" />
+		<input type="button" class="calystoBtn" value="Login" onclick="Facebook.Login(this)" />
+		<input type="button" class="calystoBtn" value="Logout" onclick="Facebook.Logout(this)" />
+		<input type="button" class="calystoBtn" value="Status" onclick="Facebook.Status(this)" />
+		<div>results visible in console</div>
+	</div>
+
+	<h3>Login with Google</h3>
+	<div class="div1" style="padding:10px;border:solid 5px silver;margin-bottom:10px;">
+		<input type="button" class="calystoBtn" value="InitApp" onclick="Google.InitApp(this)" />
+		<input type="button" class="calystoBtn" value="Login" onclick="Google.Login(this)" />
+		<div>results visible in console</div>
+	</div>
+
+	<h3>Other</h3>
+	<div class="div1" style="padding:10px;border:solid 5px silver;margin-bottom:10px;">
+		<input type="button" class="calystoBtn" value="Test1" onclick="Other.Test1(this)" />
+		<input type="button" class="calystoBtn" value="Test2" onclick="Other.Test2(this)" />
+		<input type="button" class="calystoBtn" value="Test3" onclick="Other.Test3(this)" />
+		<input type="button" class="calystoBtn" value="Test4" onclick="Other.Test4(this)" />
+		<input type="button" class="calystoBtn" value="Test5" onclick="Other.Test5(this)" />
+		<input type="button" class="calystoBtn" value="Test6" onclick="Other.Test6(this)" />
+		<input type="button" class="calystoBtn" value="Test7" onclick="Other.Test7(this)" />
+		<input type="button" class="calystoBtn" value="Test8" onclick="Other.Test8(this)" />
+		<input type="button" class="calystoBtn" value="Test9" onclick="Other.Test9(this)" />
+		<div>results visible in console</div>
+	</div>
+
+	<div class=".tests3423">
+		<form id="recaptchaForm">
+			<input name="potvrdi"/>
+		</form>
+		<input id="g-recaptcha-response" />
+		<textarea id="g-recaptcha-response"/>
+	</div>
+</div>

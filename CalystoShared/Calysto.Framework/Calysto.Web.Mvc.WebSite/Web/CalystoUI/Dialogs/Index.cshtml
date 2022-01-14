@@ -1,0 +1,29 @@
+﻿@{ 
+}
+@this.Calysto().ScriptManager(s =>
+{
+	s.RegisterScriptFile("~/CalystoUI/Dialogs/Dialogs.css");
+	s.RegisterScriptFile("~/CalystoUI/Dialogs/Dialogs.js");
+})
+	<div class="calystoThemeContainer">
+		<h3>Dialogs</h3>
+		<div class="div1" style="padding:10px;border:solid 5px silver;margin-bottom:10px;">
+
+			<input type="button" class="calystoBtn" value="Invoke Short Content" id="btnDialogsSend3" onclick="Dialogs.InvokeShortContent(this)" />
+			<input type="button" class="calystoBtn" value="Invoke Unknown Function" id="btnDialogsSend3" onclick="Dialogs.InvokeUnknownFunc(this)" /><br />
+			<input type="button" class="calystoBtn" value="Invoke Long Content" id="btnDialogsSend31" onclick="Dialogs.InvokeLongContent(this)" />
+			<input type="button" class="calystoBtn" value="Invoke Width Content" id="btnDialogsSend32" onclick="Dialogs.InvokeWidthContent(this)" />
+			<input type="button" class="calystoBtn" value="Invoke Long Width Content" id="btnDialogsSend33" onclick="Dialogs.InvokeLongWidthContent(this)" /><br />
+		</div>
+
+		<h3>Panels</h3>
+		<div class="div1" style="padding:10px;border:solid 5px silver;margin-bottom:10px;">
+
+			<input type="button" class="calystoBtn" value="Invoke Panel Content" id="btnDialogsSend31a" onclick="Dialogs.InvokeContentPanel(this)" />
+			<input type="button" class="calystoBtn" value="Invoke Long Panel Content" id="btnDialogsSend31a" onclick="Dialogs.InvokeLongContentPanel(this)" />
+			<input type="button" class="calystoBtn" value="Invoke Width Panel Content" id="btnDialogsSend32a" onclick="Dialogs.InvokeWidthContentPanel(this)" />
+			<input type="button" class="calystoBtn" value="Invoke Long Width Panel Content" id="btnDialogsSend33a" onclick="Dialogs.InvokeLongWidthContentPanel(this)" /><br />
+
+
+		</div>
+	</div>

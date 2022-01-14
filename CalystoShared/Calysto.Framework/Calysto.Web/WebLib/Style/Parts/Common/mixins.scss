@@ -1,0 +1,56 @@
+﻿@mixin mxBrowsersPrefix($styleName, $value){
+	-webkit-#{$styleName}: #{$value};
+	-khtml-#{$styleName}: #{$value};
+	-moz-#{$styleName}: #{$value};
+	-ms-#{$styleName}: #{$value};
+	-o-#{$styleName}: #{$value};
+	#{$styleName}: #{$value};
+}
+
+@mixin mxNoUserSelect(){
+	// values: none | text | all | element
+	@include mxBrowsersPrefix("touch-callout", "none");
+	@include mxBrowsersPrefix("user-select", "none");
+}
+
+@mixin mxImageWithVLinearGradient($urlHref, $topColor: #cccccc, $bottomColor: #eeeeee) {
+	background-image: url('#{$urlHref}');
+	background-color: $topColor;
+	background-image: url('#{$urlHref}'), -webkit-linear-gradient(top, $topColor, $bottomColor);
+	background-image: url('#{$urlHref}'), -moz-linear-gradient(top, $topColor, $bottomColor);
+	background-image: url('#{$urlHref}'), -o-linear-gradient(top, $topColor, $bottomColor);
+	background-image: url('#{$urlHref}'), -webkit-gradient(linear, left top, left bottom, from($topColor), to($bottomColor));
+	background-image: url('#{$urlHref}'), linear-gradient(to bottom, $topColor, $bottomColor);
+}
+
+
+@mixin mxVLinearGradient($topColor: #cccccc, $bottomColor: #eeeeee) {
+	background-color: $topColor;
+	background-image: -webkit-linear-gradient(top, $topColor, $bottomColor);
+	background-image: -moz-linear-gradient(top, $topColor, $bottomColor);
+	background-image: -o-linear-gradient(top, $topColor, $bottomColor);
+	background-image: -webkit-gradient(linear, left top, left bottom, from($topColor), to($bottomColor));
+	background-image: linear-gradient(to bottom, $topColor, $bottomColor);
+}
+
+@mixin mxRadialGradient($centerColor: #cccccc, $outerColor: #333333) {
+	background: $centerColor;
+	background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%, $centerColor), color-stop(100%, $outerColor));
+	background: -moz-radial-gradient(center, ellipse cover, $centerColor 0%, $outerColor 100%);
+	background: -o-radial-gradient(center, ellipse cover, $centerColor 0%, $outerColor 100%);
+	background: -webkit-radial-gradient(center, ellipse cover, $centerColor 0%, $outerColor 100%);
+	background: -ms-radial-gradient(center, ellipse cover, $centerColor 0%, $outerColor 100%);
+}
+
+@mixin mxDisabledElement()
+{
+	cursor: no-drop !important;
+	opacity: 0.6;
+	filter: alpha(opacity=60);
+}
+
+@mixin mxReadOnlyElement() {
+	opacity: 0.6;
+	filter: alpha(opacity=60);
+}
+

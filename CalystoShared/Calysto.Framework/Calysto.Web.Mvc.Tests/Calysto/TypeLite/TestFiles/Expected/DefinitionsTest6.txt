@@ -1,0 +1,49 @@
+
+declare namespace Calysto.Genesis.UnitTest.Calysto.TypeLite.Model
+{
+	interface AdminValidator extends Calysto.Web.UI.Validators.CalystoValidatorProvider<TestResources.Validators>
+	{
+	}
+
+}
+
+declare namespace Calysto.Web.UI.Validators
+{
+	interface CalystoValidatorProvider<TResx> extends Calysto.Web.UI.Validators.CalystoValidatorProviderBase
+	{
+	}
+
+	interface CalystoValidatorProviderBase
+	{
+	}
+
+}
+
+declare namespace TestResources
+{
+	interface Validators
+	{
+	}
+
+	export interface Validators { }
+
+	export namespace Validators
+	{
+		export const CalystoDateTimeValidatorMaximumValue : string;
+		export const CalystoDateTimeValidatorMinimumValue : string;
+		export const CalystoDateTimeValidatorMustBeBetween : string;
+		export const CalystoDateTimeValidatorNotInValidFormat : string;
+		export const CalystoEmailValidatorNotInValidFormat : string;
+		export const CalystoNumericValidatorMaximumValue : string;
+		export const CalystoNumericValidatorMinimumValue : string;
+		export const CalystoNumericValidatorMustBeBetween : string;
+		export const CalystoNumericValidatorNotInValidFormat : string;
+		export const CalystoRegexValidatorNotInValidFormat : string;
+		export const CalystoStringValidatorLengthMustBeBetween : string;
+		export const CalystoStringValidatorMaximumRequiredLength : string;
+		export const CalystoStringValidatorMinimumRequiredLength : string;
+		export const CalystoValidatorValueIsRequired : string;
+	}
+
+}
+

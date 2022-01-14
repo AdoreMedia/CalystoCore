@@ -1,0 +1,119 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <Configurations>Debug;Release;TddSpecific</Configurations>
+  </PropertyGroup>
+
+	<PropertyGroup>
+		<TypeScriptCompileBlocked>true</TypeScriptCompileBlocked>
+		<TypeScriptEnabled>false</TypeScriptEnabled>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+		<DebugType>full</DebugType>
+		<DebugSymbols>true</DebugSymbols>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='TddSpecific|AnyCPU'">
+	  <DebugType>full</DebugType>
+	  <DebugSymbols>true</DebugSymbols>
+	  <DefineConstants>TRACE;TDDSPECIFIC;</DefineConstants>
+	</PropertyGroup>
+	
+  <ItemGroup>
+    <Compile Remove="Calysto\CCFServices\Generator2\**" />
+    <EmbeddedResource Remove="Calysto\CCFServices\Generator2\**" />
+    <None Remove="Calysto\CCFServices\Generator2\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.0.0" />
+    <PackageReference Include="MSTest.TestAdapter" Version="2.2.8" />
+    <PackageReference Include="MSTest.TestFramework" Version="2.2.8" />
+	  <PackageReference Include="Microsoft.Data.Sqlite" Version="5.0.9" />
+	  <PackageReference Include="System.Data.SqlClient" Version="4.8.3" />
+    <PackageReference Include="coverlet.collector" Version="3.1.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Calysto.UnitTesting\Calysto.UnitTesting.csproj" />
+    <ProjectReference Include="..\Calysto.Genesis\Calysto.Genesis.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Calysto\Xml\Parser\XmlTestFiles\AppSetting.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Calysto\Xml\Parser\XmlTestFiles\AppSetting_reader.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Calysto\Xml\Parser\XmlTestFiles\file_json.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Calysto\Xml\Parser\XmlTestFiles\file_json.json.expected.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Calysto\Xml\Parser\XmlTestFiles\geolocation.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Calysto\Xml\Parser\XmlTestFiles\html5test.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Calysto\Xml\Parser\XmlTestFiles\html5test_expected.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Calysto\Xml\Parser\XmlTestFiles\Mingorp1.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Calysto\Xml\Parser\XmlTestFiles\parse-test-hourly.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Calysto\Xml\Parser\XmlTestFiles\rssexample.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Calysto\Xml\Parser\XmlTestFiles\sampleRss091.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Calysto\Xml\Parser\XmlTestFiles\WebForm2.aspx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Calysto\Xml\Parser\XmlTestFiles\WebForm2.aspx.expected.aspx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="EnvDTE\EnvDTECalystoGenesisTests.tt">
+      <LastGenOutput>EnvDTECalystoGenesisTests.cs</LastGenOutput>
+      <Generator>TextTemplatingFileGenerator</Generator>
+    </None>
+    <None Update="TestFiles\middle.mp4">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="TestFiles\openvpn.tar.gz">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="TestFiles\small.mp4">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Service Include="{508349b6-6b84-4df5-91f0-309beebad82d}" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="EnvDTE\EnvDTECalystoGenesisTests.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>EnvDTECalystoGenesisTests.tt</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Calysto\CCFServices\Generator\TestFiles\Actual\" />
+    <Folder Include="Calysto\Graphics\Actual\" />
+  </ItemGroup>
+
+</Project>

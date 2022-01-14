@@ -1,0 +1,9 @@
+{
+	"extends": "./TypeScriptConfig/tsconfig.json",
+	"compilerOptions": {
+		"declaration": true,
+		"outFile": "WebLib\\Engine\\_dist\\Core\\EngineComplete.js"
+	},
+	"compileOnSave": true,
+	"files": [ "WebLib\\Engine\\Build\\Core\\EngineComplete.ts" ]
+}

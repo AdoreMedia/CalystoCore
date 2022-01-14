@@ -1,0 +1,9 @@
+{
+	"version": 3,
+	"file": "Ajax.css",
+	"sources": [
+		"Ajax.scss"
+	],
+	"names": [],
+	"mappings": "AAAA;;;;gEAIgE;AAEhE,AAAA,KAAK,EAAE,MAAM,CAAA;EACZ,MAAM,EAAC,aAAa;CACpB"
+}

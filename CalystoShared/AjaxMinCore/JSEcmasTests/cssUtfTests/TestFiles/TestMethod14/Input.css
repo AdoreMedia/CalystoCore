@@ -1,0 +1,42 @@
+﻿@charset "UTF-8";
+html {
+	background-color: #212121;
+}
+
+.calystoValidatorSummary,
+.calystoValidatorMsg,
+.text-danger {
+	color: #f32347;
+	font-style: italic;
+	margin-bottom: 15px;
+}
+@charset "UTF-8";
+
+.calystoValidatorSummary,
+.calystoValidatorMsg,
+.text-danger {
+	color: #f32347;
+	font-style: italic;
+	margin-bottom: 15px;
+}@charset "UTF-8";
+
+html {
+	background-color: #212121;
+}
+
+.diamond11 {
+	color: orange;
+}
+
+	.diamond11::after {
+		/*content: "»";*/
+		content: "♦";
+	}
+
+.diamond12 {
+	color: orange;
+}
+
+	.diamond12::after {
+		content: "♢";
+	}

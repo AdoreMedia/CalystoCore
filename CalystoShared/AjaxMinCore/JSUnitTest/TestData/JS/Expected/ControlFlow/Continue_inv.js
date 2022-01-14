@@ -1,0 +1,1 @@
+function Func(p1){for(var i=0;i<100;)i!=p1&&i++;for(i=0;i<100;i++)i==p1;return i}

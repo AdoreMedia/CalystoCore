@@ -1,0 +1,6 @@
+﻿
+"CalystoDbmlEFCoreTest3.cs" is copy of "CalystoEFCoreTests\TestFiles\Actual\CalystoDbmlEFCoreTest3.cs-a"
+
+File.Copy(...) is invoked from unittest method "CalystoDbmlEFCoreTest3CopyFile()"
+	in file "CalystoEFCoreTests\CalystoEFCoreTests.cs"
+

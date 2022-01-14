@@ -1,0 +1,1 @@
+(function(){function n(){function t(r){g(r)&&t(r-1)}var i=location.href;t(10)}alert(g);n()})()

@@ -1,0 +1,1 @@
+function test1(a){var yield=+a;alert(yield*42)}function myGenerator(arr){for(var item in arr)yield item}

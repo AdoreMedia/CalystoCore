@@ -1,0 +1,30 @@
+
+declare namespace Calysto.Genesis.UnitTest.Calysto.TypeLite.Model
+{
+	class HostObject3
+	{
+		public constructor(hostName: string);
+		public GetTranslationMessages1Async(): Promise<Calysto.Genesis.UnitTest.Calysto.TypeLite.Model.MessageItem1[]>;
+		public Test1Async(size: number, wheels: number, height: number, name: string, birth: Date): Promise<boolean>;
+		public GetTranslationMessages2Async(): Promise<Calysto.Genesis.UnitTest.Calysto.TypeLite.Model.HostObject3.MessageItem2[]>;
+		public NoResultAsync(s1: string, num1: number): Promise<void>;
+		public DoSomethingAsync(s1: string, num1: number): Promise<number>;
+		public DoNestoAsync(name: string): Promise<string>;
+	}
+
+	interface MessageItem1
+	{
+		Name: string;
+	}
+
+}
+
+declare namespace Calysto.Genesis.UnitTest.Calysto.TypeLite.Model.HostObject3
+{
+	interface MessageItem2
+	{
+		Color: string;
+	}
+
+}
+

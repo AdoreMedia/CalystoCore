@@ -1,0 +1,52 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31919.166
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CalystoFilesListGenWin", "CalystoFilesListGenWin\CalystoFilesListGenWin.csproj", "{4F93E855-84E6-4215-9C38-2BF477B9AE08}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Calysto.Genesis", "..\Calysto.Framework\Calysto.Genesis\Calysto.Genesis.csproj", "{F1EAD2ED-E048-4628-AD84-5986CFDC4B48}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Calysto.Genesis.Tests", "..\Calysto.Framework\Calysto.GenesisTests\Calysto.Genesis.Tests.csproj", "{BCD652CA-66C5-44D0-A23B-B01DA55A8EE0}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Calysto.UnitTesting", "..\Calysto.UnitTesting\Calysto.UnitTesting.csproj", "{BDD8BFD6-D6ED-4D92-ADFB-45CB1A5611DF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+		TddSpecific|Any CPU = TddSpecific|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4F93E855-84E6-4215-9C38-2BF477B9AE08}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4F93E855-84E6-4215-9C38-2BF477B9AE08}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4F93E855-84E6-4215-9C38-2BF477B9AE08}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4F93E855-84E6-4215-9C38-2BF477B9AE08}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4F93E855-84E6-4215-9C38-2BF477B9AE08}.TddSpecific|Any CPU.ActiveCfg = Release|Any CPU
+		{4F93E855-84E6-4215-9C38-2BF477B9AE08}.TddSpecific|Any CPU.Build.0 = Release|Any CPU
+		{F1EAD2ED-E048-4628-AD84-5986CFDC4B48}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F1EAD2ED-E048-4628-AD84-5986CFDC4B48}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F1EAD2ED-E048-4628-AD84-5986CFDC4B48}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F1EAD2ED-E048-4628-AD84-5986CFDC4B48}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F1EAD2ED-E048-4628-AD84-5986CFDC4B48}.TddSpecific|Any CPU.ActiveCfg = Debug|Any CPU
+		{F1EAD2ED-E048-4628-AD84-5986CFDC4B48}.TddSpecific|Any CPU.Build.0 = Debug|Any CPU
+		{BCD652CA-66C5-44D0-A23B-B01DA55A8EE0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BCD652CA-66C5-44D0-A23B-B01DA55A8EE0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BCD652CA-66C5-44D0-A23B-B01DA55A8EE0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BCD652CA-66C5-44D0-A23B-B01DA55A8EE0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BCD652CA-66C5-44D0-A23B-B01DA55A8EE0}.TddSpecific|Any CPU.ActiveCfg = TddSpecific|Any CPU
+		{BCD652CA-66C5-44D0-A23B-B01DA55A8EE0}.TddSpecific|Any CPU.Build.0 = TddSpecific|Any CPU
+		{BDD8BFD6-D6ED-4D92-ADFB-45CB1A5611DF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BDD8BFD6-D6ED-4D92-ADFB-45CB1A5611DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BDD8BFD6-D6ED-4D92-ADFB-45CB1A5611DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BDD8BFD6-D6ED-4D92-ADFB-45CB1A5611DF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BDD8BFD6-D6ED-4D92-ADFB-45CB1A5611DF}.TddSpecific|Any CPU.ActiveCfg = Debug|Any CPU
+		{BDD8BFD6-D6ED-4D92-ADFB-45CB1A5611DF}.TddSpecific|Any CPU.Build.0 = Debug|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {139654AA-BD22-44DA-A197-10AF495C1CAC}
+	EndGlobalSection
+EndGlobal
